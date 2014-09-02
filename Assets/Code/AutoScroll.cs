@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AutoScroll : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed = 2.5f;
 
     // Use this for initialization
     void Start()
@@ -12,8 +12,9 @@ public class AutoScroll : MonoBehaviour
     }
 	
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        gameObject.transform.localPosition += new Vector3(speed, 0, 0);
+        var fixedSpeed = speed * Time.fixedDeltaTime;
+        gameObject.transform.localPosition += new Vector3(fixedSpeed, 0, 0);
     }
 }
