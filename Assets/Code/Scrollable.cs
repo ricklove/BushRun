@@ -21,7 +21,7 @@ public class Scrollable : MonoBehaviour
     }
     
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (Scroller != null)
         {
