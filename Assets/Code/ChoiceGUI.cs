@@ -113,7 +113,10 @@ public class ChoiceGUI : MonoBehaviour
             }
 
             style.fontSize = fontSize;
-            GUI.Box(new Rect(left, top, width, height), choice.Text, style);
+            if (GUI.Button(new Rect(left, top, width, height), choice.Text, style))
+            {
+                pController.pathIndex = choices.Length - 1 - i;
+            }
             
         }
 

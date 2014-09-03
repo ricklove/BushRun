@@ -17,6 +17,10 @@ Create BushRun to be used for Multiple Choice
 
 - Display a text choice in each path
 
+### 7:05-7:09
+
+- Enable click on Answer
+
 
 
 # TODO
