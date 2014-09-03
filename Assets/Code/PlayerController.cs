@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour
     private float actualSpeed;
     private float reportedSpeed;
 
-    // Fly height
-    public float flyHeightUnitSize = 2f;
-    public int maxFlyHeight = 2;
-    private int flyHeight = 0;
+    // Fly Paths
+    public float maxHeight = 4f;
+    public int pathCount = 3;
+    public int pathIndex = 0;
 
     // Input
     private InputState upState;
@@ -56,33 +56,34 @@ public class PlayerController : MonoBehaviour
 
 
 
-
         // Fly height
         if (upState.State == InputPressState.Begin)
         {
-            flyHeight++;
+            pathIndex++;
         }
         else if (downState.State == InputPressState.Begin)
         {
-            flyHeight--;
+            pathIndex--;
         }
 
-        if (flyHeight < 0)
+        if (pathIndex < 0)
         {
-            flyHeight = 0;
+            pathIndex = 0;
         }
-        else if (flyHeight > maxFlyHeight)
+        else if (pathIndex >= pathCount)
         {
-            flyHeight = maxFlyHeight;
+            pathIndex = pathCount - 1;
         }
 
         // Move to height
-        var targetHeight = flyHeight * flyHeightUnitSize;
+        var pathUnitSize = maxHeight / (pathCount - 1);
+
+        var targetHeight = pathIndex * pathUnitSize;
         var actualHeight = transform.localPosition.y;
         var heightDiff = targetHeight - actualHeight;
 
         var timeToMove = 0.25f;
-        var maxMove = flyHeightUnitSize * Time.deltaTime / timeToMove;
+        var maxMove = pathUnitSize * Time.deltaTime / timeToMove;
 
         var heightDiffToUse = Mathf.Min(maxMove, Mathf.Abs(heightDiff));
         heightDiffToUse = heightDiff >= 0 ? heightDiffToUse : -heightDiffToUse;
