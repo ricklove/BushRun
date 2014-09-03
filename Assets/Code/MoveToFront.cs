@@ -27,7 +27,10 @@ public class MoveToFront : MonoBehaviour
         // Move towards camera
         var pos = transform.TransformPoint(new Vector3());
         var camPos = cam.transform.position;
-        var posTowardsCam = new Vector3(pos.x, pos.y, (camPos.z - pos.z) * 0.7f + pos.z);
+        //var posTowardsCam = new Vector3(pos.x, pos.y, (camPos.z - pos.z) * 0.7f + pos.z);
+
+        // TODO: Use thickness of head
+        var posTowardsCam = new Vector3(pos.x, pos.y, -.2f + pos.z);
 
         var localPos = transform.InverseTransformPoint(posTowardsCam);
         transform.localPosition = localPos;

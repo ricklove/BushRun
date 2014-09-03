@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AnimateMovement : MonoBehaviour
 {
+    public int gestureCount = 2;
 
     // Use this for initialization
     void Start()
@@ -45,17 +46,26 @@ public class AnimateMovement : MonoBehaviour
             reportedSpeed = speed;
         }
 
-        if (Mathf.FloorToInt(Time.time) % 15 == 0)
+        animator.SetInteger("GestureID", 0);
+        animator.SetBool("Fly", false);
+        animator.SetBool("Dive", false);
+        animator.SetBool("Jump", false);
+
+        if (Mathf.FloorToInt(Time.time) % 30 == 0)
+        {
+            animator.SetInteger("GestureID", Random.Range(1, gestureCount + 1));
+            
+        } else if (Mathf.FloorToInt(Time.time) % 20 == 0)
+        {
+            animator.SetBool("Fly", true);
+            
+        } else if (Mathf.FloorToInt(Time.time) % 12 == 0)
         {
             animator.SetBool("Dive", true);
 
-        } else if (Mathf.FloorToInt(Time.time) % 5 == 0)
+        } else if (Mathf.FloorToInt(Time.time) % 4 == 0)
         {
             animator.SetBool("Jump", true);
-        } else
-        {
-            animator.SetBool("Dive", false);
-            animator.SetBool("Jump", false);
-        }
+        } 
     }
 }

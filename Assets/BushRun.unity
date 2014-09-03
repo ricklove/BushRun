@@ -192,7 +192,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 982744687}
   m_GameObject: {fileID: 9863214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26b34384d67dfd74490f619f9869bca2, type: 3}
   m_Name: 
@@ -1396,11 +1396,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2117273126}
   m_GameObject: {fileID: 167193648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d712e1ae5cad7d5489b944b2f656b0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureCount: 2
 --- !u!114 &167193653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1408,7 +1409,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2117273126}
   m_GameObject: {fileID: 167193648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4574fca6dc3aa7d469fcf0bae8ba0a6b, type: 3}
   m_Name: 
@@ -3506,7 +3507,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1051383481}
   m_GameObject: {fileID: 499940980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4574fca6dc3aa7d469fcf0bae8ba0a6b, type: 3}
   m_Name: 
@@ -3520,11 +3521,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1051383481}
   m_GameObject: {fileID: 499940980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d712e1ae5cad7d5489b944b2f656b0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureCount: 2
 --- !u!114 &499940984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,7 +3595,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1961078646}
   m_GameObject: {fileID: 500468906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4574fca6dc3aa7d469fcf0bae8ba0a6b, type: 3}
   m_Name: 
@@ -3607,11 +3609,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1961078646}
   m_GameObject: {fileID: 500468906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d712e1ae5cad7d5489b944b2f656b0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureCount: 2
 --- !u!114 &500468910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5384,6 +5387,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300044, guid: b5b1cfc3622bb9143981eceb18520225,
         type: 3}
+    - target: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
+      propertyPath: playerMover
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
   m_RootGameObject: {fileID: 1530095900}
@@ -7571,6 +7578,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 965849365}
   - 114: {fileID: 965849366}
+  - 114: {fileID: 965849367}
+  - 143: {fileID: 965849368}
   m_Layer: 0
   m_Name: Lydia
   m_TagString: Untagged
@@ -7606,6 +7615,35 @@ MonoBehaviour:
   heads:
   - {fileID: 21300058, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   - {fileID: 21300038, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+--- !u!114 &965849367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 1961078646}
+  m_GameObject: {fileID: 965849364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448fd52f4ff54cd41a43c37b7d5df3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerMover: {fileID: 9863214}
+--- !u!143 &965849368
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14300000, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 1961078646}
+  m_GameObject: {fileID: 965849364}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &970776403
 GameObject:
   m_ObjectHideFlags: 0
@@ -7701,7 +7739,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d20b90929da69974b842b8e625e31729, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -8517,6 +8555,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1047911294}
   - 114: {fileID: 1047911295}
+  - 114: {fileID: 1047911296}
+  - 143: {fileID: 1047911297}
   m_Layer: 0
   m_Name: Caleb
   m_TagString: Untagged
@@ -8552,6 +8592,35 @@ MonoBehaviour:
   heads:
   - {fileID: 21300054, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   - {fileID: 21300048, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+--- !u!114 &1047911296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 2117273126}
+  m_GameObject: {fileID: 1047911293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448fd52f4ff54cd41a43c37b7d5df3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerMover: {fileID: 0}
+--- !u!143 &1047911297
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14300000, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 2117273126}
+  m_GameObject: {fileID: 1047911293}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1051383481
 Prefab:
   m_ObjectHideFlags: 0
@@ -8618,6 +8687,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300040, guid: b5b1cfc3622bb9143981eceb18520225,
         type: 3}
+    - target: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
+      propertyPath: playerMover
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
   m_RootGameObject: {fileID: 1258101609}
@@ -9968,6 +10041,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1258101610}
   - 114: {fileID: 1258101611}
+  - 114: {fileID: 1258101612}
+  - 143: {fileID: 1258101613}
   m_Layer: 0
   m_Name: Matthew
   m_TagString: Untagged
@@ -10003,6 +10078,35 @@ MonoBehaviour:
   heads:
   - {fileID: 21300056, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   - {fileID: 21300040, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+--- !u!114 &1258101612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051383481}
+  m_GameObject: {fileID: 1258101609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448fd52f4ff54cd41a43c37b7d5df3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerMover: {fileID: 0}
+--- !u!143 &1258101613
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14300000, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051383481}
+  m_GameObject: {fileID: 1258101609}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1258263314
 GameObject:
   m_ObjectHideFlags: 0
@@ -11699,6 +11803,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1530095901}
   - 114: {fileID: 1530095902}
+  - 114: {fileID: 1530095903}
+  - 143: {fileID: 1530095904}
   m_Layer: 0
   m_Name: Emily
   m_TagString: Untagged
@@ -11734,6 +11840,35 @@ MonoBehaviour:
   heads:
   - {fileID: 21300044, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   - {fileID: 21300044, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+--- !u!114 &1530095903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 692258210}
+  m_GameObject: {fileID: 1530095900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448fd52f4ff54cd41a43c37b7d5df3c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  playerMover: {fileID: 0}
+--- !u!143 &1530095904
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 14300000, guid: cb11cdc8d254a1c429e24736f683a061,
+    type: 2}
+  m_PrefabInternal: {fileID: 692258210}
+  m_GameObject: {fileID: 1530095900}
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1536117534
 GameObject:
   m_ObjectHideFlags: 0
@@ -13549,7 +13684,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 692258210}
   m_GameObject: {fileID: 1829026158}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4574fca6dc3aa7d469fcf0bae8ba0a6b, type: 3}
   m_Name: 
@@ -13563,11 +13698,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 692258210}
   m_GameObject: {fileID: 1829026158}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d712e1ae5cad7d5489b944b2f656b0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureCount: 2
 --- !u!114 &1829026162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14466,6 +14602,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300038, guid: b5b1cfc3622bb9143981eceb18520225,
         type: 3}
+    - target: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
+      propertyPath: playerMover
+      value: 
+      objectReference: {fileID: 9863214}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
   m_RootGameObject: {fileID: 965849364}
@@ -15848,6 +15988,10 @@ Prefab:
     - target: {fileID: 100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
       propertyPath: m_Name
       value: Caleb
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
+      propertyPath: playerMover
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
