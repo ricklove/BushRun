@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     // Input
     private InputState upState;
     private InputState downState;
+
+    // Response
+    private ResponseState responseState;
     
 
     // Reset child
@@ -120,6 +123,23 @@ public class PlayerController : MonoBehaviour
         // Move player back to initial points (animation is slowly moving it off)
         childAvatar.transform.localRotation = initialRotation;
         childAvatar.transform.localPosition = initialPosition;
+
+
+        // Respond to answer
+        animator.SetBool("Hurt", false);
+        animator.SetBool("Cheer", false);
+
+        if (responseState == ResponseState.Incorrect)
+        {
+            animator.SetBool("Hurt", true);
+        }
+        else if (responseState == ResponseState.Correct)
+        {
+            animator.SetBool("Cheer", true);
+        }
+        
+
+        responseState = ResponseState.None;
     }
 
     void RefreshSpeed()
@@ -134,6 +154,11 @@ public class PlayerController : MonoBehaviour
             lastTime = Time.time;
             lastPos = transform.localPosition;
         }
+    }
+
+    public void RespondToAnswer(bool isCorrect)
+    {
+        responseState = isCorrect ? ResponseState.Correct : ResponseState.Incorrect;
     }
 }
 
@@ -224,4 +249,11 @@ public enum InputPressState
     Begin,
     Continue,
     End
+}
+
+public enum ResponseState
+{
+    None,
+    Correct,
+    Incorrect
 }

@@ -21,14 +21,11 @@ Create BushRun to be used for Multiple Choice
 
 - Enable click on Answer
 
+### 7:10-7:34
+
+- Respond to choice
 
 
 # TODO
 
-Create BushRun to be used for Multiple Choice
-
-- Allow player to run/fly in multiple paths
-- Display a text choice in each path
-- Respond positively for correct choice
-- Respond negatively for wrong choice
-
+- Add subject

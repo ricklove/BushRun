@@ -124,6 +124,16 @@ public class ChoiceGUI : MonoBehaviour
         if (nearnessRatio >= 1)
         {
             var choice = Choices [selectedChoiceIndex];
+
+            if (choice.IsCorrect)
+            {
+                pController.RespondToAnswer(true);
+            }
+            else
+            {
+                pController.RespondToAnswer(false);
+            }
+
             if (choice.ChoiceCallback != null)
             {
                 choice.ChoiceCallback();
