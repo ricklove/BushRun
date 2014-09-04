@@ -12,6 +12,7 @@ public class ChoiceGUI : MonoBehaviour
     private float timeStart = -1;
     public GUIStyle choiceStyle = GUI.skin.box;
     public GUIStyle selectedChoiceStyle = GUI.skin.box;
+    private int lastClickIndex = -1;
 
     public Choice[] Choices
     {
@@ -36,6 +37,7 @@ really really really really really really really really really really really rea
                     new Choice(){Text= "Right", IsCorrect=true, ChoiceCallback= doReset},
                     new Choice(){Text= "Wrong Too", IsCorrect=false, ChoiceCallback= null},
                 };
+
             }
 
             return _choices;
@@ -44,6 +46,7 @@ really really really really really really really really really really really rea
         {
             _choices = value;
             timeStart = Time.time;
+            lastClickIndex = -1;
         }
     }
 
@@ -145,6 +148,16 @@ really really really really really really really really really really really rea
             if (GUI.Button(new Rect(left, top, width, height), choice.Text, style))
             {
                 pController.pathIndex = choices.Length - 1 - i;
+                
+                //if (lastClickIndex == i)
+                if (selectedChoiceIndex == i)
+                {
+                    // Move to answer
+                    //timeStart = Time.time - timeToAnswer;
+                    nearnessRatio = 1.1f;
+                }
+
+                lastClickIndex = i;
             }
             
         }

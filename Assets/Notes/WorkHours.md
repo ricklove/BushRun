@@ -61,9 +61,12 @@ Create BushRun to be used for Multiple Choice
 
 - Fix too wide word size
 
+### 11:11-11:21
+
+- Allow second click to answer quickly
 
 
 # TODO
 
-- Add subject
+
 - Respond to choice with particle effects
