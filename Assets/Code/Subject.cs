@@ -50,6 +50,18 @@ public class Subject : MonoBehaviour
                 choices.Add(new Choice(){ Text= w, IsCorrect = false, ChoiceCallback=null});
             }
 
+            // Randomize order
+            var r = choices.ToList();
+            choices.Clear();
+
+            while (r.Any())
+            {
+                // Range is maximally exclusive
+                var i = UnityEngine.Random.Range(0, r.Count - 1 + 1);
+                choices.Add(r [i]);
+                r.RemoveAt(i);
+            }
+
             choiceGUI.Choices = choices.ToArray();
             index++;
 

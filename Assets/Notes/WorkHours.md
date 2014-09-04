@@ -65,6 +65,10 @@ Create BushRun to be used for Multiple Choice
 
 - Allow second click to answer quickly
 
+### 11:25-
+
+- Randomize the choice order
+
 
 # TODO
 
