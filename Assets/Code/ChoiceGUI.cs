@@ -127,7 +127,12 @@ really really really really really really really really really really really rea
 
             while (mHeight > height * 0.8f)
             {
-                style.fontSize = (int)(style.fontSize * 0.8f);
+                var diffRatio = mHeight / (height * 0.8f);
+                var reduce = 1 / diffRatio;
+                var halfReduce = (1 + reduce) / 2;
+                var ratio = Math.Min(halfReduce, 0.8f);
+
+                style.fontSize = (int)(style.fontSize * ratio);
                 mHeight = style.CalcHeight(content, width);
             } 
 

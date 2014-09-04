@@ -44,8 +44,16 @@ Create BushRun to be used for Multiple Choice
 - Remove wrong answer and reset
 - Reduce text size if it doesn't fit
 
+### 7:09-7:23
+
+- Test - Stutter on change text
+- Rework text size reduction to improve performance
+
+### 7:24-7:25
+
+- Test - OK
+
 # TODO
 
 - Add subject
-
 - Respond to choice with particle effects
