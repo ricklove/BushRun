@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         // Input
         upState.ChangeState(Input.GetAxis("Vertical") > 0.01);
         downState.ChangeState(Input.GetAxis("Vertical") < -0.01);
@@ -99,6 +101,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Animate
+        var headController = GetComponent<HeadSelection>();
+        
+
         RefreshSpeed();
         
         // Animation movement z is forward
@@ -132,12 +137,15 @@ public class PlayerController : MonoBehaviour
         if (responseState == ResponseState.Incorrect)
         {
             animator.SetBool("Hurt", true);
+            headController.ChangeHead(HeadType.Hurt);
         }
         else if (responseState == ResponseState.Correct)
         {
             animator.SetBool("Cheer", true);
+            headController.ChangeHead(HeadType.Happy);
         }
-        
+
+                
 
         responseState = ResponseState.None;
     }

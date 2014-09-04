@@ -64,7 +64,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  iPhoneBundleIdentifier: com.toldpro.propsanimations
+  iPhoneBundleIdentifier: com.toldpro.bushrun
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   productGUID: 18e6763ce716f8c4c8f89538c40d28b5
@@ -103,7 +103,7 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: c1d53b63eec869e4cb8c1669ad5026da, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 14e1cd7c9c7298f41aa60b6a7f06c248, type: 3}
       m_Size: 128
   m_BuildTargetBatching: []
   webPlayerTemplate: APPLICATION:Default

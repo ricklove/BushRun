@@ -6,7 +6,8 @@ using System.Linq;
 public class Tileable : MonoBehaviour
 {
     public TileDirection TileDirection = TileDirection.Horizontal;
-    private GameObject prefab = null;
+    public Sprite[] tileSprites = null;
+    private List<GameObject> tiles = null;
     private List<GameObject> clones = new List<GameObject>();
     private List<GameObject> remaining = new List<GameObject>();
 
@@ -46,7 +47,8 @@ public class Tileable : MonoBehaviour
             {
                 frustumHeight = minSize;
                 frustumWidth = frustumHeight * cam.aspect;
-            } else
+            }
+            else
             {
                 frustumWidth = minSize;
                 frustumHeight = frustumHeight / cam.aspect;
@@ -55,9 +57,10 @@ public class Tileable : MonoBehaviour
         
         var fx = cam.transform.position.x - frustumWidth * 0.5f;
         var fy = cam.transform.position.y - frustumHeight * 0.5f;
-        
-        var min = transform.InverseTransformPoint(new Vector3(fx, fy, 0));
-        var max = transform.InverseTransformPoint(new Vector3(fx + frustumWidth, fy + frustumHeight, 0));
+
+        // Go past the edges a bit
+        var min = transform.InverseTransformPoint(new Vector3(fx - frustumWidth * 0.1f, fy - frustumHeight * 0.1f, 0));
+        var max = transform.InverseTransformPoint(new Vector3(fx + frustumWidth * 1.1f, fy + frustumHeight * 1.1f, 0));
 
         // Get sprite local coords
         var sprite = GetComponent<SpriteRenderer>();
@@ -86,23 +89,39 @@ public class Tileable : MonoBehaviour
     void PositionTiles(float val, float change, Vector3 vectChange, float min, float max, List<GameObject> remaining)
     {
         // Create prefab if needed
-        if (prefab == null)
+        if (tiles == null)
         {
-            prefab = new GameObject();
-            SpriteRenderer childSprite = prefab.AddComponent<SpriteRenderer>();
-            
-            var sprite = GetComponent<SpriteRenderer>();
-            childSprite.sprite = sprite.sprite;
-            childSprite.sortingOrder = sprite.sortingOrder;
-            prefab.layer = transform.gameObject.layer;
-            prefab.name = "Prefab";
+            tiles = new List<GameObject>();
+            if (tileSprites == null 
+                || tileSprites.Length == 0)
+            {
 
-            prefab.transform.parent = transform;
-            prefab.transform.localPosition = new Vector3();
-            prefab.transform.localScale = new Vector3(1, 1, 1);
+                var sprite = GetComponent<SpriteRenderer>();
+                tileSprites = new Sprite[] { sprite.sprite };
+            }
 
-            prefab.SetActive(false);
-            sprite.enabled = false;
+            foreach (var tileSprite in tileSprites)
+            {
+                var prefab = new GameObject();
+                SpriteRenderer childSprite = prefab.AddComponent<SpriteRenderer>();
+                childSprite.sprite = tileSprite;
+
+                var sprite = GetComponent<SpriteRenderer>();
+                childSprite.sortingOrder = sprite.sortingOrder;
+                prefab.layer = transform.gameObject.layer;
+
+                prefab.name = "Tile" + tiles.Count;
+
+                prefab.transform.parent = transform;
+                prefab.transform.localPosition = new Vector3();
+                prefab.transform.localScale = new Vector3(1, 1, 1);
+
+                prefab.SetActive(false);
+                sprite.enabled = false;
+
+                tiles.Add(prefab);
+            }
+                
         }
 
         // Go forward as much as needed
@@ -124,10 +143,12 @@ public class Tileable : MonoBehaviour
         // Move forward, laying children
         while (val < max)
         {
+            var iTile = ((iVal % tiles.Count) + tiles.Count) % tiles.Count;
+            var targetTile = tiles [iTile];
             var targetPos = vectChange * iVal;
             
             // Check for one already displayed here
-            var matches = clones.Where(cl => cl.transform.localPosition == targetPos && cl.activeSelf);
+            var matches = clones.Where(cl => cl.transform.localPosition == targetPos && targetTile.name == cl.name);
             if (matches.Any())
             {
                 var m = matches.First();
@@ -140,16 +161,18 @@ public class Tileable : MonoBehaviour
             }
             
             
-            var c = remaining.LastOrDefault();
+            var c = remaining.LastOrDefault(cl => cl.name == targetTile.name);
             
             if (c == null)
             {
                 // Generate a child prefab of the sprite renderer
-                c = ((Transform)Instantiate(prefab.transform)).gameObject;
+                c = ((Transform)Instantiate(targetTile.transform)).gameObject;
+                c.name = targetTile.name;
                 clones.Add(c);
                 c.transform.parent = transform;
                 c.transform.localScale = new Vector3(1, 1, 1);
-            } else
+            }
+            else
             {
                 remaining.RemoveAt(remaining.Count - 1);
             }

@@ -25,7 +25,17 @@ Create BushRun to be used for Multiple Choice
 
 - Respond to choice
 
+## Period 2
+
+### 2014-09-04 3:35-6:36
+
+- Break background into tiles to work on android (max 1024 texture size)
+
+
+
 
 # TODO
 
+- Respond to choice with particle effects
+- Change head with response
 - Add subject
