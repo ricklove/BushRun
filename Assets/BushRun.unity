@@ -643,7 +643,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75f14a9917346cb43aa169adf3d182ed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -.100000001
+      value: -.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 75f14a9917346cb43aa169adf3d182ed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4309,7 +4309,7 @@ Transform:
   m_PrefabInternal: {fileID: 95858754}
   m_GameObject: {fileID: 576201446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.100000001, z: 0}
+  m_LocalPosition: {x: 0, y: -.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1139597823}
@@ -8614,9 +8614,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleHeads:
-  - {fileID: 21300054, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+  - {fileID: 21300004, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   happyHeads:
-  - {fileID: 21300048, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
+  - {fileID: 21300016, guid: b5b1cfc3622bb9143981eceb18520225, type: 3}
   hurtHeads: []
 --- !u!114 &1047911296
 MonoBehaviour:
@@ -16114,12 +16114,12 @@ Prefab:
     - target: {fileID: 11400008, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
       propertyPath: idleHeads.Array.data[0]
       value: 
-      objectReference: {fileID: 21300054, guid: b5b1cfc3622bb9143981eceb18520225,
+      objectReference: {fileID: 21300004, guid: b5b1cfc3622bb9143981eceb18520225,
         type: 3}
     - target: {fileID: 11400008, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}
       propertyPath: happyHeads.Array.data[0]
       value: 
-      objectReference: {fileID: 21300048, guid: b5b1cfc3622bb9143981eceb18520225,
+      objectReference: {fileID: 21300016, guid: b5b1cfc3622bb9143981eceb18520225,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb11cdc8d254a1c429e24736f683a061, type: 2}

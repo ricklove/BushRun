@@ -31,6 +31,9 @@ Create BushRun to be used for Multiple Choice
 
 - Break background into tiles to work on android (max 1024 texture size)
 
+### 6:37-6:45
+
+- Add used images to source control
 
 
 
