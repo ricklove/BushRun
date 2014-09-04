@@ -35,10 +35,17 @@ Create BushRun to be used for Multiple Choice
 
 - Add used images to source control
 
+### 6:46-6:52
 
+- Test on KindleHD - OK
+
+### 6:53-7:08
+
+- Remove wrong answer and reset
+- Reduce text size if it doesn't fit
 
 # TODO
 
-- Respond to choice with particle effects
-- Change head with response
 - Add subject
+
+- Respond to choice with particle effects

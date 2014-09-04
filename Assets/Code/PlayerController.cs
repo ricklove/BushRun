@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move to height
-        var pathUnitSize = maxHeight / (pathCount - 1);
+        var pathUnitSize = pathCount > 1 ? maxHeight / (pathCount - 1) : maxHeight;
 
         var targetHeight = pathIndex * pathUnitSize;
         var actualHeight = transform.localPosition.y;

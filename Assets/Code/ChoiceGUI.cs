@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 
 public class ChoiceGUI : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class ChoiceGUI : MonoBehaviour
     public float timeToAnswer = 5f;
     public Choice[] _choices = null;
     private float timeStart = -1;
-
     public GUIStyle choiceStyle = GUI.skin.box;
     public GUIStyle selectedChoiceStyle = GUI.skin.box;
 
@@ -25,10 +25,16 @@ public class ChoiceGUI : MonoBehaviour
                 };
 
                 _choices = new Choice[]{
-                    new Choice(){Text= "Wrong", IsCorrect=false, ChoiceCallback= doReset},
-                    new Choice(){Text= "Wrong", IsCorrect=false, ChoiceCallback= doReset},
+                    new Choice(){Text= "Wrong", IsCorrect=false, ChoiceCallback= null},
+                    new Choice(){Text= "Wrong With a long text answer", IsCorrect=false, ChoiceCallback= null},
+                    new Choice(){Text= @"Wrong With a really really really really really really 
+
+really really really really really really really really really really really 
+
+really really really really really really really really really really really really really really really really really really really really really really really really long text answer"
+                        , IsCorrect=false, ChoiceCallback= null},
                     new Choice(){Text= "Right", IsCorrect=true, ChoiceCallback= doReset},
-                    new Choice(){Text= "Wrong", IsCorrect=false, ChoiceCallback= doReset},
+                    new Choice(){Text= "Wrong Too", IsCorrect=false, ChoiceCallback= null},
                 };
             }
 
@@ -103,7 +109,7 @@ public class ChoiceGUI : MonoBehaviour
                 top += rightChoiceHeightDistance - wrongChoiceHeightDistance;
             }
 
-            var fontSize = (int)(height * 0.8f);
+            var fontSize = (int)(height * 0.6f);
             
             var style = choiceStyle;
             
@@ -113,6 +119,18 @@ public class ChoiceGUI : MonoBehaviour
             }
 
             style.fontSize = fontSize;
+
+
+            // Reduce font size if needed
+            var content = new GUIContent(choice.Text);
+            float mHeight = style.CalcHeight(content, width);
+
+            while (mHeight > height * 0.8f)
+            {
+                style.fontSize = (int)(style.fontSize * 0.8f);
+                mHeight = style.CalcHeight(content, width);
+            } 
+
             if (GUI.Button(new Rect(left, top, width, height), choice.Text, style))
             {
                 pController.pathIndex = choices.Length - 1 - i;
@@ -132,6 +150,11 @@ public class ChoiceGUI : MonoBehaviour
             else
             {
                 pController.RespondToAnswer(false);
+
+                // Remove that choice
+                var ch = Choices.ToList();
+                ch.RemoveAt(selectedChoiceIndex);
+                Choices = ch.ToArray();
             }
 
             if (choice.ChoiceCallback != null)
