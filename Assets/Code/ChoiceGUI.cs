@@ -122,18 +122,24 @@ really really really really really really really really really really really rea
 
 
             // Reduce font size if needed
+            var longestWord = choice.Text.Split(' ').Where(w => w.Trim().Length > 0).OrderBy(w => w.Trim().Length).Select(w => w.Trim()).First();
+            longestWord = "w" + longestWord + "w";
+            var wContent = new GUIContent(longestWord);
             var content = new GUIContent(choice.Text);
-            float mHeight = style.CalcHeight(content, width);
 
-            while (mHeight > height * 0.8f)
+            var mSize = style.CalcSize(wContent);
+            var mHeight = style.CalcHeight(content, width);
+
+            while (mHeight > height * 0.9f || mSize.x > width * 0.9f)
             {
-                var diffRatio = mHeight / (height * 0.8f);
+                var diffRatio = mHeight / (height * 0.9f);
                 var reduce = 1 / diffRatio;
                 var halfReduce = (1 + reduce) / 2;
                 var ratio = Math.Min(halfReduce, 0.8f);
 
                 style.fontSize = (int)(style.fontSize * ratio);
                 mHeight = style.CalcHeight(content, width);
+                mSize = style.CalcSize(wContent);
             } 
 
             if (GUI.Button(new Rect(left, top, width, height), choice.Text, style))

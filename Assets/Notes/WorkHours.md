@@ -53,6 +53,16 @@ Create BushRun to be used for Multiple Choice
 
 - Test - OK
 
+### 10:30-11:00
+
+- Add Subject
+
+### 11:01-11:10
+
+- Fix too wide word size
+
+
+
 # TODO
 
 - Add subject
