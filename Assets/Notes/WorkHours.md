@@ -83,10 +83,16 @@ Create BushRun to be used for Multiple Choice
 
 - Add health bar
 
+### 5:47-6:06
+
+- Simplify health bar
+
+### 6:07-6:24
+
+- Show game over
+
 
 # TODO
-
-- Add health bar
 
 - Add background music
 

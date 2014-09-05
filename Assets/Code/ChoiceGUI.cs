@@ -5,6 +5,13 @@ using System.Linq;
 
 public class ChoiceGUI : MonoBehaviour
 {
+    public static ChoiceGUI Instance;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
+
     public GameObject player;
     public Camera mainCamera;
     public float timeToAnswer = 5f;

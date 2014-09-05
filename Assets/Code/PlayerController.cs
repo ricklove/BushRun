@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+
     public float speed = 5f;
     Animator animator;
     private float updateTime = 0.05f;
@@ -63,7 +65,14 @@ public class PlayerController : MonoBehaviour
 
         var move = moveDirection * Time.deltaTime * speed;
 
-
+        if (health > 0)
+        {
+            move *= health;
+        }
+        else
+        {
+            move = new Vector3();
+        }
 
         // Fly height
         if (upState.State == InputPressState.Begin)
@@ -149,7 +158,21 @@ public class PlayerController : MonoBehaviour
             if (health <= 0)
             {
                 // TODO: Game Over
-                health = 1;
+                animator.SetBool("Dead", true);
+                var oldChoices = ChoiceGUI.Instance.Choices;
+
+                Action doContinue = () => {
+                    animator.SetBool("Dead", false);
+                    ChoiceGUI.Instance.Choices = oldChoices;
+
+                    health = 1;
+                    HealthBarController.Instance.SetHealth(health);
+                };
+
+                ChoiceGUI.Instance.Choices = new Choice[]{
+                    new Choice(){ Text="Continue", IsCorrect=true, ChoiceCallback=doContinue },
+                //new Choice(){ Text="Menu", IsCorrect=true, doMenu },
+                };
             }
 
             HealthBarController.Instance.SetHealth(health);
