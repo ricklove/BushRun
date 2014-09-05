@@ -2906,16 +2906,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1928170068f7b946990f44691c57c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarDimens:
+  Size:
     serializedVersion: 2
-    x: 20
-    y: 20
+    x: 10
+    y: 10
     width: 300
     height: 20
-  VerticleHealthBar: 0
-  HealthBubbleTexture: {fileID: 2800000, guid: cf3ee2a174de85f4da6d499c5dd11009, type: 3}
-  HealthTexture: {fileID: 2800000, guid: 375b0bd54599b4f4f9455a5d382ec501, type: 3}
-  HealthBubbleTextureRotation: 0
+  FillTexture: {fileID: 2800000, guid: d4cca12d422108447be026332a267b9f, type: 3}
+  BackTexture: {fileID: 2800000, guid: 3ab743f725bef1f44b698207095392c8, type: 3}
+  Units: 5
 --- !u!1 &389284091
 GameObject:
   m_ObjectHideFlags: 0
@@ -7817,6 +7816,7 @@ MonoBehaviour:
   maxHeight: 4
   pathCount: 3
   pathIndex: 0
+  damage: .100000001
 --- !u!1 &970776403
 GameObject:
   m_ObjectHideFlags: 0
@@ -8781,6 +8781,7 @@ MonoBehaviour:
   maxHeight: 4
   pathCount: 3
   pathIndex: 0
+  damage: .100000001
 --- !u!1001 &1051383481
 Prefab:
   m_ObjectHideFlags: 0
@@ -10252,6 +10253,7 @@ MonoBehaviour:
   maxHeight: 4
   pathCount: 3
   pathIndex: 0
+  damage: .100000001
 --- !u!1 &1258263314
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,6 +12003,7 @@ MonoBehaviour:
   maxHeight: 4
   pathCount: 3
   pathIndex: 0
+  damage: .100000001
 --- !u!1 &1536117534
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,28 +10,31 @@ public class HealthBarController : MonoBehaviour
         Instance = this;
     }
 
-    public Rect HealthBarDimens;
-    public bool VerticleHealthBar;
-    public Texture HealthBubbleTexture;
-    public Texture HealthTexture;
-    public float HealthBubbleTextureRotation;
-    private HealthSystem _healthBar;
-    
+    public Rect Size;
+    public Texture FillTexture;
+    public Texture BackTexture;
+    public int Units = 5;
+
+    private float _ratio;
+
     void Start()
     {
-        _healthBar = new HealthSystem(HealthBarDimens, VerticleHealthBar, HealthBubbleTexture, HealthTexture, HealthBubbleTextureRotation);
-        _healthBar.Initialize();
-
         SetHealth(1);
     }
         
     void OnGUI()
     {
-        _healthBar.DrawBar();
+        GUI.DrawTexture(new Rect(Size.x, Size.y, _ratio * Size.width, Size.height), FillTexture);
+
+        var unitWidth = Size.width / Units;
+        for (int i = 0; i < Units; i++)
+        {
+            GUI.DrawTexture(new Rect(Size.x + i * unitWidth, Size.y, unitWidth, Size.height), BackTexture);
+        }
     }
 
     public void SetHealth(float ratio)
     {
-        _healthBar.SetRatio(ratio);
+        _ratio = ratio;
     }
 }
