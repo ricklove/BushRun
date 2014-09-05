@@ -151,13 +151,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Hurt", true);
             headController.ChangeHead(HeadType.Hurt);
-            SoundController.Instance.PlayHurt();
+            SoundController.Instance.PlayExplosion();
             ParticleController.Instance.ShowExplosion(transform.position);
 
             health -= damage;
             if (health <= 0)
             {
-                // TODO: Game Over
+                SoundController.Instance.PlayHurt();
                 animator.SetBool("Dead", true);
                 var oldChoices = ChoiceGUI.Instance.Choices;
 
@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
                 //new Choice(){ Text="Menu", IsCorrect=true, doMenu },
                 };
             }
-
+    
             HealthBarController.Instance.SetHealth(health);
         }
         else if (responseState == ResponseState.Correct)

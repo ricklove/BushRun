@@ -24,6 +24,18 @@ public class SoundController : MonoBehaviour
         "GRUNT Male Subtle Hurt (mono)",
         "GRUNT Male Subtle Quick (mono)",
     };
+    private string[] explosionSounds = {
+        "EXPLOSION Short Bang Reverb (stereo)",
+        "EXPLOSION Short Bright Kickback (stereo)",
+        "EXPLOSION Short Dark Debris (stereo)",
+        "EXPLOSION Short Dirty Distorted (stereo)",
+        "EXPLOSION Short Distorted (stereo)",
+        "EXPLOSION Short Flanged Muffled Fade (stereo)",
+        "EXPLOSION Short Foof (stereo)",
+        "EXPLOSION Short Fused Impact Metllic Debris (stereo)",
+        "EXPLOSION Short Ignite Kickback Debris (stereo)",
+        "EXPLOSION Short Impact Explosion (stereo)",
+    };
     private string[] cheerSounds = {
 //        "PUZZLE Success Banjo Four Note Fast Wet (stereo)",
 //        "PUZZLE Success Banjo Two Note Fast (stereo)",
@@ -71,6 +83,11 @@ public class SoundController : MonoBehaviour
             PlayAnySound(ambientSounds);
             _timeForNextAmbient = Time.time + Random.Range(20, 60);
         }
+    }
+
+    public void PlayExplosion()
+    {
+        PlayAnySound(explosionSounds);
     }
 
     public void PlayHurt()
