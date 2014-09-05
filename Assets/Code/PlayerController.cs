@@ -138,11 +138,13 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Hurt", true);
             headController.ChangeHead(HeadType.Hurt);
+            SoundController.Instance.PlayHurt();
         }
         else if (responseState == ResponseState.Correct)
         {
             animator.SetBool("Cheer", true);
             headController.ChangeHead(HeadType.Happy);
+            SoundController.Instance.PlayCheer();
         }
 
                 

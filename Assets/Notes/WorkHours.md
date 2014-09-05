@@ -65,12 +65,30 @@ Create BushRun to be used for Multiple Choice
 
 - Allow second click to answer quickly
 
-### 11:25-
+### 11:25-11:31
 
 - Randomize the choice order
+
+## Period 3
+
+2014-09-05 3:41-5:00
+
+- Add Sound FX
 
 
 # TODO
 
-
+- Add sound FX
 - Respond to choice with particle effects
+- Add health bar
+
+- Add background music
+
+- Add menu
+
+	- Add character selection menu
+	- Add world/level menu
+	- Display Stars on world menu
+		- Stars dependent on health level
+
+- Improve subject
