@@ -72,6 +72,9 @@ public class Subject : MonoBehaviour
         }
         
         ChoiceGUI.Instance.Choices = choices.ToArray();
+
+        HealthBarController.Instance.SetProgress(1.0f * _nextIndex / _entries.Length);
+
         _nextIndex++;
         
         if (_nextIndex >= _entries.Length)

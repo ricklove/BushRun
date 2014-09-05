@@ -99,6 +99,10 @@ Create BushRun to be used for Multiple Choice
 
 - Add explosion sounds
 
+### 7:08-7:29
+
+- Add progress bar
+
 
 # TODO
 
