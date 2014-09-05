@@ -71,15 +71,21 @@ Create BushRun to be used for Multiple Choice
 
 ## Period 3
 
-2014-09-05 3:41-5:00
+### 2014-09-05 3:41-5:00
 
 - Add Sound FX
+
+### 5:01-5:18
+
+- Respond to wrong choice with explosion
+
+### 5:19-5:46
+
+- Add health bar
 
 
 # TODO
 
-- Add sound FX
-- Respond to choice with particle effects
 - Add health bar
 
 - Add background music

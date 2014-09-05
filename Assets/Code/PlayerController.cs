@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
 
     // Response
     private ResponseState responseState;
+
+    // Health
+    private float health = 1f;
+    public float damage = 0.1f; 
     
 
     // Reset child
@@ -139,6 +143,16 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Hurt", true);
             headController.ChangeHead(HeadType.Hurt);
             SoundController.Instance.PlayHurt();
+            ParticleController.Instance.ShowExplosion(transform.position);
+
+            health -= damage;
+            if (health <= 0)
+            {
+                // TODO: Game Over
+                health = 1;
+            }
+
+            HealthBarController.Instance.SetHealth(health);
         }
         else if (responseState == ResponseState.Correct)
         {
