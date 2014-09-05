@@ -162,15 +162,24 @@ public class PlayerController : MonoBehaviour
                 var oldChoices = ChoiceGUI.Instance.Choices;
 
                 Action doContinue = () => {
-                    animator.SetBool("Dead", false);
                     ChoiceGUI.Instance.Choices = oldChoices;
 
+                    animator.SetBool("Dead", false);
+                    health = 1;
+                    HealthBarController.Instance.SetHealth(health);
+                };
+
+                Action doStartOver = () => {
+                    Subject.Instance.GoStart();
+                    
+                    animator.SetBool("Dead", false);
                     health = 1;
                     HealthBarController.Instance.SetHealth(health);
                 };
 
                 ChoiceGUI.Instance.Choices = new Choice[]{
-                    new Choice(){ Text="Continue", IsCorrect=true, ChoiceCallback=doContinue },
+                    new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
+                    new Choice(){ Text="START OVER", IsCorrect=true, ChoiceCallback=doStartOver },
                 //new Choice(){ Text="Menu", IsCorrect=true, doMenu },
                 };
             }

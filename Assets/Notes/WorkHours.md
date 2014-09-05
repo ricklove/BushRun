@@ -91,6 +91,14 @@ Create BushRun to be used for Multiple Choice
 
 - Show game over
 
+### 6:46-6:56
+
+- Add start over
+
+### 6:57-
+
+- Add explosion sounds
+
 
 # TODO
 
