@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class CharacterSelectionMenu : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class CharacterSelectionMenu : MonoBehaviour
     private GameObject _player;
     private GameObject _group;
     private GameObject _playerHolder;
+    private GameObject[] _players;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class CharacterSelectionMenu : MonoBehaviour
 
         var i = 0;
 
+        var players = new List<GameObject>();
+
         foreach (var pInfo in playerInfos)
         {
             var c = (Instantiate(_player.transform) as Transform).gameObject;
@@ -38,10 +42,23 @@ public class CharacterSelectionMenu : MonoBehaviour
             c.transform.localPosition = new Vector3(2 * i, 0, 0);
             c.SetActive(true);
 
+            players.Add(c);
+
             i++;
         }
 
-        SelectedPlayerInfo = playerInfos [0];
+        SelectedPlayerInfo = null;
+
+        var cPlayer = PlayerInfo.CurrentPlayerID;
+        var m = players.FirstOrDefault(p => p.GetComponent<PlayerSelectable>().playerInfo.PlayerID == cPlayer);
+        if (m != null)
+        {
+            SelectPlayer(m.GetComponent<PlayerSelectable>().playerInfo, m);
+        }
+        else
+        {
+            SelectedPlayerInfo = playerInfos [0];
+        }
     }
     
     void Update()
@@ -64,5 +81,6 @@ public class CharacterSelectionMenu : MonoBehaviour
     public void UsePlayer(PlayerInfo playerInfo)
     {
         MenuController.Instance.ReturnFromMenu(MenuState.CharacterSelection);
+        PlayerInfo.CurrentPlayerID = playerInfo.PlayerID;
     }
 }

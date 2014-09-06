@@ -4,6 +4,12 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+    
+    void Awake()
+    {
+        Instance = this;
+    }
 
     public float speed = 5f;
     Animator animator;
@@ -173,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
                 Action doStartOver = () => {
                     ChoiceGUI.Instance.timeToAnswer = oldTimeToAnswer;
-                    Subject.Instance.GoStart();
+                    SubjectController.Instance.GoStartOfLevel();
                     
                     animator.SetBool("Dead", false);
                     health = 1;
@@ -187,8 +193,8 @@ public class PlayerController : MonoBehaviour
                 };
 
                 ChoiceGUI.Instance.Choices = new Choice[]{
-                    new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
-                    new Choice(){ Text="START OVER", IsCorrect=true, ChoiceCallback=doStartOver },
+                //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
+                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=doStartOver },
                     new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu },
                 };
 
@@ -226,6 +232,12 @@ public class PlayerController : MonoBehaviour
     public void RespondToAnswer(bool isCorrect)
     {
         responseState = isCorrect ? ResponseState.Correct : ResponseState.Incorrect;
+    }
+
+    public void FinishLevel()
+    {
+        LevelMapController.Instance.SetLevelStars(SubjectController.Instance._level, (int)(health * 3));
+        MenuController.Instance.ReturnFromGame();
     }
 }
 

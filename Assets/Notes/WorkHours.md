@@ -112,17 +112,29 @@ Create BushRun to be used for Multiple Choice
 
 ### 5:20-5:36
 
-- Add Main Menu button 
+- Add Main Menu button
+
+### 5:37-6:00
+
+- Clean Up Scene
+
+### 6:01-7:35
+
+- Create level map
+
+### 10:30-12:14
+
+- Select levels
 
 
 # TODO
 
+- Add world/level menu
+- Display Stars on world menu
+	- Stars dependent on health level
+	- 3 health / level
+	- 10 words / level
+	- Remove continue and change START OVER to TRY AGAIN
+
 - Add background music
-
-- Add menu
-
-	- Add world/level menu
-	- Display Stars on world menu
-		- Stars dependent on health level
-
 - Improve subject

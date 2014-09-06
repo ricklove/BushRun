@@ -4,39 +4,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-public class Subject : MonoBehaviour
+public class SubjectController : MonoBehaviour
 {
-    public static Subject Instance;
+    public static SubjectController Instance;
 
     void Awake()
     {
         Instance = this;
     }
 
+    public int levels = 25;
+    public int _level = 0;
     public int _nextIndex = 0;
-    public Entry[] _entries;
+    public SubjectEntries _subject;
+    private Entry[] _entries;
 
     void Start()
     {
-        var subjectFile = Resources.Load("Misspellings") as TextAsset;
-        var subject = subjectFile.text;
+        _subject = new SubjectEntries();
+        _subject.LoadSubject();
 
-        var lines = subject.Split(new char[]{'\r', '\n'}, System.StringSplitOptions.RemoveEmptyEntries);
-        _entries = lines.Select(l => {
+        //GoStart();
+    }
 
-            var mainParts = l.Split('\t');
-            var word = mainParts [0];
-            var misspellings = mainParts [1].Split(' ');
-            var entry = new Entry(){ Word=word, Misspellings=misspellings };
+    public void ChangeLevel(int level)
+    {
+        _level = level;
 
-            return entry;
-        }).ToArray();
+        if (_level > levels)
+        {
+            _level = 0;
+        }
 
+        var entriesPerLevel = Mathf.CeilToInt(_subject._entries.Length / levels);
+        _entries = _subject._entries.Skip(level * entriesPerLevel).Take(entriesPerLevel).ToArray();
+        _nextIndex = 0;
+        //GoNext();
+    }
+
+    public void GoStart()
+    {
+        ChangeLevel(0);
         _nextIndex = 0;
         GoNext();
     }
 
-    public void GoStart()
+    public void GoStartOfLevel()
     {
         _nextIndex = 0;
         GoNext();
@@ -72,17 +85,40 @@ public class Subject : MonoBehaviour
         }
         
         ChoiceGUI.Instance.Choices = choices.ToArray();
-
         HealthBarController.Instance.SetProgress(1.0f * _nextIndex / _entries.Length);
 
         _nextIndex++;
         
         if (_nextIndex >= _entries.Length)
         {
+            PlayerController.Instance.FinishLevel();
             _nextIndex = 0;
+            //ChangeLevel(_level + 1);
         }
     }
     
+}
+
+public class SubjectEntries
+{
+    public Entry[] _entries;
+
+    public void LoadSubject()
+    {
+        var subjectFile = Resources.Load("Misspellings") as TextAsset;
+        var subject = subjectFile.text;
+        
+        var lines = subject.Split(new char[]{'\r', '\n'}, System.StringSplitOptions.RemoveEmptyEntries);
+        _entries = lines.Select(l => {
+            
+            var mainParts = l.Split('\t');
+            var word = mainParts [0];
+            var misspellings = mainParts [1].Split(' ');
+            var entry = new Entry(){ Word=word, Misspellings=misspellings };
+            
+            return entry;
+        }).ToArray();
+    }
 }
 
 public class Entry

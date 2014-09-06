@@ -15,10 +15,15 @@ public class MenuController : MonoBehaviour
         if (fromState == MenuState.CharacterSelection)
         {
             transform.FindChild("CharacterSelection").gameObject.SetActive(false);
-            
+            transform.FindChild("LevelSelection").gameObject.SetActive(true);
+        }
+        else if (fromState == MenuState.LevelSelection)
+        {
+            transform.FindChild("LevelSelection").gameObject.SetActive(false);
             // Change to game scene
             var game = transform.parent.FindChild("Game").gameObject;
             game.SetActive(true);
+            SubjectController.Instance.GoStartOfLevel();
         }
     }
 
@@ -37,5 +42,6 @@ public class MenuController : MonoBehaviour
 public enum MenuState
 {
     CharacterSelection,
+    LevelSelection,
     Game,
 }
