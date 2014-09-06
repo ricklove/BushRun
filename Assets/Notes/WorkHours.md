@@ -110,7 +110,9 @@ Create BushRun to be used for Multiple Choice
 - Add Menu
 - Choose character
 
-### 5:20-
+### 5:20-5:36
+
+- Add Main Menu button 
 
 
 # TODO
@@ -119,7 +121,6 @@ Create BushRun to be used for Multiple Choice
 
 - Add menu
 
-	- Add character selection menu
 	- Add world/level menu
 	- Display Stars on world menu
 		- Stars dependent on health level
