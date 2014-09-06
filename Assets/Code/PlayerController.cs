@@ -160,8 +160,10 @@ public class PlayerController : MonoBehaviour
                 SoundController.Instance.PlayHurt();
                 animator.SetBool("Dead", true);
                 var oldChoices = ChoiceGUI.Instance.Choices;
+                var oldTimeToAnswer = ChoiceGUI.Instance.timeToAnswer;
 
                 Action doContinue = () => {
+                    ChoiceGUI.Instance.timeToAnswer = oldTimeToAnswer;
                     ChoiceGUI.Instance.Choices = oldChoices;
 
                     animator.SetBool("Dead", false);
@@ -170,6 +172,7 @@ public class PlayerController : MonoBehaviour
                 };
 
                 Action doStartOver = () => {
+                    ChoiceGUI.Instance.timeToAnswer = oldTimeToAnswer;
                     Subject.Instance.GoStart();
                     
                     animator.SetBool("Dead", false);
@@ -177,11 +180,19 @@ public class PlayerController : MonoBehaviour
                     HealthBarController.Instance.SetHealth(health);
                 };
 
+                Action doMainMenu = () => {
+                    doStartOver();
+
+                    MenuController.Instance.ReturnFromGame();
+                };
+
                 ChoiceGUI.Instance.Choices = new Choice[]{
                     new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
                     new Choice(){ Text="START OVER", IsCorrect=true, ChoiceCallback=doStartOver },
-                //new Choice(){ Text="Menu", IsCorrect=true, doMenu },
+                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu },
                 };
+
+                ChoiceGUI.Instance.timeToAnswer = float.MaxValue;
             }
     
             HealthBarController.Instance.SetHealth(health);

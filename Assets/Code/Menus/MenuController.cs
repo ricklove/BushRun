@@ -22,6 +22,16 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void ReturnFromGame()
+    {
+        transform.FindChild("CharacterSelection").gameObject.SetActive(true);
+        
+        var game = transform.parent.FindChild("Game").gameObject;
+        game.SetActive(false);
+
+        // Move to camera
+        transform.position = new Vector3(Camera.main.transform.position.x, 0, 0);
+    }
 }
 
 public enum MenuState

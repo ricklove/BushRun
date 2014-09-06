@@ -15,12 +15,14 @@ public class CharacterSelectionMenu : MonoBehaviour
     public PlayerInfo SelectedPlayerInfo{ get; set; }
     
     private GameObject _player;
+    private GameObject _group;
     private GameObject _playerHolder;
 
     void Start()
     {
         _player = transform.FindChild("Player").gameObject;
-        _playerHolder = transform.FindChild("PlayerHolder").gameObject;
+        _group = transform.FindChild("Group").gameObject;
+        _playerHolder = _group.transform.FindChild("PlayerHolder").gameObject;
 
         _player.SetActive(false);
 
@@ -49,7 +51,7 @@ public class CharacterSelectionMenu : MonoBehaviour
 
     public void SelectPlayer(PlayerInfo playerInfo, GameObject player)
     {
-        _playerHolder.transform.position = -player.transform.localPosition;
+        _playerHolder.transform.localPosition = -player.transform.localPosition;
 
         if (SelectedPlayerInfo == playerInfo)
         {
