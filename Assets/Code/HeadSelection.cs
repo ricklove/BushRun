@@ -11,6 +11,7 @@ public class HeadSelection : MonoBehaviour
     private float nextChangeTime = 0;
     private int iHead = 0;
     private HeadType headState;
+    public bool shouldUseSelectedCharacter = true;
 
     // Use this for initialization
     void Awake()
@@ -26,6 +27,20 @@ public class HeadSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Character selection
+        if (shouldUseSelectedCharacter
+            && CharacterSelectionMenu.Instance != null
+            && CharacterSelectionMenu.Instance.SelectedPlayerInfo != null)
+        {
+
+            var playerInfo = CharacterSelectionMenu.Instance.SelectedPlayerInfo;
+
+            idleHeads = playerInfo.IdleHeads;
+            happyHeads = playerInfo.HappyHeads;
+            hurtHeads = playerInfo.HurtHeads;
+        }
+
+        // Show heads
         Sprite[] heads = null;
 
         switch (headState)

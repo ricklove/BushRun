@@ -103,6 +103,13 @@ Create BushRun to be used for Multiple Choice
 
 - Add progress bar
 
+## Period 4
+
+2014-09-06 3:45-5:19
+
+- Add Menu
+- Choose character
+
 
 # TODO
 
