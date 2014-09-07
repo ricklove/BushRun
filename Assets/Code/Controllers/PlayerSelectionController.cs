@@ -4,8 +4,11 @@ using System.Linq;
 
 class PlayerSelectionController : MonoBehaviour
 {
+    public float maxTimeToMove = 30f;
+
     private GameObject _playerPrefab;
     private bool _isSetup = false;
+    private float _timeToMove = 0;
 
     void Update()
     {
@@ -21,6 +24,8 @@ class PlayerSelectionController : MonoBehaviour
         if (!_isSetup)
         {
             _isSetup = true;
+            _timeToMove = Time.time + maxTimeToMove;
+
             // Create a player selection for each Active player
             if (_playerPrefab == null)
             {
@@ -28,15 +33,15 @@ class PlayerSelectionController : MonoBehaviour
                 _playerPrefab.SetActive(false);
             }
 
-            if (model.Players.Count != model.PlayerDataModel.AvailablePlayers.Count)
+            if (model.AvailablePlayers.Count != model.PlayerDataModel.AvailablePlayers.Count)
             {
                 foreach (var playerData in model.PlayerDataModel.AvailablePlayers)
                 {
-                    if (!model.Players.Any(p => p.PlayerData == playerData))
+                    if (!model.AvailablePlayers.Any(p => p.PlayerData == playerData))
                     {
 
                         var playerModel = new PlayerModel();
-                        model.Players.Add(playerModel);
+                        model.AvailablePlayers.Add(playerModel);
 
                         var playerGameObject = (Instantiate(_playerPrefab.transform) as Transform).gameObject;
                         playerGameObject.transform.parent = _playerPrefab.transform.parent;
@@ -52,40 +57,57 @@ class PlayerSelectionController : MonoBehaviour
             }
 
 
-
             // Move players to good position
-            var cam = transform.root.FindChild("MainCamera");
-            var camX = cam.transform.position.x;
+            PositionPlayers(model.AvailablePlayers);
 
-            var min = camX - 3f;
-            var max = camX + 3f;
-
-            var screenRadius = cam.GetComponent<Camera>().orthographicSize;
-
-            var change = (max - min) / model.Players.Count;
-
-            for (int i = 0; i < model.Players.Count; i++)
+            if (model.ActivePlayer == null)
             {
-                var x = min + change * i;
-
-                model.Players[i].TargetX = x;
-
-                // Move near if far away
-                var trans = model.Players[i].GameObject.transform;
-
-                if (trans.localPosition.x > x + screenRadius)
-                {
-                    trans.localPosition = new Vector3(max + screenRadius + (i * change), 0, 0);
-                }
-                else if (trans.localPosition.x < x - screenRadius)
-                {
-                    trans.localPosition = new Vector3(min - screenRadius - (i * change), 0, 0);
-                }
+                model.ActivePlayer = model.AvailablePlayers[0];
             }
 
-
+            model.ActivePlayer.ShouldShowSelectionBox = true;
         }
 
+        // Make them move around after awhile
+        if (Time.time > _timeToMove)
+        {
+            _timeToMove = Time.time + Random.Range(maxTimeToMove * 0.5f, maxTimeToMove);
+
+            PositionPlayers(model.AvailablePlayers.ToList().RandomizeOrder());
+        }
+
+    }
+
+    private void PositionPlayers(List<PlayerModel> players)
+    {
+        var cam = transform.root.FindChild("MainCamera");
+        var camX = cam.transform.position.x;
+
+        var min = camX - 3f;
+        var max = camX + 3f;
+
+        var screenRadius = cam.GetComponent<Camera>().orthographicSize;
+
+        var change = (max - min) / players.Count;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            var x = min + change * i;
+
+            players[i].TargetX = x;
+
+            // Move near if far away
+            var trans = players[i].GameObject.transform;
+
+            if (trans.localPosition.x > camX + screenRadius)
+            {
+                trans.localPosition = new Vector3(max + screenRadius + (i * change), 0, 0);
+            }
+            else if (trans.localPosition.x < camX - screenRadius)
+            {
+                trans.localPosition = new Vector3(min - screenRadius - (i * change), 0, 0);
+            }
+        }
     }
 
     void DisableScreen()

@@ -132,6 +132,10 @@ Create BushRun to be used for Multiple Choice
 
 - Begin Major Refactor to use MVCVM architecture
 
+### 7:11-7:54
+
+- Make players change position while waiting
+
 
 # TODO
 

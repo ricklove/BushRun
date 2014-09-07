@@ -21,13 +21,18 @@ public class MainModel
 
     private MainModel() {
         PlayerDataModel = new PlayerDataModel();
-        Players = new List<PlayerModel>();
+        AvailablePlayers = new List<PlayerModel>();
+
+        ScreenState = ScreenState.PlayerSelection;
+        ActivePlayer = null;
     }
 
-    public PlayerDataModel PlayerDataModel { get; private set; }
-    public List<PlayerModel> Players { get; private set; }
-
     public ScreenState ScreenState { get; set; }
+
+    public PlayerDataModel PlayerDataModel { get; private set; }
+    public List<PlayerModel> AvailablePlayers { get; private set; }
+    public PlayerModel ActivePlayer { get; set; }
+
 }
 
 public enum ScreenState

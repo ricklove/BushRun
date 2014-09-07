@@ -36,6 +36,8 @@ public class PlayerView : MonoBehaviour
             return;
         }
 
+        UpdateSelectionBox();
+
         ResetAvatarPosition();
 
         // Move To Target
@@ -64,6 +66,18 @@ public class PlayerView : MonoBehaviour
 
 
         _headView.Update(PlayerViewModel);
+    }
+
+
+    private GameObject _selectionBox;
+    private void UpdateSelectionBox()
+    {
+        if (_selectionBox == null)
+        {
+            _selectionBox = transform.FindChild("SelectionBox").gameObject;
+        }
+
+        _selectionBox.GetComponent<SpriteRenderer>().enabled = PlayerViewModel.ShouldShowSelectionBox;
     }
 
     private void ResetAvatarPosition()
@@ -97,7 +111,8 @@ public class PlayerView : MonoBehaviour
 
     void MoveToTarget(float targetX, float heightRatio)
     {
-        var maxDiff = Time.deltaTime * maxSpeed;
+        var speed = PlayerViewModel.SpeedRatio * maxSpeed;
+        var maxDiff = Time.deltaTime * speed;
 
         // Move to height
         var targetHeight = PlayerViewModel.HeightRatio * maxHeight;
@@ -128,6 +143,10 @@ public interface IPlayerViewModel
 
     float HeightRatio { get; }
     float TargetX { get; }
+
+    bool ShouldShowSelectionBox { get; }
+
+    float SpeedRatio { get;  }
 }
 
 public enum PlayerState
