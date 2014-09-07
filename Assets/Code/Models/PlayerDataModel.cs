@@ -47,7 +47,7 @@ public class PlayerDataModel
                 continue;
             }
 
-            var p = new PlayerData();
+            var p = new PlayerData() { ID = n };
             AvailablePlayers.Add(p);
 
             foreach (var ty in types)

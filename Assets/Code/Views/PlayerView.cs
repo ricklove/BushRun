@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class PlayerView : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerView : MonoBehaviour
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
 
+    private GameObject _selectionBox;
+
+    private PlayerState _lastState;
+
     void Start()
     {
         _headView = new PlayerHeadView();
@@ -27,6 +32,16 @@ public class PlayerView : MonoBehaviour
         _childAvatar = transform.GetChild(0).gameObject;
         _initialPosition = _childAvatar.transform.localPosition;
         _initialRotation = _childAvatar.transform.localRotation;
+
+        _selectionBox = transform.FindChild("SelectionBox").gameObject;
+        _selectionBox.GetComponent<Clickable>().MouseDownCallback = () =>
+        {
+            if (PlayerViewModel != null
+                && PlayerViewModel.SelectCallback != null)
+            {
+                PlayerViewModel.SelectCallback();
+            }
+        };
     }
 
     void Update()
@@ -46,11 +61,21 @@ public class PlayerView : MonoBehaviour
         // Animate
         RefreshSpeed();
 
+        // Flip for backwards
+        if (_actualSpeed < -0.1f)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.z, transform.localScale.z);
+        }
+        else if (_actualSpeed > 0.1f)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.z, transform.localScale.z);
+        }
+
         // Animate movement
         if (Mathf.Abs(_reportedSpeed - _actualSpeed) > 0.05f)
         {
             // Animation movement z is forward
-            _animator.SetFloat("MovementZ", _actualSpeed);
+            _animator.SetFloat("MovementZ", Mathf.Abs(_actualSpeed));
             _reportedSpeed = _actualSpeed;
         }
 
@@ -64,19 +89,30 @@ public class PlayerView : MonoBehaviour
             _animator.SetBool("Fly", false);
         }
 
+        // Animate emotions
+        _animator.SetBool("Hurt", false);
+        _animator.SetBool("Cheer", false);
+
+        if (PlayerViewModel.PlayerState != _lastState)
+        {
+            _lastState = PlayerViewModel.PlayerState;
+
+            if (PlayerViewModel.PlayerState == PlayerState.Happy)
+            {
+                _animator.SetBool("Cheer", true);
+            }
+            else if (PlayerViewModel.PlayerState == PlayerState.Hurt)
+            {
+                _animator.SetBool("Hurt", true);
+            }
+        }
 
         _headView.Update(PlayerViewModel);
     }
 
 
-    private GameObject _selectionBox;
     private void UpdateSelectionBox()
     {
-        if (_selectionBox == null)
-        {
-            _selectionBox = transform.FindChild("SelectionBox").gameObject;
-        }
-
         _selectionBox.GetComponent<SpriteRenderer>().enabled = PlayerViewModel.ShouldShowSelectionBox;
     }
 
@@ -102,7 +138,7 @@ public class PlayerView : MonoBehaviour
         if (timeDiff > updateTime)
         {
             _actualSpeed = (transform.localPosition.x - _lastPos.x) / timeDiff;
-            _actualSpeed /= transform.localScale.x;
+            _actualSpeed /= Math.Abs(transform.localScale.x);
 
             _lastTime = Time.time;
             _lastPos = transform.localPosition;
@@ -145,8 +181,9 @@ public interface IPlayerViewModel
     float TargetX { get; }
 
     bool ShouldShowSelectionBox { get; }
+    Action SelectCallback { get; }
 
-    float SpeedRatio { get;  }
+    float SpeedRatio { get; }
 }
 
 public enum PlayerState

@@ -14,6 +14,7 @@ public class PlayerModel
     public float TargetX { get; set; }
     public float SpeedRatio { get; set; }
     public bool ShouldShowSelectionBox { get; set; }
+    public Action SelectCallback { get; set; }
 
     public PlayerModel()
     {
@@ -23,5 +24,6 @@ public class PlayerModel
         TargetX = 0;
         SpeedRatio = 1;
         ShouldShowSelectionBox = false;
+        SelectCallback = null;
     }
 }

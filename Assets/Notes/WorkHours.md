@@ -136,6 +136,23 @@ Create BushRun to be used for Multiple Choice
 
 - Make players change position while waiting
 
+### 7:55-8:19
+
+- Enable selection
+
+### 11:41-11:53
+
+- Flip on Reverse
+
+### 11:54-12:07
+
+- Make Happy on Selection
+
+### 12:08-
+
+- Show level map
+
+
 
 # TODO
 

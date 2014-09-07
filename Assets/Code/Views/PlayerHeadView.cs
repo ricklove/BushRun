@@ -4,7 +4,8 @@ using System.Linq;
 
 public class PlayerHeadView
 {
-    public HeadType HeadType { get; set; }
+    //public HeadType HeadType { get; set; }
+    private HeadType _lastHeadType;
 
     private PlayerData _playerData = null;
     private Dictionary<HeadType, List<Sprite>> _heads = new Dictionary<HeadType, List<Sprite>>();
@@ -32,12 +33,19 @@ public class PlayerHeadView
             _heads[HeadType.Hurt] = _playerData.Sprites.Where(s => s.SpriteType == SpriteType.HeadHurt).Select(s => s.Sprite).ToList();
         }
 
-        if (Time.time > _nextChangeTime)
+        var headType =
+            playerViewModel.PlayerState == PlayerState.Happy ? HeadType.Happy
+            : playerViewModel.PlayerState == PlayerState.Hurt ? HeadType.Hurt
+            : HeadType.Idle;
+
+        if (Time.time > _nextChangeTime
+            || headType != _lastHeadType)
         {
             _nextChangeTime = Random.Range(Time.time, Time.time + 10);
+            _lastHeadType = headType;
 
             // Show heads
-            var heads = _heads[HeadType];
+            var heads = _heads[headType];
 
             if (heads == null
                 || heads.Count <= 0)

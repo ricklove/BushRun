@@ -56,6 +56,20 @@ class PlayerSelectionController : MonoBehaviour
                 }
             }
 
+            // Enable selection
+            foreach (var p in model.AvailablePlayers)
+            {
+                var pLocal = p;
+
+                pLocal.SelectCallback = () =>
+                {
+                    model.ActivePlayer.ShouldShowSelectionBox = false;
+                    model.ActivePlayer.PlayerState = PlayerState.Hurt;
+                    model.ActivePlayer = pLocal;
+                    model.ActivePlayer.ShouldShowSelectionBox = true;
+                    model.ActivePlayer.PlayerState = PlayerState.Happy;
+                };
+            }
 
             // Move players to good position
             PositionPlayers(model.AvailablePlayers);
@@ -72,6 +86,11 @@ class PlayerSelectionController : MonoBehaviour
         if (Time.time > _timeToMove)
         {
             _timeToMove = Time.time + Random.Range(maxTimeToMove * 0.5f, maxTimeToMove);
+
+            foreach (var p in model.AvailablePlayers)
+            {
+                p.SpeedRatio = 0.5f;
+            }
 
             PositionPlayers(model.AvailablePlayers.ToList().RandomizeOrder());
         }
@@ -112,6 +131,14 @@ class PlayerSelectionController : MonoBehaviour
 
     void DisableScreen()
     {
+        var model = MainModel.Instance;
+
+        foreach (var p in model.AvailablePlayers)
+        {
+            p.ShouldShowSelectionBox = false;
+            p.SelectCallback = null;
+            p.SpeedRatio = 1f;
+        }
 
     }
 }
