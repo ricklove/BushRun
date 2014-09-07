@@ -16,8 +16,12 @@ class PlayerSelectionController : MonoBehaviour
 
         if (model.ScreenState != ScreenState.PlayerSelection)
         {
-            DisableScreen();
-            _isSetup = false;
+            if (_isSetup)
+            {
+                _isSetup = false;
+                DisableScreen();
+            }
+
             return;
         }
 
@@ -63,11 +67,18 @@ class PlayerSelectionController : MonoBehaviour
 
                 pLocal.SelectCallback = () =>
                 {
-                    model.ActivePlayer.ShouldShowSelectionBox = false;
-                    model.ActivePlayer.PlayerState = PlayerState.Hurt;
-                    model.ActivePlayer = pLocal;
-                    model.ActivePlayer.ShouldShowSelectionBox = true;
-                    model.ActivePlayer.PlayerState = PlayerState.Happy;
+                    if (model.ActivePlayer != pLocal)
+                    {
+                        model.ActivePlayer.ShouldShowSelectionBox = false;
+                        model.ActivePlayer.PlayerState = PlayerState.Hurt;
+                        model.ActivePlayer = pLocal;
+                        model.ActivePlayer.ShouldShowSelectionBox = true;
+                        model.ActivePlayer.PlayerState = PlayerState.Happy;
+                    }
+                    else
+                    {
+                        model.ScreenState = ScreenState.LevelSelection;
+                    }
                 };
             }
 

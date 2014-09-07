@@ -20,6 +20,7 @@ public class MainModel
     }
 
     private MainModel() {
+        CameraModel = new CameraModel();
         PlayerDataModel = new PlayerDataModel();
         AvailablePlayers = new List<PlayerModel>();
 
@@ -29,7 +30,9 @@ public class MainModel
 
     public ScreenState ScreenState { get; set; }
 
+    public CameraModel CameraModel { get; private set; }
     public PlayerDataModel PlayerDataModel { get; private set; }
+
     public List<PlayerModel> AvailablePlayers { get; private set; }
     public PlayerModel ActivePlayer { get; set; }
 
@@ -38,5 +41,6 @@ public class MainModel
 public enum ScreenState
 {
     PlayerSelection,
+    LevelSelection,
 }
 

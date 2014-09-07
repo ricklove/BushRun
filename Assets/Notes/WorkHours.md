@@ -148,10 +148,13 @@ Create BushRun to be used for Multiple Choice
 
 - Make Happy on Selection
 
-### 12:08-
+### 12:08-12:43
 
 - Show level map
 
+## 13:30-14:31
+
+- Zoom into map
 
 
 # TODO
