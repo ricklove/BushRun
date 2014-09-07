@@ -13,8 +13,8 @@ public class CharacterSelectionMenu : MonoBehaviour
 
     public PlayerInfo[] playerInfos;
 
-    public PlayerInfo SelectedPlayerInfo{ get; set; }
-    
+    public PlayerInfo SelectedPlayerInfo { get; set; }
+
     private GameObject _player;
     private GameObject _group;
     private GameObject _playerHolder;
@@ -49,7 +49,7 @@ public class CharacterSelectionMenu : MonoBehaviour
 
         SelectedPlayerInfo = null;
 
-        var cPlayer = PlayerInfo.CurrentPlayerID;
+        var cPlayer = MainModel.Instance.PlayerDataModel.PlayerID;
         var m = players.FirstOrDefault(p => p.GetComponent<PlayerSelectable>().playerInfo.PlayerID == cPlayer);
         if (m != null)
         {
@@ -57,13 +57,13 @@ public class CharacterSelectionMenu : MonoBehaviour
         }
         else
         {
-            SelectedPlayerInfo = playerInfos [0];
+            SelectedPlayerInfo = playerInfos[0];
         }
     }
-    
+
     void Update()
     {
-    
+
     }
 
     public void SelectPlayer(PlayerInfo playerInfo, GameObject player)
@@ -81,6 +81,6 @@ public class CharacterSelectionMenu : MonoBehaviour
     public void UsePlayer(PlayerInfo playerInfo)
     {
         MenuController.Instance.ReturnFromMenu(MenuState.CharacterSelection);
-        PlayerInfo.CurrentPlayerID = playerInfo.PlayerID;
+        MainModel.Instance.PlayerDataModel.PlayerID = playerInfo.PlayerID;
     }
 }

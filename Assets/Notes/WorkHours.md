@@ -126,8 +126,16 @@ Create BushRun to be used for Multiple Choice
 
 - Select levels
 
+## Period 5
+
+### 2014-09-07 4:11-7:10
+
+- Begin Major Refactor to use MVCVM architecture
+
 
 # TODO
+
+- Refactor!
 
 - Add world/level menu
 - Display Stars on world menu

@@ -31,16 +31,4 @@ public class PlayerInfo
     public Sprite[] IdleHeads;
     public Sprite[] HappyHeads;
     public Sprite[] HurtHeads;
-
-    public static string CurrentPlayerID
-    {
-        get
-        {
-            return PlayerPrefs.GetString("PlayerID", "Player1");
-        }
-        set
-        {
-            PlayerPrefs.SetString("PlayerID", value);
-        }
-    }
 }

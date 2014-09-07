@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: 18e4668e176d49c41a4e974a5f26e427
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: kidsHeads
+    21300002: CalebHeadIdle01
+    21300004: kidsHeads_1
+    21300006: CalebHeadHappy01
+    21300008: EmilyHeadIdle01
+    21300010: LydiaHeadIdle01
+    21300012: LydiaHeadHurt01
+    21300014: MatthewHeadIdle01
+    21300016: MatthewHeadHurt01
+    21300018: EmilyHeadHurt01
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CalebHeadIdle01
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 414
+        width: 84
+        height: 90
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CalebHeadHappy01
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 406
+        width: 91
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EmilyHeadIdle01
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 275
+        width: 94
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LydiaHeadIdle01
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 152
+        width: 101
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LydiaHeadHurt01
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 148
+        width: 104
+        height: 109
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MatthewHeadIdle01
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 21
+        width: 81
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: MatthewHeadHurt01
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 19
+        width: 78
+        height: 103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: EmilyHeadHurt01
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 275
+        width: 81
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

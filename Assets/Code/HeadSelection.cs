@@ -90,9 +90,9 @@ public class HeadSelection : MonoBehaviour
     }
 }
 
-public enum HeadType
-{
-    Idle,
-    Happy,
-    Hurt
-}
+//public enum HeadType
+//{
+//    Idle,
+//    Happy,
+//    Hurt
+//}
