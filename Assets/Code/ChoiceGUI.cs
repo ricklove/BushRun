@@ -196,19 +196,19 @@ really really really really really really really really really really really rea
     }
 }
 
-public class Choice
-{
-    public string Text
-    {
-        get;
-        set;
-    }
+//public class Choice
+//{
+//    public string Text
+//    {
+//        get;
+//        set;
+//    }
 
-    public bool IsCorrect
-    {
-        get;
-        set;
-    }
+//    public bool IsCorrect
+//    {
+//        get;
+//        set;
+//    }
 
-    public Action ChoiceCallback{ get; set; }
-}
+//    public Action ChoiceCallback{ get; set; }
+//}

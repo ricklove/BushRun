@@ -13,6 +13,7 @@ public class PlayerModel
     public float HeightRatio { get; set; }
     public float TargetX { get; set; }
     public float SpeedRatio { get; set; }
+    public float MaxSpeed { get; set; }
     public bool ShouldShowSelectionBox { get; set; }
     public Action SelectCallback { get; set; }
 
@@ -23,6 +24,7 @@ public class PlayerModel
         HeightRatio = 0;
         TargetX = 0;
         SpeedRatio = 1;
+        MaxSpeed = 4;
         ShouldShowSelectionBox = false;
         SelectCallback = null;
     }

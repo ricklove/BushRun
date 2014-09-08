@@ -12,6 +12,9 @@ public class ModelInitializer : MonoBehaviour
         var camera = transform.FindChild("MainCamera").gameObject;
         camera.GetComponent<CameraView>().CameraViewModel = new CameraViewModel(model);
         model.CameraModel.GameObject = camera;
+
+        // Setup Gui
+        GetComponent<GuiView>().GuiViewModel = new GuiViewModel(model);
     }
 
 }

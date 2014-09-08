@@ -152,21 +152,54 @@ Create BushRun to be used for Multiple Choice
 
 - Show level map
 
-## 13:30-14:31
+### 13:30-14:31
 
 - Zoom into map
+
+## Period 6
+
+### 2014-09-08 3:03-3:17
+### 3:42-4:12
+
+- Change levels on selection  
+
+### 4:13-7:01
+
+- Display Choices
+
 
 
 # TODO
 
 - Refactor!
 
-- Add world/level menu
-- Display Stars on world menu
-	- Stars dependent on health level
-	- 3 health / level
-	- 10 words / level
-	- Remove continue and change START OVER to TRY AGAIN
+- Respond to Choices
+
+	- Wrong
+		- Remove wrong choice
+		- Reduce Health
+		- Show Explosion
+		- Show hurt
+	- Right
+		- Goto next choice
+		- Show Stars
+		- Show cheer
+
+
+- Respond to Finish Level
+	- Record Stars
+	- Go back to level menu
+	- 
+
+- Go back to character selection
+
+
+- Fix background tiling
+
+- Add Coins
+- Display Stars and Coins
+
+
 
 - Add background music
 - Improve subject

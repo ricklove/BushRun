@@ -14,6 +14,8 @@ public class CameraViewModel : ICameraViewModel
 
     public bool ShouldFollowActivePlayer { get { return _model.CameraModel.ShouldFollowActivePlayer; } }
     public float? ActivePlayerX { get { return _model.ActivePlayer != null ? _model.ActivePlayer.GameObject.transform.position.x : (float?)null; } }
+    public float ActivePlayerXOffset { get { return _model.CameraModel.ActivePlayerXOffset; } }
+
     public float? TimeToMove { get { return _model.CameraModel.TimeToMove; } }
 
     public float? TargetSize { get { return _model.CameraModel.TargetSize; } }

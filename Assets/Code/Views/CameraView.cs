@@ -43,7 +43,7 @@ public class CameraView : MonoBehaviour
         if (CameraViewModel.ShouldFollowActivePlayer
             && CameraViewModel.ActivePlayerX.HasValue)
         {
-            targetPos = new Vector3(CameraViewModel.ActivePlayerX.Value, _initialPosition.y, _initialPosition.z);
+            targetPos = new Vector3(CameraViewModel.ActivePlayerX.Value + CameraViewModel.ActivePlayerXOffset, _initialPosition.y, _initialPosition.z);
             targetSize = _initialSize;
         }
 
@@ -99,6 +99,7 @@ public interface ICameraViewModel
 {
     bool ShouldFollowActivePlayer { get; }
     float? ActivePlayerX { get; }
+    float ActivePlayerXOffset { get; }
     float? TimeToMove { get; }
 
     float? TargetSize { get; }

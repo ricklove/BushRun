@@ -4,7 +4,6 @@ using System;
 
 public class PlayerView : MonoBehaviour
 {
-    public float maxSpeed = 4f;
     public float maxHeight = 4f;
     public IPlayerViewModel PlayerViewModel;
 
@@ -147,7 +146,7 @@ public class PlayerView : MonoBehaviour
 
     void MoveToTarget(float targetX, float heightRatio)
     {
-        var speed = PlayerViewModel.SpeedRatio * maxSpeed;
+        var speed = PlayerViewModel.SpeedRatio * PlayerViewModel.MaxSpeed;
         var maxDiff = Time.deltaTime * speed;
 
         // Move to height
@@ -184,6 +183,7 @@ public interface IPlayerViewModel
     Action SelectCallback { get; }
 
     float SpeedRatio { get; }
+    float MaxSpeed { get; }
 }
 
 public enum PlayerState

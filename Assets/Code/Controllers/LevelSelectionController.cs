@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using Assets.Plugins.SmartLevelsMap.Scripts;
 
 class LevelSelectionController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ class LevelSelectionController : MonoBehaviour
 
     private GameObject _sign;
     private GameObject _signCamera;
+    private GameObject _levelMap;
+    private GameObject _character;
 
     private float _initialSignX;
 
@@ -17,10 +20,22 @@ class LevelSelectionController : MonoBehaviour
     {
         _sign = transform.FindChild("Sign").gameObject;
         _signCamera = _sign.transform.FindChild("SignCamera").gameObject;
+        _levelMap = _sign.transform.FindChild("LevelsMap").gameObject;
+        _character = _levelMap.transform.FindChild("Character").FindChild("CharacterSprite").gameObject;
 
         _initialSignX = _sign.transform.localPosition.x;
+        _sign.SetActive(false);
 
-        DisableScreen();
+        // Subscribe to level change
+        LevelsMap.LevelReached += (object sender, LevelReachedEventArgs e) =>
+        {
+            if (_isSetup)
+            {
+                var model = MainModel.Instance;
+                model.ActiveLevel = e.Number - 1;
+                model.ScreenState = ScreenState.Game;
+            }
+        };
     }
 
     void Update()
@@ -47,7 +62,7 @@ class LevelSelectionController : MonoBehaviour
             var camX = cam.transform.position.x;
             var screenRadius = cam.GetComponent<Camera>().orthographicSize;
 
-            _sign.transform.localPosition = new Vector3(camX + screenRadius * 2.5f, 0, 0);
+            _sign.transform.localPosition = new Vector3(camX + screenRadius * 3f, 0, 0);
             _sign.SetActive(true);
 
             // Move to left of sign
@@ -57,6 +72,12 @@ class LevelSelectionController : MonoBehaviour
             model.CameraModel.ShouldFollowActivePlayer = true;
 
             StartCoroutine(ZoomIntoSign());
+
+            // Select character
+            _character.GetComponent<SpriteRenderer>().sprite = model.ActivePlayer.PlayerData.Sprites.First(s => s.SpriteType == SpriteType.HeadIdle).Sprite;
+
+
+    
         }
 
 
@@ -80,6 +101,6 @@ class LevelSelectionController : MonoBehaviour
     void DisableScreen()
     {
         var model = MainModel.Instance;
-        _sign.SetActive(false);
+        //_sign.SetActive(false);
     }
 }

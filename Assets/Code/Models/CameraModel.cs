@@ -13,9 +13,12 @@ public class CameraModel
     public Vector3? TargetPosition { get; set; }
     public float? TargetSize { get; set; }
 
+    public float ActivePlayerXOffset { get; set; }
+
     public CameraModel()
     {
         ShouldFollowActivePlayer = false;
+        ActivePlayerXOffset = 3f;
         TargetPosition = null;
         TargetSize = null;
         TimeToMove = 0.5f;

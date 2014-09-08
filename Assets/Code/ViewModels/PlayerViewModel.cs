@@ -17,5 +17,6 @@ public class PlayerViewModel : IPlayerViewModel
     public float TargetX { get { return _model.TargetX; } }
     public bool ShouldShowSelectionBox { get { return _model.ShouldShowSelectionBox; } }
     public float SpeedRatio { get { return _model.SpeedRatio; } }
+    public float MaxSpeed { get { return _model.MaxSpeed; } }
     public Action SelectCallback { get { return _model.SelectCallback; } }
 }
