@@ -28,6 +28,7 @@ public class MainModel
 
         ScreenState = ScreenState.PlayerSelection;
         ChoicesModel = new ChoicesModel();
+        SubjectModel = new SubjectModel();
     }
 
     public ScreenState ScreenState { get; set; }
@@ -62,6 +63,7 @@ public class MainModel
     public int ActiveLevel { get; set; }
 
     public ChoicesModel ChoicesModel { get; set; }
+    public SubjectModel SubjectModel { get; private set; }
 }
 
 public enum ScreenState

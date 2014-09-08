@@ -167,39 +167,32 @@ Create BushRun to be used for Multiple Choice
 
 - Display Choices
 
+### 8:15-8:32
+
+- Load Subject
+
+### 8:33-8:45
+### 11:00-12:00
+
+- Respond to Answer
 
 
 # TODO
 
-- Refactor!
+- Fix movement transitions
+- Fix backward movement (rotate instead of scale)
+- Fix Background tiling
+- Fix save level complete stars
+
 
 - Respond to Choices
 
-	- Wrong
-		- Remove wrong choice
-		- Reduce Health
-		- Show Explosion
-		- Show hurt
 	- Right
-		- Goto next choice
-		- Show Stars
-		- Show cheer
-
-
-- Respond to Finish Level
-	- Record Stars
-	- Go back to level menu
-	- 
+		- Show Glitter
 
 - Go back to character selection
-
-
-- Fix background tiling
 
 - Add Coins
 - Display Stars and Coins
 
-
-
-- Add background music
-- Improve subject
+- Improve subject (create wrong answers)

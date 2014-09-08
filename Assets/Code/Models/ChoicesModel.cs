@@ -7,8 +7,8 @@ public class ChoicesModel
 {
     public bool ShouldShowChoices { get; set; }
     public List<Choice> Choices { get; private set; }
-    public int ActiveChoiceIndex { get; set; }
-    public Choice ActiveChoice { get { return ActiveChoiceIndex >= 0 && ActiveChoiceIndex < Choices.Count ? Choices[ActiveChoiceIndex] : null; } }
+    public int? ActiveChoiceIndex { get; set; }
+    public Choice ActiveChoice { get { return ActiveChoiceIndex.HasValue && ActiveChoiceIndex >= 0 && ActiveChoiceIndex < Choices.Count ? Choices[ActiveChoiceIndex.Value] : null; } }
     public float NearnessRatio { get; set; }
 
     public ChoicesModel()

@@ -21,6 +21,8 @@ public class PlayerView : MonoBehaviour
 
     private PlayerState _lastState;
 
+    private GameObject _flyEffects;
+
     void Start()
     {
         _headView = new PlayerHeadView();
@@ -41,6 +43,8 @@ public class PlayerView : MonoBehaviour
                 PlayerViewModel.SelectCallback();
             }
         };
+
+        _flyEffects = transform.FindChild("FlyEffects").gameObject;
     }
 
     void Update()
@@ -82,10 +86,12 @@ public class PlayerView : MonoBehaviour
         if (transform.localPosition.y > 0.1f)
         {
             _animator.SetBool("Fly", true);
+            _flyEffects.SetActive(true);
         }
         else
         {
             _animator.SetBool("Fly", false);
+            _flyEffects.SetActive(false);
         }
 
         // Animate emotions
@@ -103,6 +109,11 @@ public class PlayerView : MonoBehaviour
             else if (PlayerViewModel.PlayerState == PlayerState.Hurt)
             {
                 _animator.SetBool("Hurt", true);
+            }
+            else if (PlayerViewModel.PlayerState == PlayerState.Dead)
+            {
+                _animator.SetBool("Dead", true);
+                SoundPlayer.Instance.PlayHurt();
             }
         }
 
@@ -190,5 +201,6 @@ public enum PlayerState
 {
     Idle,
     Happy,
-    Hurt
+    Hurt,
+    Dead
 }

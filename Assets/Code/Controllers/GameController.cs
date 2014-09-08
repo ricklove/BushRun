@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using Assets.Plugins.SmartLevelsMap.Scripts;
+using System;
 
-class GameController : MonoBehaviour
+partial class GameController : MonoBehaviour
 {
     private bool _isSetup = false;
 
@@ -35,7 +36,7 @@ class GameController : MonoBehaviour
             model.CameraModel.ShouldFollowActivePlayer = true;
 
             // Display Choices
-            GameController_Choices.DisplayTestChoices(this, model);
+            GotoNextProblem(model);
         }
 
         if (_isSetup)
@@ -47,24 +48,137 @@ class GameController : MonoBehaviour
             model.CameraModel.TimeToMove = timeToMoveCamera;
             model.CameraModel.ActivePlayerXOffset = size * 1.5f - (speed * timeToMoveCamera);
 
-
             // Make max speed higher than actual speed to ensure the player character can keep up with the game
             model.ActivePlayer.MaxSpeed = speed * 1.5f;
             model.ActivePlayer.SpeedRatio = 1f;
             model.ActivePlayer.TargetX += Time.deltaTime * speed;
 
-
-
             // Change height to choice
-            var pathCount = model.ChoicesModel.Choices.Count;
-            var pathIndex = model.ChoicesModel.ActiveChoiceIndex;
-            var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
-            var targetHeight = 1.0f - pathIndex * pathUnitSize;
+            if (model.ChoicesModel.Choices.Count > 0
+                && model.ChoicesModel.ActiveChoiceIndex.HasValue)
+            {
+                var pathCount = model.ChoicesModel.Choices.Count;
+                var pathIndex = model.ChoicesModel.ActiveChoiceIndex.Value;
 
-            model.ActivePlayer.HeightRatio = targetHeight;
+                if (pathIndex < 0) { pathIndex = 0; }
+                if (pathIndex >= pathCount) { pathIndex = pathCount - 1; }
 
-            // TODO: Display Subject
+                var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
+                var targetHeight = 1.0f - pathIndex * pathUnitSize;
 
+                model.ActivePlayer.HeightRatio = targetHeight;
+            }
+
+
+        }
+    }
+
+    void RespondToLevelComplete()
+    {
+        var model = MainModel.Instance;
+        model.ScreenState = ScreenState.LevelSelection;
+        //LevelMapController.Instance.SetLevelStars
+        var mapLevel = model.ActiveLevel + 1;
+        var oldStars = new PlayerPrefsMapProgressManager().LoadLevelStarsCount(mapLevel);
+        var stars = Mathf.CeilToInt(model.ActivePlayer.Health * 3.0f);
+
+        if (stars > oldStars)
+        {
+            LevelMapController.Instance.SetLevelStars(mapLevel, stars);
+        }
+
+        //model.ActiveLevel++;
+
+        //if (model.ActiveLevel >= LEVELCOUNT)
+        //{
+        //    model.ActiveLevel = 0;
+        //}
+
+        //GotoNextProblem();
+    }
+
+    void RespondToAnswerImmediate(bool isCorrect)
+    {
+        var model = MainModel.Instance;
+
+        // If correct, disable other answers
+
+        if (!isCorrect)
+        {
+            model.ActivePlayer.PlayerState = PlayerState.Hurt;
+            SoundPlayer.Instance.PlayExplosion();
+            EffectsPlayer.Instance.ShowExplosion(model.ActivePlayer.GameObject.transform.position);
+        }
+        else
+        {
+            model.ActivePlayer.PlayerState = PlayerState.Happy;
+            SoundPlayer.Instance.PlayCheer();
+        }
+    }
+
+    void RespondToAnswerDelayed(bool isCorrect)
+    {
+        var model = MainModel.Instance;
+        Delay(() =>
+        {
+            if (model.ActivePlayer.PlayerState != PlayerState.Dead)
+            {
+                model.ActivePlayer.PlayerState = PlayerState.Idle;
+            }
+        }, 2f);
+
+
+        if (isCorrect)
+        {
+            GotoNextProblem(model);
+        }
+        else
+        {
+            var damage = 0.35f;
+
+            model.ActivePlayer.Health -= damage;
+            // TODO: Display Health Bar
+
+        }
+
+        if (model.ActivePlayer.Health <= 0)
+        {
+            model.ActivePlayer.PlayerState = PlayerState.Dead;
+
+            Action doContinue = () =>
+            {
+                GotoThisProblem(model);
+
+                model.ActivePlayer.PlayerState = PlayerState.Happy;
+                model.ActivePlayer.Health = 1;
+            };
+
+            Action doStartOver = () =>
+            {
+                GotoLevelStart(model);
+
+                model.ActivePlayer.PlayerState = PlayerState.Happy;
+                model.ActivePlayer.Health = 1;
+            };
+
+            Action doMainMenu = () =>
+            {
+                doStartOver();
+
+                model.ActivePlayer.PlayerState = PlayerState.Happy;
+                model.ActivePlayer.Health = 1;
+
+                model.ScreenState = ScreenState.LevelSelection;
+            };
+
+            model.ChoicesModel.Choices.Clear();
+            model.ChoicesModel.Choices.AddRange(new Choice[]{
+                //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
+                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=doStartOver },
+                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu },
+                });
+
+            model.ChoicesModel.NearnessRatio = 0;
 
         }
     }
@@ -72,5 +186,6 @@ class GameController : MonoBehaviour
     void DisableScreen()
     {
         var model = MainModel.Instance;
+        model.ChoicesModel.Choices.Clear();
     }
 }

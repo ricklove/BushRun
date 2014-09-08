@@ -121,17 +121,17 @@ public class SubjectEntries
     }
 }
 
-public class Entry
-{
-    public string Word
-    {
-        get;
-        set;
-    }
+//public class Entry
+//{
+//    public string Word
+//    {
+//        get;
+//        set;
+//    }
 
-    public string[] Misspellings
-    {
-        get;
-        set;
-    }
-}
+//    public string[] Misspellings
+//    {
+//        get;
+//        set;
+//    }
+//}
