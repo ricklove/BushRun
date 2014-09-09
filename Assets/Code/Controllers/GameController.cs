@@ -38,10 +38,14 @@ partial class GameController : MonoBehaviour
             // Display Choices
             GotoLevelStart(model);
             //GotoNextProblem(model);
+
+            // Ensure clicking is disabled on player
+            model.ActivePlayer.SelectCallback = null;
         }
 
         if (_isSetup)
         {
+
             if (model.ActivePlayer.PlayerState != PlayerState.Dead)
             {
                 var speed = 10f;

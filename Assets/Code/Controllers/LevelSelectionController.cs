@@ -137,6 +137,7 @@ class LevelSelectionController : MonoBehaviour
 
         // Reset camera
         model.CameraModel.TargetSize = null;
+        model.ActivePlayer.SelectCallback = null;
         //model.CameraModel.TargetPosition = null;
     }
 }

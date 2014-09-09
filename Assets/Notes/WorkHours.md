@@ -218,6 +218,11 @@ Create BushRun to be used for Multiple Choice
 - Improve Progress Bar
 - Hide Progress unless Game
 
+### 8:14-8:16
+
+- Disable click on player during game
+
+
 
 # TODO
 
