@@ -206,6 +206,7 @@ partial class GameController : MonoBehaviour
         var model = MainModel.Instance;
 
         model.ActivePlayer.PlayerState = PlayerState.Idle;
+        model.ActivePlayer.HeightRatio = 0;
 
         Action<float, float> doIncreaseHealthAtTime = (float health, float time) =>
         {

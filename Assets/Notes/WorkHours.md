@@ -209,15 +209,17 @@ Create BushRun to be used for Multiple Choice
 - Go back to level selection from game
 
 
-### 6:24-
+### 6:24-7:32
 
 - Display Health and Progress
 
+### 7:33-7:53
+
+- Improve Progress Bar
+- Hide Progress unless Game
 
 
 # TODO
-
-- Display health and progress
 
 - Improve subject (create wrong answers)
 
@@ -230,6 +232,6 @@ Create BushRun to be used for Multiple Choice
 
 - Add Title
 - Add Coins
-- Display Stars and Coins
+- Display Stars and Coins GUI
 
 
