@@ -102,6 +102,8 @@ partial class GameController : MonoBehaviour
             pPref.SaveLevelStarsCount(mapLevel, stars);
         }
 
+        ResetPlayer(() => { });
+
         //model.ActiveLevel++;
 
         //if (model.ActiveLevel >= LEVELCOUNT)
@@ -129,6 +131,8 @@ partial class GameController : MonoBehaviour
             model.ActivePlayer.PlayerState = PlayerState.Happy;
             SoundPlayer.Instance.PlayCheer();
         }
+
+        model.ActiveLevelProgress = 1.0f * (_nextProblemIndex) / _entries.Length;
     }
 
     void RespondToAnswerDelayed(bool isCorrect)
@@ -160,36 +164,9 @@ partial class GameController : MonoBehaviour
         {
             model.ActivePlayer.PlayerState = PlayerState.Dead;
 
-            Action<Action> doResetPlayer = (Action onDone) =>
-            {
-                model.ActivePlayer.PlayerState = PlayerState.Idle;
-                model.ActivePlayer.Health = 0.1f;
-
-                this.StartCoroutineWithDelay(() =>
-                {
-                    model.ActivePlayer.Health = 0.35f;
-                }, 0.5f);
-
-                this.StartCoroutineWithDelay(() =>
-                {
-                    model.ActivePlayer.Health = 0.7f;
-                }, 1f);
-
-                this.StartCoroutineWithDelay(() =>
-                {
-                    model.ActivePlayer.PlayerState = PlayerState.Happy;
-                    model.ActivePlayer.Health = 1;
-                }, 1.5f);
-
-                this.StartCoroutineWithDelay(() =>
-                {
-                    onDone();
-                }, 2f);
-            };
-
             Action doContinue = () =>
             {
-                doResetPlayer(() =>
+                ResetPlayer(() =>
                 {
                     GotoThisProblem(model);
                 });
@@ -197,7 +174,7 @@ partial class GameController : MonoBehaviour
 
             Action doStartOver = () =>
             {
-                doResetPlayer(() =>
+                ResetPlayer(() =>
                 {
                     GotoLevelStart(model);
                 });
@@ -205,7 +182,7 @@ partial class GameController : MonoBehaviour
 
             Action doMainMenu = () =>
             {
-                doResetPlayer(() =>
+                ResetPlayer(() =>
                 {
                     model.ScreenState = ScreenState.LevelSelection;
                     model.ActivePlayer.MaxSpeed = new PlayerModel().MaxSpeed;
@@ -216,12 +193,41 @@ partial class GameController : MonoBehaviour
             model.ChoicesModel.Choices.AddRange(new Choice[]{
                 //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=OnlyOnce(doContinue) },
                     new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=doStartOver.OnlyOnce() },
-                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu.OnlyOnce() },
+                    new Choice(){ Text="CHANGE LEVEL", IsCorrect=true, ChoiceCallback=doMainMenu.OnlyOnce() },
                 });
 
             model.ChoicesModel.NearnessRatio = 0;
 
         }
+    }
+
+    private void ResetPlayer(Action onDone)
+    {
+        var model = MainModel.Instance;
+
+        model.ActivePlayer.PlayerState = PlayerState.Idle;
+
+        Action<float, float> doIncreaseHealthAtTime = (float health, float time) =>
+        {
+            this.StartCoroutineWithDelay(() =>
+            {
+                if (model.ActivePlayer.Health < health)
+                {
+                    model.ActivePlayer.Health = health;
+                }
+            }, time);
+        };
+
+        doIncreaseHealthAtTime(0.1f, 0f);
+        doIncreaseHealthAtTime(0.35f, 0.5f);
+        doIncreaseHealthAtTime(0.7f, 1f);
+        doIncreaseHealthAtTime(1f, 1.5f);
+
+        this.StartCoroutineWithDelay(() =>
+        {
+            model.ActivePlayer.PlayerState = PlayerState.Happy;
+            onDone();
+        }, 2f);
     }
 
     void DisableScreen()

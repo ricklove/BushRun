@@ -12,6 +12,10 @@ public class GuiViewModel : IGuiViewModel
         _model = model;
     }
 
+    public bool ShouldShowProgressBars { get { return true ||_model.ScreenState == ScreenState.Game; } }
+    public float Health { get { return _model.ActivePlayer.Health; } }
+    public float LevelProgress { get { return _model.ActiveLevelProgress; } }
+
     public IList<GuiItem> GuiItems
     {
         get
@@ -98,4 +102,7 @@ public class GuiViewModel : IGuiViewModel
             return items;
         }
     }
+
+
+
 }

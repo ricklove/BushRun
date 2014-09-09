@@ -13,6 +13,9 @@ public class GuiView : MonoBehaviour
 
     private Dictionary<GuiSizeHash, int> _fontSizes;
 
+    public ProgressBar healthProgressBar;
+    public ProgressBar levelProgressBar;
+
     void Start()
     {
         _fontSizes = new Dictionary<GuiSizeHash, int>();
@@ -20,6 +23,15 @@ public class GuiView : MonoBehaviour
 
     void OnGUI()
     {
+
+        if (GuiViewModel.ShouldShowProgressBars)
+        {
+            healthProgressBar.SetProgress(GuiViewModel.Health);
+            healthProgressBar.DrawGUI();
+            levelProgressBar.SetProgress(GuiViewModel.LevelProgress);
+            levelProgressBar.DrawGUI();
+        }
+
         foreach (var item in GuiViewModel.GuiItems)
         {
             var fontSize = _fontSizes.ContainsKey(item.GuiSizeHash) ? _fontSizes[item.GuiSizeHash] : CalculateFontSize(item.GuiSizeHash);
@@ -99,6 +111,9 @@ public class GuiView : MonoBehaviour
 public interface IGuiViewModel
 {
     IList<GuiItem> GuiItems { get; }
+    bool ShouldShowProgressBars { get; }
+    float Health { get; }
+    float LevelProgress { get; }
 }
 
 public class GuiItem
@@ -140,4 +155,51 @@ public enum GuiStyleType
 {
     Choice,
     Choice_Highlight
+}
+
+[System.Serializable]
+public class ProgressBar
+{
+    public Rect Size;
+    public Texture FillTexture;
+    public Texture BackTexture;
+    public int Units = 5;
+
+    private float _ratio;
+
+    public void DrawGUI()
+    {
+        if (BackTexture == null
+            || FillTexture == null
+            )
+        {
+            return;
+        }
+
+        var unitWidth = Size.width / Units;
+        for (int i = 0; i < Units; i++)
+        {
+            var x = Size.x + i * unitWidth;
+
+            GUI.DrawTexture(new Rect(x, Size.y, unitWidth, Size.height), BackTexture);
+
+            var totalWidth = Size.width;
+            var ratioWidth = _ratio * totalWidth;
+            var partWidth = ratioWidth - i * unitWidth;
+            partWidth = Mathf.Min(unitWidth, partWidth);
+
+            // Only show whole
+            partWidth = Mathf.RoundToInt(partWidth / unitWidth) * unitWidth;
+
+            if (partWidth > 0)
+            {
+                GUI.DrawTexture(new Rect(x, Size.y, partWidth, Size.height), FillTexture);
+            }
+        }
+    }
+
+    public void SetProgress(float ratio)
+    {
+        _ratio = ratio;
+    }
 }

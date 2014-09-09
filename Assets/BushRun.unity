@@ -28320,6 +28320,26 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
+  healthProgressBar:
+    Size:
+      serializedVersion: 2
+      x: 10
+      y: 10
+      width: 192
+      height: 64
+    FillTexture: {fileID: 2800000, guid: 368fb5d42f6f3b64886fb8c8f0060900, type: 3}
+    BackTexture: {fileID: 2800000, guid: d4abea9cd32a96b42a59afdd045a539b, type: 3}
+    Units: 3
+  levelProgressBar:
+    Size:
+      serializedVersion: 2
+      x: 250
+      y: 34
+      width: 256
+      height: 16
+    FillTexture: {fileID: 2800000, guid: 2590e27e3c92b1e4787ddab92f99bb17, type: 3}
+    BackTexture: {fileID: 2800000, guid: d365a59e18ed9044db64c276ade4308f, type: 3}
+    Units: 5
 --- !u!114 &1194190414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35522,33 +35542,6 @@ Transform:
   - {fileID: 1684650349}
   m_Father: {fileID: 570843543}
   m_RootOrder: 0
---- !u!1 &1505631689
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1505631690}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1505631690
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1505631689}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.784989715, y: 2.24035692, z: -6.08320189}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!1 &1505945247
 GameObject:
   m_ObjectHideFlags: 0

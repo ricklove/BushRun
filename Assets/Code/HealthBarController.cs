@@ -36,29 +36,29 @@ public class HealthBarController : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class ProgressBar
-{
-    public Rect Size;
-    public Texture FillTexture;
-    public Texture BackTexture;
-    public int Units = 5;
+//[System.Serializable]
+//public class ProgressBar
+//{
+//    public Rect Size;
+//    public Texture FillTexture;
+//    public Texture BackTexture;
+//    public int Units = 5;
     
-    private float _ratio;
+//    private float _ratio;
     
-    public void DrawGUI()
-    {
-        GUI.DrawTexture(new Rect(Size.x, Size.y, _ratio * Size.width, Size.height), FillTexture);
+//    public void DrawGUI()
+//    {
+//        GUI.DrawTexture(new Rect(Size.x, Size.y, _ratio * Size.width, Size.height), FillTexture);
         
-        var unitWidth = Size.width / Units;
-        for (int i = 0; i < Units; i++)
-        {
-            GUI.DrawTexture(new Rect(Size.x + i * unitWidth, Size.y, unitWidth, Size.height), BackTexture);
-        }
-    }
+//        var unitWidth = Size.width / Units;
+//        for (int i = 0; i < Units; i++)
+//        {
+//            GUI.DrawTexture(new Rect(Size.x + i * unitWidth, Size.y, unitWidth, Size.height), BackTexture);
+//        }
+//    }
     
-    public void SetProgress(float ratio)
-    {
-        _ratio = ratio;
-    }
-}
+//    public void SetProgress(float ratio)
+//    {
+//        _ratio = ratio;
+//    }
+//}
