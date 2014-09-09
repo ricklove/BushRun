@@ -11,7 +11,6 @@ partial class GameController : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
@@ -34,6 +33,7 @@ partial class GameController : MonoBehaviour
             _isSetup = true;
 
             model.CameraModel.ShouldFollowActivePlayer = true;
+            model.ActivePlayer.ShouldShowSelectionBox = false;
 
             // Display Choices
             GotoLevelStart(model);
@@ -208,6 +208,7 @@ partial class GameController : MonoBehaviour
                 doResetPlayer(() =>
                 {
                     model.ScreenState = ScreenState.LevelSelection;
+                    model.ActivePlayer.MaxSpeed = new PlayerModel().MaxSpeed;
                 });
             };
 

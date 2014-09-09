@@ -64,16 +64,21 @@ class LevelSelectionController : MonoBehaviour
 
             var signPositionFromCamera = screenRadius * 3f;
             var signPosition = camX + signPositionFromCamera;
-            var signMax = signPositionFromCamera;
+            var signMax = camX + signPositionFromCamera;
             var signMin = camX - signPositionFromCamera;
 
-            if (!_sign.activeSelf
-                || _sign.transform.localPosition.x > signMax
-                || _sign.transform.localPosition.x < signMin)
+            if (_sign.activeSelf
+                && _sign.transform.position.x > signMin
+                && _sign.transform.position.x < signMax)
             {
-                _sign.transform.localPosition = new Vector3(signPositionFromCamera, 0, 0);
+                // Sign is already in ok position
+                // TODO: Make sure other players are out of the way
+            }
+            else
+            {
+                _sign.transform.position = new Vector3(signPosition, 0, 0);
                 _sign.SetActive(true);
-            }        
+            }
 
             // Move to left of sign
             model.ActivePlayer.TargetX = _sign.transform.position.x - _initialSignX;

@@ -204,9 +204,19 @@ Create BushRun to be used for Multiple Choice
 
 - Go back to character selection
 
+### 6:11-6:23
+
+- Go back to level selection from game
+
+
+### 6:24-
+
+- Display Health and Progress
+
+
+
 # TODO
 
-- Go back to character selection
 - Display health and progress
 
 - Improve subject (create wrong answers)
