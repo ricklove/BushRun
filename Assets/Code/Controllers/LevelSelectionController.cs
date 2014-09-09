@@ -98,17 +98,18 @@ class LevelSelectionController : MonoBehaviour
 
             // Allow go back
             model.ActivePlayer.ShouldShowSelectionBox = true;
-            model.ActivePlayer.SelectCallback = ActionHelpers.OnlyOnce(() =>
+            model.ActivePlayer.SelectCallback = () =>
             {
                 model.ActivePlayer.TargetX = signPosition - signPositionFromCamera;
                 model.CameraModel.TargetSize = null;
                 model.CameraModel.ShouldFollowActivePlayer = true;
+                model.ActivePlayer.SelectCallback = null;
 
                 this.StartCoroutineWithDelay(() =>
                 {
                     model.ScreenState = ScreenState.PlayerSelection;
                 }, 1f);
-            });
+            };
         }
 
 
@@ -137,7 +138,5 @@ class LevelSelectionController : MonoBehaviour
 
         // Reset camera
         model.CameraModel.TargetSize = null;
-        model.ActivePlayer.SelectCallback = null;
-        //model.CameraModel.TargetPosition = null;
     }
 }

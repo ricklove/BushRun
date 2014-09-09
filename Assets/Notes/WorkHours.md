@@ -220,7 +220,11 @@ Create BushRun to be used for Multiple Choice
 
 ### 8:14-8:16
 
-- Disable click on player during game
+- Fix click on player during game
+
+### 8:25-8:27
+
+- Fix disabled active player selection
 
 
 
