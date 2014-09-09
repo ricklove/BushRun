@@ -13,7 +13,10 @@ public class PlayerView : MonoBehaviour
     private Animator _animator;
 
     // Reset Avatar Position
+    private GameObject _childAvatarDirection;
     private GameObject _childAvatar;
+    private GameObject _headHolder;
+
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
 
@@ -30,7 +33,10 @@ public class PlayerView : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
 
-        _childAvatar = transform.GetChild(0).gameObject;
+        _childAvatarDirection = transform.GetChild(0).GetChild(0).gameObject;
+        _childAvatar = _childAvatarDirection.transform.GetChild(0).gameObject;
+        _headHolder = transform.GetComponentInChildren<SpriteRenderer>().transform.parent.gameObject;
+
         _initialPosition = _childAvatar.transform.localPosition;
         _initialRotation = _childAvatar.transform.localRotation;
 
@@ -65,13 +71,17 @@ public class PlayerView : MonoBehaviour
         RefreshSpeed();
 
         // Flip for backwards
-        if (_actualSpeed < -0.1f)
+        if (_actualSpeed < -0.001f)
         {
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.z, transform.localScale.z);
+            //transform.localScale = new Vector3(-1, 1, 1);
+            _childAvatarDirection.transform.localRotation = Quaternion.Euler(0, 120, 0);
+            _headHolder.transform.localRotation = Quaternion.Euler(0, 300, 0);
         }
-        else if (_actualSpeed > 0.1f)
+        else if (_actualSpeed > 0.001f)
         {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.z, transform.localScale.z);
+            //transform.localScale = new Vector3(1, 1, 1);
+            _childAvatarDirection.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _headHolder.transform.localRotation = Quaternion.Euler(0, 240, 0);
         }
 
         // Animate movement
@@ -130,7 +140,7 @@ public class PlayerView : MonoBehaviour
     private void ResetAvatarPosition()
     {
         // Move player back to initial points (animation is slowly moving it off)
-        _childAvatar.transform.localRotation = _initialRotation;
+        //_childAvatar.transform.localRotation = _initialRotation;
         _childAvatar.transform.localPosition = _initialPosition;
     }
 

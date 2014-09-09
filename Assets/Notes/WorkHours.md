@@ -188,10 +188,15 @@ Create BushRun to be used for Multiple Choice
 - Fix movement transitions
 - Fix head on death animation
 
+### 3:50-4:23
+
+- Fix backward movement (rotate instead of scale)
+
+
+
 # TODO
 
-- Fix movement transitions
-- Fix backward movement (rotate instead of scale)
+
 - Fix Background tiling
 
 - Go back to character selection
