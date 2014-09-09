@@ -176,23 +176,35 @@ Create BushRun to be used for Multiple Choice
 
 - Respond to Answer
 
+### 18:05-18:30
+
+- Fix level saving and loading stars
+- Fix not dead
+
+## Period 7
+
+### 2014-09-09 3:20-3:49
+
+- Fix movement transitions
+- Fix head on death animation
 
 # TODO
 
 - Fix movement transitions
 - Fix backward movement (rotate instead of scale)
 - Fix Background tiling
-- Fix save level complete stars
 
+- Go back to character selection
+- Display health and progress
+
+- Improve subject (create wrong answers)
 
 - Respond to Choices
 
 	- Right
 		- Show Glitter
 
-- Go back to character selection
-
 - Add Coins
 - Display Stars and Coins
 
-- Improve subject (create wrong answers)
+

@@ -36,7 +36,8 @@ partial class GameController : MonoBehaviour
             model.CameraModel.ShouldFollowActivePlayer = true;
 
             // Display Choices
-            GotoNextProblem(model);
+            GotoLevelStart(model);
+            //GotoNextProblem(model);
         }
 
         if (_isSetup)
@@ -79,12 +80,13 @@ partial class GameController : MonoBehaviour
         model.ScreenState = ScreenState.LevelSelection;
         //LevelMapController.Instance.SetLevelStars
         var mapLevel = model.ActiveLevel + 1;
-        var oldStars = new PlayerPrefsMapProgressManager().LoadLevelStarsCount(mapLevel);
+        var pPref = new PlayerPrefsMapProgressManager();
+        var oldStars = pPref.LoadLevelStarsCount(mapLevel);
         var stars = Mathf.CeilToInt(model.ActivePlayer.Health * 3.0f);
 
         if (stars > oldStars)
         {
-            LevelMapController.Instance.SetLevelStars(mapLevel, stars);
+            pPref.SaveLevelStarsCount(mapLevel, stars);
         }
 
         //model.ActiveLevel++;

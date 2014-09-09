@@ -77,7 +77,8 @@ class LevelSelectionController : MonoBehaviour
             _character.GetComponent<SpriteRenderer>().sprite = model.ActivePlayer.PlayerData.Sprites.First(s => s.SpriteType == SpriteType.HeadIdle).Sprite;
 
 
-    
+            // Reset levels map
+            _levelMap.GetComponent<LevelsMap>().Start();
         }
 
 

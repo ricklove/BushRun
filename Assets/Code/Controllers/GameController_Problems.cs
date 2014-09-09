@@ -8,6 +8,7 @@ partial class GameController
 {
     const int LEVELCOUNT = 25;
 
+    private int _loadedLevel = -1;
     private int _nextProblemIndex = 0;
     private Entry[] _entries;
 
@@ -32,12 +33,14 @@ partial class GameController
             model.SubjectModel.LoadSubject();
         }
 
-        if (_entries == null)
+        if (_entries == null
+            || _loadedLevel != model.ActiveLevel)
         {
             var allEntries = model.SubjectModel.Entries;
             var entriesPerLevel = Mathf.CeilToInt(allEntries.Count / LEVELCOUNT);
             _entries = model.SubjectModel.Entries.Skip(model.ActiveLevel * entriesPerLevel).Take(entriesPerLevel).ToArray();
             _nextProblemIndex = 0;
+            _loadedLevel = model.ActiveLevel;
         }
 
         if (_nextProblemIndex >= _entries.Length)
@@ -86,7 +89,7 @@ partial class GameController
                     {
                         model.ChoicesModel.Choices.Remove(choice);
                         model.ChoicesModel.ActiveChoiceIndex = null;
-                        
+
                         //if (model.ChoicesModel.ActiveChoiceIndex >= model.ChoicesModel.Choices.Count)
                         //{
                         //    model.ChoicesModel.ActiveChoiceIndex = model.ChoicesModel.Choices.Count - 1;

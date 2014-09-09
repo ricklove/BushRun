@@ -101,6 +101,7 @@ public class PlayerView : MonoBehaviour
         if (PlayerViewModel.PlayerState != _lastState)
         {
             _lastState = PlayerViewModel.PlayerState;
+            _animator.SetBool("Dead", false);
 
             if (PlayerViewModel.PlayerState == PlayerState.Happy)
             {
