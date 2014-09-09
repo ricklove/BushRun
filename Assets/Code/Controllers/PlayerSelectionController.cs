@@ -113,6 +113,13 @@ class PlayerSelectionController : MonoBehaviour
         var cam = transform.root.FindChild("MainCamera");
         var camX = cam.transform.position.x;
 
+        if (MainModel.Instance.CameraModel.ShouldFollowActivePlayer)
+        {
+            MainModel.Instance.CameraModel.TargetPosition = new Vector3(MainModel.Instance.ActivePlayer.TargetX, cam.transform.position.y, cam.transform.position.z);
+            camX = MainModel.Instance.ActivePlayer.TargetX;
+            MainModel.Instance.CameraModel.ShouldFollowActivePlayer = false;
+        }
+
         var min = camX - 3f;
         var max = camX + 3f;
 
@@ -129,13 +136,13 @@ class PlayerSelectionController : MonoBehaviour
             // Move near if far away
             var trans = players[i].GameObject.transform;
 
-            if (trans.localPosition.x > camX + screenRadius)
+            if (trans.localPosition.x > camX + screenRadius * 2)
             {
-                trans.localPosition = new Vector3(max + screenRadius + (i * change), 0, 0);
+                trans.localPosition = new Vector3(max + screenRadius * 2 + (i * change), 0, 0);
             }
-            else if (trans.localPosition.x < camX - screenRadius)
+            else if (trans.localPosition.x < camX - screenRadius * 2)
             {
-                trans.localPosition = new Vector3(min - screenRadius - (i * change), 0, 0);
+                trans.localPosition = new Vector3(min - screenRadius * 2 - (i * change), 0, 0);
             }
         }
     }

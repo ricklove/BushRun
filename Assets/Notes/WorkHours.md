@@ -200,7 +200,9 @@ Create BushRun to be used for Multiple Choice
 - Fix resurrect transition
 - Prevent multiple clicks
 
-### 5:18-
+### 5:18-6:10
+
+- Go back to character selection
 
 # TODO
 
@@ -216,6 +218,7 @@ Create BushRun to be used for Multiple Choice
 	- Right
 		- Show Glitter
 
+- Add Title
 - Add Coins
 - Display Stars and Coins
 

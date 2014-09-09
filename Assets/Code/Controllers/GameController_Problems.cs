@@ -82,7 +82,7 @@ partial class GameController
                 RespondToAnswerImmediate(isCorrect);
 
                 // Delay non-game response
-                StartCoroutine(Delay(() =>
+                this.StartCoroutineWithDelay(() =>
                 {
                     // Remove choice
                     if (model.ChoicesModel.Choices.Contains(choice))
@@ -99,11 +99,11 @@ partial class GameController
                         RespondToAnswerDelayed(isCorrect);
                     }
 
-                }, 1f));
+                }, 1f);
 
             };
 
-            c.ChoiceCallback = OnlyOnce(choiceCallback);
+            c.ChoiceCallback = choiceCallback.OnlyOnce();
 
         }
 
@@ -115,26 +115,7 @@ partial class GameController
         model.ChoicesModel.ActiveChoiceIndex = null;
     }
 
-    public static IEnumerator Delay(Action doAction, float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
-        doAction();
-        yield return 0;
-    }
 
-    public static Action OnlyOnce(Action doAction)
-    {
-        var hasDone = false;
-
-        return () =>
-        {
-            if (!hasDone)
-            {
-                hasDone = true;
-                doAction();
-            }
-        };
-    }
 
 
     public void DisplayTestChoices(MainModel model)

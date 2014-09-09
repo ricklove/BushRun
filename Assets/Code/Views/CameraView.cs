@@ -39,6 +39,10 @@ public class CameraView : MonoBehaviour
         {
             targetSize = CameraViewModel.TargetSize.Value;
         }
+        else
+        {
+            targetSize = _initialSize;
+        }
 
         if (CameraViewModel.ShouldFollowActivePlayer
             && CameraViewModel.ActivePlayerX.HasValue)

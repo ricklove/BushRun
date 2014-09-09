@@ -134,7 +134,7 @@ partial class GameController : MonoBehaviour
     void RespondToAnswerDelayed(bool isCorrect)
     {
         var model = MainModel.Instance;
-        Delay(() =>
+        this.StartCoroutineWithDelay(() =>
         {
             if (model.ActivePlayer.PlayerState != PlayerState.Dead)
             {
@@ -165,26 +165,26 @@ partial class GameController : MonoBehaviour
                 model.ActivePlayer.PlayerState = PlayerState.Idle;
                 model.ActivePlayer.Health = 0.1f;
 
-                StartCoroutine(Delay(() =>
+                this.StartCoroutineWithDelay(() =>
                 {
                     model.ActivePlayer.Health = 0.35f;
-                }, 0.5f));
+                }, 0.5f);
 
-                StartCoroutine(Delay(() =>
+                this.StartCoroutineWithDelay(() =>
                 {
                     model.ActivePlayer.Health = 0.7f;
-                }, 1f));
+                }, 1f);
 
-                StartCoroutine(Delay(() =>
+                this.StartCoroutineWithDelay(() =>
                 {
                     model.ActivePlayer.PlayerState = PlayerState.Happy;
                     model.ActivePlayer.Health = 1;
-                }, 1.5f));
+                }, 1.5f);
 
-                StartCoroutine(Delay(() =>
+                this.StartCoroutineWithDelay(() =>
                 {
                     onDone();
-                }, 2f));
+                }, 2f);
             };
 
             Action doContinue = () =>
@@ -214,8 +214,8 @@ partial class GameController : MonoBehaviour
             model.ChoicesModel.Choices.Clear();
             model.ChoicesModel.Choices.AddRange(new Choice[]{
                 //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=OnlyOnce(doContinue) },
-                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=OnlyOnce(doStartOver) },
-                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=OnlyOnce(doMainMenu) },
+                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=doStartOver.OnlyOnce() },
+                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu.OnlyOnce() },
                 });
 
             model.ChoicesModel.NearnessRatio = 0;

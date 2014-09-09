@@ -62,8 +62,18 @@ class LevelSelectionController : MonoBehaviour
             var camX = cam.transform.position.x;
             var screenRadius = cam.GetComponent<Camera>().orthographicSize;
 
-            _sign.transform.localPosition = new Vector3(camX + screenRadius * 3f, 0, 0);
-            _sign.SetActive(true);
+            var signPositionFromCamera = screenRadius * 3f;
+            var signPosition = camX + signPositionFromCamera;
+            var signMax = signPositionFromCamera;
+            var signMin = camX - signPositionFromCamera;
+
+            if (!_sign.activeSelf
+                || _sign.transform.localPosition.x > signMax
+                || _sign.transform.localPosition.x < signMin)
+            {
+                _sign.transform.localPosition = new Vector3(signPositionFromCamera, 0, 0);
+                _sign.SetActive(true);
+            }        
 
             // Move to left of sign
             model.ActivePlayer.TargetX = _sign.transform.position.x - _initialSignX;
@@ -79,6 +89,21 @@ class LevelSelectionController : MonoBehaviour
 
             // Reset levels map
             _levelMap.GetComponent<LevelsMap>().Start();
+
+
+            // Allow go back
+            model.ActivePlayer.ShouldShowSelectionBox = true;
+            model.ActivePlayer.SelectCallback = ActionHelpers.OnlyOnce(() =>
+            {
+                model.ActivePlayer.TargetX = signPosition - signPositionFromCamera;
+                model.CameraModel.TargetSize = null;
+                model.CameraModel.ShouldFollowActivePlayer = true;
+
+                this.StartCoroutineWithDelay(() =>
+                {
+                    model.ScreenState = ScreenState.PlayerSelection;
+                }, 1f);
+            });
         }
 
 
@@ -90,18 +115,23 @@ class LevelSelectionController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        model.CameraModel.ShouldFollowActivePlayer = false;
-        model.CameraModel.TimeToMove = 1.0f;
+        if (model.ScreenState == ScreenState.LevelSelection)
+        {
+            model.CameraModel.ShouldFollowActivePlayer = false;
+            model.CameraModel.TimeToMove = 1.0f;
 
-        model.CameraModel.TargetSize = _signCamera.GetComponent<Camera>().orthographicSize;
-        model.CameraModel.TargetPosition = _signCamera.transform.position;
-
+            model.CameraModel.TargetSize = _signCamera.GetComponent<Camera>().orthographicSize;
+            model.CameraModel.TargetPosition = _signCamera.transform.position;
+        }
     }
 
 
     void DisableScreen()
     {
         var model = MainModel.Instance;
-        //_sign.SetActive(false);
+
+        // Reset camera
+        model.CameraModel.TargetSize = null;
+        //model.CameraModel.TargetPosition = null;
     }
 }
