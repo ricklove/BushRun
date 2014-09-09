@@ -42,34 +42,47 @@ partial class GameController : MonoBehaviour
 
         if (_isSetup)
         {
-            var speed = 10f;
-            var timeToMoveCamera = 0.25f;
-
-            var size = model.CameraModel.GameObject.GetComponent<Camera>().orthographicSize;
-            model.CameraModel.TimeToMove = timeToMoveCamera;
-            model.CameraModel.ActivePlayerXOffset = size * 1.5f - (speed * timeToMoveCamera);
-
-            // Make max speed higher than actual speed to ensure the player character can keep up with the game
-            model.ActivePlayer.MaxSpeed = speed * 1.5f;
-            model.ActivePlayer.SpeedRatio = 1f;
-            model.ActivePlayer.TargetX += Time.deltaTime * speed;
-
-            // Change height to choice
-            if (model.ChoicesModel.Choices.Count > 0
-                && model.ChoicesModel.ActiveChoiceIndex.HasValue)
+            if (model.ActivePlayer.PlayerState != PlayerState.Dead)
             {
-                var pathCount = model.ChoicesModel.Choices.Count;
-                var pathIndex = model.ChoicesModel.ActiveChoiceIndex.Value;
+                var speed = 10f;
+                var timeToMoveCamera = 0.25f;
 
-                if (pathIndex < 0) { pathIndex = 0; }
-                if (pathIndex >= pathCount) { pathIndex = pathCount - 1; }
+                speed *= model.ActivePlayer.Health;
+                //timeToMoveCamera *= model.ActivePlayer.Health;
 
-                var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
-                var targetHeight = 1.0f - pathIndex * pathUnitSize;
+                var changeX = Time.deltaTime * speed;
 
-                model.ActivePlayer.HeightRatio = targetHeight;
+                var size = model.CameraModel.GameObject.GetComponent<Camera>().orthographicSize;
+                model.CameraModel.TimeToMove = timeToMoveCamera;
+                model.CameraModel.ActivePlayerXOffset = size * 1.2f - (changeX * timeToMoveCamera);
+
+                // Make max speed higher than actual speed to ensure the player character can keep up with the game
+                model.ActivePlayer.MaxSpeed = speed * 1.5f;
+                model.ActivePlayer.SpeedRatio = 1f;
+                model.ActivePlayer.TargetX += changeX;
+
+                // Change height to choice
+                if (model.ChoicesModel.Choices.Count > 0
+                    && model.ChoicesModel.ActiveChoiceIndex.HasValue)
+                {
+                    var pathCount = model.ChoicesModel.Choices.Count;
+                    var pathIndex = model.ChoicesModel.ActiveChoiceIndex.Value;
+
+                    if (pathIndex < 0) { pathIndex = 0; }
+                    if (pathIndex >= pathCount) { pathIndex = pathCount - 1; }
+
+                    var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
+                    var targetHeight = 1.0f - pathIndex * pathUnitSize;
+
+                    model.ActivePlayer.HeightRatio = targetHeight;
+                }
+
             }
-
+            else
+            {
+                // Fall on death
+                model.ActivePlayer.HeightRatio = 0;
+            }
 
         }
     }
@@ -147,37 +160,62 @@ partial class GameController : MonoBehaviour
         {
             model.ActivePlayer.PlayerState = PlayerState.Dead;
 
+            Action<Action> doResetPlayer = (Action onDone) =>
+            {
+                model.ActivePlayer.PlayerState = PlayerState.Idle;
+                model.ActivePlayer.Health = 0.1f;
+
+                StartCoroutine(Delay(() =>
+                {
+                    model.ActivePlayer.Health = 0.35f;
+                }, 0.5f));
+
+                StartCoroutine(Delay(() =>
+                {
+                    model.ActivePlayer.Health = 0.7f;
+                }, 1f));
+
+                StartCoroutine(Delay(() =>
+                {
+                    model.ActivePlayer.PlayerState = PlayerState.Happy;
+                    model.ActivePlayer.Health = 1;
+                }, 1.5f));
+
+                StartCoroutine(Delay(() =>
+                {
+                    onDone();
+                }, 2f));
+            };
+
             Action doContinue = () =>
             {
-                GotoThisProblem(model);
-
-                model.ActivePlayer.PlayerState = PlayerState.Happy;
-                model.ActivePlayer.Health = 1;
+                doResetPlayer(() =>
+                {
+                    GotoThisProblem(model);
+                });
             };
 
             Action doStartOver = () =>
             {
-                GotoLevelStart(model);
-
-                model.ActivePlayer.PlayerState = PlayerState.Happy;
-                model.ActivePlayer.Health = 1;
+                doResetPlayer(() =>
+                {
+                    GotoLevelStart(model);
+                });
             };
 
             Action doMainMenu = () =>
             {
-                doStartOver();
-
-                model.ActivePlayer.PlayerState = PlayerState.Happy;
-                model.ActivePlayer.Health = 1;
-
-                model.ScreenState = ScreenState.LevelSelection;
+                doResetPlayer(() =>
+                {
+                    model.ScreenState = ScreenState.LevelSelection;
+                });
             };
 
             model.ChoicesModel.Choices.Clear();
             model.ChoicesModel.Choices.AddRange(new Choice[]{
-                //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=doContinue },
-                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=doStartOver },
-                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=doMainMenu },
+                //new Choice(){ Text="CONTINUE", IsCorrect=true, ChoiceCallback=OnlyOnce(doContinue) },
+                    new Choice(){ Text="TRY AGAIN", IsCorrect=true, ChoiceCallback=OnlyOnce(doStartOver) },
+                    new Choice(){ Text="MAIN MENU", IsCorrect=true, ChoiceCallback=OnlyOnce(doMainMenu) },
                 });
 
             model.ChoicesModel.NearnessRatio = 0;

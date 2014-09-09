@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public class Tileable : MonoBehaviour
+public class TileSprites : MonoBehaviour
 {
     public TileDirection TileDirection = TileDirection.Horizontal;
     public Sprite[] tileSprites = null;
@@ -15,16 +15,7 @@ public class Tileable : MonoBehaviour
     {
         remaining = clones.ToList();
 
-        var cameras = CameraHelper.Cameras;
-
-        foreach (var cam in cameras)
-        {
-            // If visible in camera layer
-            if ((cam.cullingMask & (1 << gameObject.layer)) > 0)
-            {
-                TileForPreCull(cam);
-            }
-        }
+        TileForPreCull(MainModel.Instance.CameraModel.GameObject.GetComponent<Camera>());
 
         foreach (var r in remaining)
         {
@@ -315,10 +306,10 @@ public class Tileable : MonoBehaviour
 
 }
 
-//public enum TileDirection
-//{
-//    None=0,
-//    Horizontal=1,
-//    Vertical=2,
-//    //Both=3, 
-//}
+public enum TileDirection
+{
+    None=0,
+    Horizontal=1,
+    Vertical=2,
+    //Both=3, 
+}

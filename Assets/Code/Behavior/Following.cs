@@ -4,34 +4,39 @@ using System.Collections;
 public class Following : MonoBehaviour
 {
     public GameObject Target = null;
+    public bool TargetActivePlayer = false;
+    public bool TargetCamera = false;
+
     public Vector3 Scale = new Vector3(1, 1, 1);
-    private Vector3 lastScrollerPosition;
-    private Vector3 lastSelfPosition;
+    private Vector3 _lastScrollerPosition;
+    private Vector3 _lastSelfPosition;
 
-    private bool hasStarted = false;
+    private bool _hasStarted = false;
 
-    // Use this for initialization
     void Start()
     {
-//        if (Scroller != null)
-//        {
-//            lastSelfPosition = gameObject.transform.localPosition;
-//            lastScrollerPosition = Scroller.transform.localPosition;
-//        }
+
     }
     
-    // Update is called once per frame
     void LateUpdate()
     {
+        if (TargetActivePlayer)
+        {
+            Target = MainModel.Instance.ActivePlayer.GameObject;
+        }
+
+        if (TargetCamera)
+        {
+            Target = MainModel.Instance.CameraModel.GameObject;
+        }
+
         if (Target != null)
         {
-            // TODO: Scale change
-
             // Use change since last
-            if (hasStarted)
+            if (_hasStarted)
             {
-                var selfChange = gameObject.transform.localPosition - lastSelfPosition;
-                var scrollerChange = Target.transform.localPosition - lastScrollerPosition;
+                var selfChange = gameObject.transform.localPosition - _lastSelfPosition;
+                var scrollerChange = Target.transform.localPosition - _lastScrollerPosition;
 
                 var scaledChange = Vector3.Scale(scrollerChange, Scale);
 
@@ -40,9 +45,9 @@ public class Following : MonoBehaviour
                 gameObject.transform.localPosition += diff;
             }
 
-            lastSelfPosition = gameObject.transform.localPosition;
-            lastScrollerPosition = Target.transform.localPosition;
-            hasStarted = true;
+            _lastSelfPosition = gameObject.transform.localPosition;
+            _lastScrollerPosition = Target.transform.localPosition;
+            _hasStarted = true;
         }
     }
 }

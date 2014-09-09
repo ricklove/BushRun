@@ -2983,6 +2983,7 @@ GameObject:
   - 4: {fileID: 118341189}
   - 212: {fileID: 118341192}
   - 114: {fileID: 118341190}
+  - 114: {fileID: 118341191}
   m_Layer: 8
   m_Name: background04
   m_TagString: Untagged
@@ -3014,7 +3015,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: .600000024, y: .100000001, z: 1}
+--- !u!114 &118341191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118341188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: 8cd0140754022e54884bb2cd52b0fb88, type: 3}
+  - {fileID: 21300000, guid: 5c51bb9af5906ee47af6b926dc4eca3e, type: 3}
 --- !u!212 &118341192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4356,6 +4374,7 @@ GameObject:
   - 4: {fileID: 170179224}
   - 212: {fileID: 170179227}
   - 114: {fileID: 170179225}
+  - 114: {fileID: 170179226}
   m_Layer: 8
   m_Name: background02
   m_TagString: Untagged
@@ -4387,7 +4406,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: .800000012, y: .200000003, z: 1}
+--- !u!114 &170179226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 170179223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: 228449fa0b55b5044b9393cae99a70f7, type: 3}
+  - {fileID: 21300000, guid: b8dc84ce01a9c8e449c8638b09b8c485, type: 3}
 --- !u!212 &170179227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11431,6 +11467,7 @@ GameObject:
   - 4: {fileID: 478316959}
   - 212: {fileID: 478316962}
   - 114: {fileID: 478316960}
+  - 114: {fileID: 478316961}
   m_Layer: 8
   m_Name: background01
   m_TagString: Untagged
@@ -11462,7 +11499,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: .800000012, y: .200000003, z: 1}
+--- !u!114 &478316961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 478316958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: 2ee5d5af8f4b60a4ca97c9f43c593906, type: 3}
 --- !u!212 &478316962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26530,6 +26583,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1137661382}
+  - 114: {fileID: 1137661383}
   m_Layer: 0
   m_Name: BackgroundScroller
   m_TagString: Untagged
@@ -26549,6 +26603,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1194190412}
   m_RootOrder: 1
+--- !u!114 &1137661383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1137661381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5103f774a7da34ca76ce1e4965b163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  TargetActivePlayer: 0
+  TargetCamera: 1
+  Scale: {x: 1, y: 1, z: 1}
 --- !u!1 &1139597822
 GameObject:
   m_ObjectHideFlags: 0
@@ -31837,6 +31906,7 @@ GameObject:
   - 4: {fileID: 1339029935}
   - 212: {fileID: 1339029938}
   - 114: {fileID: 1339029936}
+  - 114: {fileID: 1339029937}
   m_Layer: 8
   m_Name: background05
   m_TagString: Untagged
@@ -31868,7 +31938,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: 0, y: 0, z: 1}
+--- !u!114 &1339029937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1339029934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: a3c9619a27ec673499bdf6d9fa36d513, type: 3}
+  - {fileID: 21300000, guid: 9643722257ac93f468c0791b8a53a66e, type: 3}
 --- !u!212 &1339029938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34693,6 +34780,7 @@ GameObject:
   - 4: {fileID: 1464473759}
   - 212: {fileID: 1464473758}
   - 114: {fileID: 1464473756}
+  - 114: {fileID: 1464473757}
   m_Layer: 8
   m_Name: background03
   m_TagString: Untagged
@@ -34712,7 +34800,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: .699999988, y: .150000006, z: 1}
+--- !u!114 &1464473757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1464473755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: e46602984a1a04848bfa1623facc4e70, type: 3}
+  - {fileID: 21300000, guid: b923b329faddca34c807ffdb9ba3b048, type: 3}
 --- !u!212 &1464473758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -45556,6 +45661,7 @@ GameObject:
   - 4: {fileID: 1981279189}
   - 212: {fileID: 1981279192}
   - 114: {fileID: 1981279190}
+  - 114: {fileID: 1981279191}
   m_Layer: 8
   m_Name: ground
   m_TagString: Untagged
@@ -45587,7 +45693,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 1137661381}
+  TargetActivePlayer: 0
+  TargetCamera: 0
   Scale: {x: 0, y: 0, z: 1}
+--- !u!114 &1981279191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1981279188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250c10a777c6fee47b2eed97b5874f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TileDirection: 1
+  tileSprites:
+  - {fileID: 21300000, guid: ebe3c9118a27447448d1540e2c3c5de9, type: 3}
 --- !u!212 &1981279192
 SpriteRenderer:
   m_ObjectHideFlags: 0

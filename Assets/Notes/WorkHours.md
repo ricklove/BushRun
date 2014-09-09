@@ -192,17 +192,24 @@ Create BushRun to be used for Multiple Choice
 
 - Fix backward movement (rotate instead of scale)
 
-
-
-# TODO
-
+### 4:24-5:17
 
 - Fix Background tiling
+- Fix Parallax
+- Fix movement when dead
+- Fix resurrect transition
+- Prevent multiple clicks
+
+### 5:18-
+
+# TODO
 
 - Go back to character selection
 - Display health and progress
 
 - Improve subject (create wrong answers)
+
+- Fix Background tiling (Missing Tile Bug)
 
 - Respond to Choices
 

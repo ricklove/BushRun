@@ -103,7 +103,7 @@ partial class GameController
 
             };
 
-            c.ChoiceCallback = choiceCallback;
+            c.ChoiceCallback = OnlyOnce(choiceCallback);
 
         }
 
@@ -120,6 +120,20 @@ partial class GameController
         yield return new WaitForSeconds(delayTime);
         doAction();
         yield return 0;
+    }
+
+    public static Action OnlyOnce(Action doAction)
+    {
+        var hasDone = false;
+
+        return () =>
+        {
+            if (!hasDone)
+            {
+                hasDone = true;
+                doAction();
+            }
+        };
     }
 
 
