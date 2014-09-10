@@ -9,6 +9,23 @@ class PlayerSelectionController : ScreenControllerBase
     private GameObject _playerPrefab;
     private float _timeToMove = 0;
 
+    private GameObject _forwardButton;
+    //private Vector3 _forwardButtonInitialPosition;
+
+    void Start()
+    {
+        _forwardButton = transform.FindChild("ButtonForward").gameObject;
+        _forwardButton.GetComponent<Clickable>().MouseDownCallback = () =>
+        {
+            if (MainModel.Instance.ActivePlayer != null)
+            {
+                MainModel.Instance.ScreenState = ScreenState.LevelSelection;
+            }
+        };
+
+        //_forwardButtonInitialPosition = _forwardButton.transform.localPosition;
+    }
+
     protected override ScreenState ScreenState
     {
         get { return ScreenState.PlayerSelection; }
@@ -56,42 +73,59 @@ class PlayerSelectionController : ScreenControllerBase
 
             pLocal.SelectCallback = () =>
             {
-                if (model.ActivePlayer != pLocal)
-                {
-                    model.ActivePlayer.ShouldShowSelectionBox = false;
-                    model.ActivePlayer.PlayerState = PlayerState.Hurt;
-                    model.ActivePlayer = pLocal;
-                    model.ActivePlayer.ShouldShowSelectionBox = true;
-                    model.ActivePlayer.PlayerState = PlayerState.Happy;
-                }
-                else
-                {
-                    model.ScreenState = ScreenState.LevelSelection;
-                }
+                //if (model.ActivePlayer != pLocal)
+                //{
+                model.ActivePlayer.ShouldShowSelectionBox = false;
+                model.ActivePlayer.PlayerState = PlayerState.Hurt;
+                model.ActivePlayer = pLocal;
+                model.ActivePlayer.ShouldShowSelectionBox = true;
+                model.ActivePlayer.PlayerState = PlayerState.Happy;
+                //}
+
+                _forwardButton.SetActive(true);
             };
         }
 
         // Move players to good position
         PositionPlayers(model.AvailablePlayers);
 
-        if (model.ActivePlayer == null)
-        {
-            model.ActivePlayer = model.AvailablePlayers[0];
-        }
 
-        model.ActivePlayer.ShouldShowSelectionBox = true;
+        // Auto select
+        var autoSelect = false;
+
+        if (autoSelect)
+        {
+            if (MainModel.Instance.ActivePlayer != null)
+            {
+                _forwardButton.SetActive(true);
+            }
+
+            if (model.ActivePlayer == null)
+            {
+                model.ActivePlayer = model.AvailablePlayers[0];
+            }
+
+            model.ActivePlayer.ShouldShowSelectionBox = true;
+        }
+        else
+        {
+            _forwardButton.SetActive(false);
+        }
     }
 
     protected override void CloseScreen()
     {
         var model = MainModel.Instance;
 
-        //foreach (var p in model.AvailablePlayers)
-        //{
-        //    p.ShouldShowSelectionBox = false;
-        //    p.SelectCallback = null;
-        //    p.SpeedRatio = 1f;
-        //}
+        foreach (var p in model.AvailablePlayers)
+        {
+            if (p != model.ActivePlayer)
+            {
+                p.TargetX -= 10f;
+            }
+        }
+
+        _forwardButton.SetActive(false);
     }
 
     protected override void UpdateScreen()

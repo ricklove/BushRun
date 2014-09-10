@@ -80,9 +80,9 @@ partial class GameController : ScreenControllerBase
     void RespondToLevelComplete()
     {
         var model = MainModel.Instance;
-        model.ScreenState = ScreenState.LevelSelection;
-        //LevelMapController.Instance.SetLevelStars
         var mapLevel = model.ActiveLevel + 1;
+
+        // Set stars
         var pPref = new PlayerPrefsMapProgressManager();
         var oldStars = pPref.LoadLevelStarsCount(mapLevel);
         var stars = Mathf.CeilToInt(model.ActivePlayer.Health * 3.0f);
@@ -92,16 +92,13 @@ partial class GameController : ScreenControllerBase
             pPref.SaveLevelStarsCount(mapLevel, stars);
         }
 
-        ResetPlayer(() => { });
+        model.ChoicesModel.Choices.Clear();
 
-        //model.ActiveLevel++;
+        ResetPlayer(() => {
+            // TODO: Show report
 
-        //if (model.ActiveLevel >= LEVELCOUNT)
-        //{
-        //    model.ActiveLevel = 0;
-        //}
-
-        //GotoNextProblem();
+            model.ScreenState = ScreenState.LevelSelection;
+        });
     }
 
     void RespondToAnswerImmediate(bool isCorrect)

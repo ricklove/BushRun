@@ -236,6 +236,9 @@ Create BushRun to be used for Multiple Choice
 
 - Fix scene changing
 
+### 3:58-5:20
+
+- Add back and forward buttons
 
 
 # TODO

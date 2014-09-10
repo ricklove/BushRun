@@ -12,6 +12,8 @@ class LevelSelectionController : ScreenControllerBase
     private GameObject _signCamera;
     private GameObject _levelMap;
     private GameObject _character;
+    private GameObject _forwardButton;
+    private GameObject _backButton;
 
     private float _initialSignX;
 
@@ -35,10 +37,21 @@ class LevelSelectionController : ScreenControllerBase
         {
             if (_isOpen)
             {
-                var model = MainModel.Instance;
-                model.ActiveLevel = e.Number - 1;
-                model.ScreenState = ScreenState.Game;
+                MainModel.Instance.ActiveLevel = e.Number - 1;
             }
+        };
+
+        _forwardButton = _sign.transform.FindChild("ButtonForward").gameObject;
+        _forwardButton.GetComponent<Clickable>().MouseDownCallback = () =>
+        {
+            MainModel.Instance.ActiveLevel = LevelsMap.GetLevelNumber() - 1;
+            MainModel.Instance.ScreenState = ScreenState.Game;
+        };
+
+        _backButton = _sign.transform.FindChild("ButtonBack").gameObject;
+        _backButton.GetComponent<Clickable>().MouseDownCallback = () =>
+        {
+            GoBackToPlayerSelection();
         };
     }
 
@@ -82,23 +95,58 @@ class LevelSelectionController : ScreenControllerBase
 
 
         // Reset levels map
-        _levelMap.GetComponent<LevelsMap>().Start();
+        var levelsMap = _levelMap.GetComponent<LevelsMap>();
+        levelsMap.Start();
+        LevelsMap.GoToLevel(model.ActiveLevel + 1);
+
 
 
         // Allow go back
         //model.ActivePlayer.ShouldShowSelectionBox = true;
-        model.ActivePlayer.SelectCallback = () =>
-        {
-            model.ActivePlayer.TargetX = signPosition - signPositionFromCamera;
-            model.CameraModel.TargetSize = null;
-            model.CameraModel.ShouldFollowActivePlayer = true;
-            model.ActivePlayer.SelectCallback = null;
+        //model.ActivePlayer.SelectCallback = () =>
+        //{
+        //    model.ActivePlayer.SelectCallback = null;
 
-            this.StartCoroutineWithDelay(() =>
+        //    GoBackToPlayerSelection(model, signPositionFromCamera);
+        //};
+    }
+
+    private void GoBackToPlayerSelection()
+    {
+        MainModel model = MainModel.Instance;
+
+        model.ActivePlayer.TargetX -= 10f;
+        model.CameraModel.TargetSize = null;
+        model.CameraModel.ShouldFollowActivePlayer = true;
+        model.CameraModel.ActivePlayerXOffset = 0f;
+        model.CameraModel.TimeToMove = 0.5f;
+
+        var i = 0;
+
+        foreach (var p in model.AvailablePlayers)
+        {
+            if (p != model.ActivePlayer)
             {
-                model.ScreenState = ScreenState.PlayerSelection;
-            }, 1f);
-        };
+                p.TargetX = model.ActivePlayer.TargetX - 2f - 0.5f * i;
+
+                if (p.GameObject.transform.position.x < p.TargetX - 10f)
+                {
+                    p.GameObject.transform.position = new Vector3(p.TargetX - 10f, p.GameObject.transform.position.y, p.GameObject.transform.position.z);
+                }
+
+                i++;
+            }
+        }
+
+        this.StartCoroutineWithDelay(() =>
+        {
+            //model.ActivePlayer.TargetX = model.ActivePlayer.GameObject.transform.position.x;
+        }, 3f);
+
+        this.StartCoroutineWithDelay(() =>
+        {
+            model.ScreenState = ScreenState.PlayerSelection;
+        }, 5f);
     }
 
     protected override void CloseScreen()
@@ -111,7 +159,7 @@ class LevelSelectionController : ScreenControllerBase
 
     protected override void UpdateScreen()
     {
-        
+
     }
 
     IEnumerator ZoomIntoSign()
