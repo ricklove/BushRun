@@ -4,6 +4,11 @@ using System.Linq;
 
 public static class Randomizer
 {
+    public static List<T> RandomizeOrder<T>(this IEnumerable<T> originalItems)
+    {
+        return RandomizeOrder(originalItems.ToList());
+    }
+
     public static List<T> RandomizeOrder<T>(this IList<T> originalItems)
     {
         // Randomize order

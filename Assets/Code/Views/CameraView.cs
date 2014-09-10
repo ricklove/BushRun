@@ -73,30 +73,47 @@ public class CameraView : MonoBehaviour
 
     IEnumerator MoveToTarget(float? timeID)
     {
-        while (Time.time < _timeAtMoveFinish)
+        if (_timeAtMoveFinish.HasValue)
         {
-            var timeLeft = _timeAtMoveFinish.Value - Time.time;
-
-            var diff = _targetPosition.Value - transform.position;
-            var diffInDelta = diff * Time.deltaTime / timeLeft;
-
-            transform.position += diffInDelta;
-
-            var diffSize = _targetSize.Value - GetComponent<Camera>().orthographicSize;
-            var diffSizeInDelta = diffSize * Time.deltaTime / timeLeft;
-            GetComponent<Camera>().orthographicSize += diffSizeInDelta;
-
-            yield return 0;
-
-            if (timeID != _timeAtMoveFinish)
+            while (Time.time < _timeAtMoveFinish)
             {
-                yield break;
+                var timeLeft = _timeAtMoveFinish.Value - Time.time;
+
+                if (_targetPosition.HasValue)
+                {
+                    var diff = _targetPosition.Value - transform.position;
+                    var diffInDelta = diff * Time.deltaTime / timeLeft;
+
+                    transform.position += diffInDelta;
+                }
+
+                if (_targetSize.HasValue)
+                {
+                    var diffSize = _targetSize.Value - GetComponent<Camera>().orthographicSize;
+                    var diffSizeInDelta = diffSize * Time.deltaTime / timeLeft;
+                    GetComponent<Camera>().orthographicSize += diffSizeInDelta;
+                }
+
+                yield return 0;
+
+                if (timeID != _timeAtMoveFinish)
+                {
+                    yield break;
+                }
             }
         }
 
-        transform.position = _targetPosition.Value;
-        GetComponent<Camera>().orthographicSize = _targetSize.Value;
+        if (_targetPosition.HasValue)
+        {
+            transform.position = _targetPosition.Value;
+        }
+
+        if (_targetSize.HasValue)
+        {
+            GetComponent<Camera>().orthographicSize = _targetSize.Value;
+        }
     }
+
 }
 
 public interface ICameraViewModel

@@ -1,0 +1,507 @@
+an	un aan aen ain aon aun ean een ein 
+ban	ben ba bon baan baen bain baon baun bein 
+and	und ond aand aend aind aond aund eand eend 
+band	bund baand baend baind baond baund beand beend beind 
+end	ond endd eend ennd und aand aend aind 
+bend	bbend bendd beend bennd bund baand baend baind baond 
+den	de dden deen denn dan daan daen dain 
+men	mon meen mmen menn nmen mpen maan maen 
+pump	pum pummp ppump pumpp puump punmp prump pamp 
+bump	bbump bummp bumpp buump bunmp brump bamp 
+dump	dum ddump dummp dumpp duump dunmp drump demp 
+lump	llump lum lummp lumpp luump lunmp lrump 
+test	ttest testt tost teest tesst tect tesct 
+best	bestt bost bbest beest besst bect besct bext 
+rest	rrest restt rost reest resst rect resct 
+pest	pestt peest ppest pesst pect pesct pext pezt 
+rap	rrap rup rop raap raep raip raop raup reep 
+trap	trrap ttrap trep trup trop traap traep traip 
+tramp	trramp ttramp tremp trimp traamp traemp traimp traomp 
+rat	rrat ratt ret rit raat raet rait raot 
+rib	rrib ribb riib reib wrib rinb rab reb 
+rid	rrid ridd riid reid wrid rud raad raed raod 
+rim	rrim riim rimm reim wrim rinm rimp rom 
+drip	drrip ddrip driip dripp dreip dwrip drinp drap drep 
+dust	dustt ddust dusst duust dusct drust duzt dast 
+rust	rrust rustt ust russt ruust ruct rusct 
+trust	trrust ttrust trustt tust trusst truust truct 
+must	mustt mmust musst muust muct musct nmust mpust 
+gag	geg gug gog gaag gaeg gaig gaog gaug 
+bag	baag baeg baig baog baug beag beeg beig beog beug 
+brag	brrag breg brug brog braag braeg braig braog 
+nag	nig nug nog naag naeg naig naog naug 
+did	ddid didd diid deid dind ded dod daad daed 
+dim	ddim diim dimm deim dinm dimp dem dom 
+dip	ddip diip dipp deip dinp dap dep dop 
+din	di ddin diin dinn dein dan daan daen 
+rub	rrub ub rubb ruub wrub rab runb 
+shrub	shrrub shub shrubb shhrub sshrub shruub chrub schrub 
+brush	brrush bbrush brushh brussh bruush bruch brusch bwrush 
+rush	rrush ush rushh russh ruush ruch rusch wrush 
+dot	dott ddot doot doet det dont dout duot dat 
+rot	rrot rott roet wrot ret ront ruot 
+trot	trrot ttrot trott troot troet twrot tret 
+pot	pott poot ppot pont puot paat paet pait paot 
+bet	bett bbet baat baet baot baut beit beot beut 
+met	mett mmet nmet mpet mit ment mut maat 
+pet	pett peet ppet paat paet pait paot paut 
+net	nett neet nnet nat nent naat naet nait 
+tent	ttent tentt tont tet teent tennt tnt tant 
+bent	bentt bont bbent beent bennt bant bint 
+rent	rrent rentt ront ret reent rennt wrent rint 
+sent	sentt sont seent sennt ssent zent sant sint 
+tint	ttint tintt tiint tinnt teint tnt tant 
+mint	mintt mit miint mmint minnt meint nmint mpint 
+lint	llint lintt liint linnt leint lant 
+hint	hintt hhint hiint hinnt heint hant hent 
+it	itt iit eit et ot ut aat aet 
+bit	bitt bbit biit beit bint baat baet baot baut 
+fit	fitt ffit fiit feit veit fint fet fot 
+hit	hitt hhit hiit heit het haat haet hait 
+vast	vastt vist vust vost vaast vaest vaist vaost 
+mast	mastt mest maast maest maist maost maust meast meest 
+past	pastt pist pust paast paest paist paost paust 
+fast	fastt fust fost faast faest faist faost faust feest 
+clad	slad sslad sclad cllad cled clid clud 
+clam	sslam sclam cllam clem clim clum clom 
+clap	sslap sclap cllap clep clup claap claep claip 
+clamp	slamp sslamp sclamp cllamp clemp climp claamp claemp 
+lap	llap lep lup laap laep laip laop laup 
+flap	fllap flep flup flaap flaep flaip flaop flaup 
+lamp	llamp lemp lomp laamp laemp laimp laomp laump leamp 
+plan	pllan plen plin plun pla plon plaan 
+dug	ddug dugg duug dudg daag daeg daig daog daug deag 
+drug	drrug ddrug drugg druug dwrug drudg drung dreg 
+rug	rrug ug rugg ruug wrug rudg rog raag 
+mug	mugg mmug muug nmug mpug mrug mudg mig mog maag 
+belt	bellt beltt bbelt beelt blet balt bilt benlt 
+felt	fellt feltt folt feelt ffelt flet veelt falt 
+melt	mellt meltt meelt mmelt mlet nmelt mpelt menlt 
+pelt	pellt peltt polt peelt ppelt plet palt pilt 
+inch	insh inssh insch ich incch inchh iinch innch einch 
+chin	sshin schin cchin chhin chiin chinn chein chan chen 
+finch	finsh finssh finsch fich fincch ffinch finchh fiinch finnch feinch 
+pinch	pinsh pinssh pinsch pich pincch pinchh piinch pinnch ppinch peinch 
+bound	buond boud bbound boundd bounnd boound bouund boeund borund boand 
+round	ruond rond rround roud roundd rounnd roound rouund roeund 
+pound	puond poud poundd pounnd poound ppound pouund poeund porund poand 
+mound	muond mond moud moundd mmound mounnd moound mouund moeund nmound 
+crab	srab ssrab scrab crrab creb crub crob craab 
+cram	sram ssram crram crem crim crum crom 
+cramp	sramp ssramp scramp crramp cremp crump cromp craamp 
+scrap	ssrap sssrap sscrap scrrap screp scrup scrop scraap 
+bunch	bunsh bunssh bunsch buch bbunch buncch bunchh bunnch buunch banch 
+munch	munsh munssh munsch muncch munchh mmunch munnch muunch nmunch mpunch 
+lunch	lunsh lunssh lunsch llunch luch luncch lunchh lunnch luunch 
+punch	punsh punssh punsch puch puncch punchh punnch ppunch puunch prunch 
+lot	llot lott loet lont luot lut laat laet 
+blot	bllot blott bblot bloot bloet blet blont blout 
+clot	sslot sclot cllot clott cclot cloot cloet clet 
+plot	pllot plott ploot pplot ploet plet plont plout 
+lag	llag lig laag laeg laig laog laug leag leeg 
+flag	fllag fleg flig flug flaag flaeg flaig 
+glad	gllad gled glid glud glod glaad glaed 
+gland	glland glend glind glund glond glaand glaend 
+stab	sttab steb stib stob staab staeb staib staob 
+stand	sttand stend stind stund stad stond staand 
+stamp	sttamp stam stemp stimp staamp staemp staimp staomp 
+last	llast lastt laast laest laist laost laust leest leist leost 
+cap	ssap scap cep cip caap caep caip caop 
+camp	samp ssamp cemp cimp cump caamp caemp 
+can	san ssan cen cin cun caan caen 
+cat	ssat catt cet caat caet cait caot caut ceat 
+sped	spod spedd spped ssped cped scped zped spad spid 
+spend	spond spendd speend spennd sppend sspend cpend scpend zpend 
+spent	spentt spont spet speent spennt sppent sspent cpent 
+pets	petts peets ppets petss petc petsc petz pents 
+van	ven vin vun va von vaan vaen 
+ran	rran ren rin ra ron raan raen raon 
+man	mon maan maen maon maun meen mein meon meun mian 
+pan	pon paan paen paon paun pean pein peun pian pien 
+led	eld lled lod ledd leed lud laad laed 
+bled	beld blled blod bbled bledd blad blid 
+fled	feld flled flod fledd fleed ffled veled flad flid 
+sled	seld slled slod sledd sleed ssled cled scled 
+trump	trrump ttrump trum tump trummp trumpp truump twrump 
+plump	pllump plummp pplump plumpp pluump plunmp plrump plamp 
+hump	hhump hummp humpp huump hunmp hrump hamp 
+stump	sttump stum stummp stumpp sstump stuump ctump sctump 
+in	iin ein un aan aen ain aon aun ean een 
+fin	fi ffin fiin finn fein fon faan faen faon 
+pin	piin pinn ppin pein pon paan paen paon paun 
+tin	ttin tiin tinn tein taan taen tain taon 
+rig	rrig rigg riig reig wrig ridg rog raag raeg 
+grin	grrin gri ggrin griin grinn grein gwrin dgrin 
+grit	grrit gritt ggrit griit greit gwrit dgrit grint 
+trim	trrim ttrim triim trimm treim twrim trinm trimp 
+drift	drrift driftt ddrift drifft driift dreift dwrift drivet 
+gift	giftt gifft ggift giift geift givet dgift ginft gaft 
+lift	llift liftt lifft liift leift livet linft laft 
+thrift	thrrift tthrift thriftt thrifft thhrift thriift threift 
+nip	niip nnip nipp neip ninp nep nop nup naap 
+lip	llip liip lipp leip linp lep lup laap 
+tip	ttip tiip tipp teip tinp tep tup taap 
+trip	trrip ttrip triip tripp treip twrip trinp trep 
+mount	muont mont mountt mout mmount mounnt moount mouunt moeunt 
+count	cuont sount ssount scount countt cout ccount counnt coount 
+county	cuonty conty sounty ssounty scounty countty couty ccounty counnty coounty 
+bounty	buonty bonty bountty bouty bbounty bounnty boounty bouunty bountyy 
+rob	rrob robb roob roeb wrob reb ronb roub ruob 
+throb	thrrob tthrob throbb thhrob throob throeb thwrob threb 
+rod	rrod rodd roed wrod rond roud ruod rud raad 
+drop	drrop ddrop dropp droep dwrop drep dronp droup druop 
+get	gett geet gget dget gat gaat gaet gaot 
+let	elt llet lett leet lut laat laet lait 
+fret	frret frett frot freet ffret fwret veret frit 
+set	seet sset cet scet zet sut saat saet sait 
+vest	vestt fst vost veest vesst vvest vect vesct 
+nest	nestt nost neest nnest nesst nect nesct nezt 
+test	ttest testt tost teest tesst tect tesct 
+best	bestt bost bbest beest besst bect besct bext 
+bun	bbun bunn buun brun ben bon baan baen bain 
+fun	fu ffun funn fuun frun veun fon faan faen 
+fund	fud fundd ffund funnd fuund frund veund fand 
+gun	gu ggun gunn guun grun dgun gan gon 
+gust	gustt ggust gusst guust guct gusct grust dgust 
+thrust	thrrust tthrust thrustt thust thhrust thrusst thruust 
+rust	rrust rustt ust russt ruust ruct rusct 
+trust	trrust ttrust trustt tust trusst truust truct 
+not	nott nnot noot noet nont nout nuot nat naat 
+got	gott ggot goot goet dgot gont guot gat gaat 
+hot	hott hhot hoet het hont hout huot haat 
+shot	shott shhot sshot shoet chot schot zhot shet 
+land	lland lind lund lond laand laend laind laond 
+plant	pllant plantt plent plint plunt plont plaant 
+plan	pllan plen plin plun pla plon plaan 
+gland	glland glend glind glund glond glaand glaend 
+map	mep mip mup maap maep maip maop 
+nap	nep nup nop naap naep naip naop naup 
+tap	ttap tep tup taap taep taip taop taup 
+rap	rrap rup rop raap raep raip raop raup reep 
+found	fuond foud foundd ffound founnd foound fouund foeund forund veound 
+hound	huond hond houd houndd hhound hounnd hoound houund hoeund horund 
+sound	suond sond soud soundd sounnd soound ssound souund soeund cound 
+ground	gruond grond grround groud groundd gground grounnd groound grouund 
+ten	tten te tenn taan taen tain taon taun 
+tenth	ttenth tentth tonth teth teenth tenthh tennth tnth 
+tent	ttent tentt tont tet teent tennt tnt tant 
+blast	bllast blastt blest blist blust blost blaast 
+last	llast lastt laast laest laist laost laust leest leist leost 
+mast	mastt mest maast maest maist maost maust meast meest 
+past	pastt pist pust paast paest paist paost paust 
+tan	ttan taan taen tain taon taun tean tein teon teun 
+fan	fon faan faen faon fean feen fein feon feun fian 
+brand	brrand brend brind brund brond braand braend 
+an	un aan aen ain aon aun ean een ein 
+plum	pllum plumm pplum pluum plunm plrum plam 
+lump	llump lum lummp lumpp luump lunmp lrump 
+plump	pllump plummp pplump plumpp pluump plunmp plrump plamp 
+ring	rring ringg riing rinng reing rindg reng 
+bring	brring bbring bringg briing brinng breing bwring brindg 
+spring	sprring springg spriing sprinng sppring sspring spreing cpring 
+string	strring sttring strig stringg striing strinng sstring streing 
+wit	witt wiit wwit weit wint wat wut waat 
+twig	ttwig twigg twiig twwig tweig twidg twing twag tweg 
+twist	ttwist twistt twiist twisst twwist tweist twict 
+swift	swiftt swifft swiift sswift swwift sweift cwift scwift 
+send	sond sed sendd seend sennd ssend cend scend zend 
+blend	belnd bllend bblend blendd bleend blennd blund blaand 
+end	ond endd eend ennd und aand aend aind 
+bend	bbend bendd beend bennd bund baand baend baind baond 
+east	ast eastt eest eist eust oast eost 
+beast	beastt beest beist beust beost beaast beaest 
+feast	feastt feest feist feust foast feost feaast 
+least	elast lleast leastt leest leist leust loast leost 
+print	prrint printt prit priint prinnt pprint preint pwrint 
+tint	ttint tintt tiint tinnt teint tnt tant 
+mint	mintt mit miint mmint minnt meint nmint mpint 
+lint	llint lintt liint linnt leint lant 
+dandy	dendy dindy dundy dady dondy daandy daendy 
+handy	hendy hindy hundy hady hondy haandy haendy 
+hunch	hunsh hunssh hunsch huch huncch hhunch hunchh hunnch huunch hrunch 
+bunch	bunsh bunssh bunsch buch bbunch buncch bunchh bunnch buunch banch 
+munch	munsh munssh munsch muncch munchh mmunch munnch muunch nmunch mpunch 
+lunch	lunsh lunssh lunsch llunch luch luncch lunchh lunnch luunch 
+eat	eatt eet eit eut eot eaat eaet 
+beat	beatt beit beut beot beaat beaet beait beaot 
+treat	trat trreat ttreat treatt treet treit treut troat 
+meat	meatt meit meut meot meaat meaet meait meaot 
+stint	sttint stintt stit stiint stinnt sstint steint ctint 
+midst	midstt middst miidst mmidst midsst meidst midct midsct 
+strip	strrip sttrip striip stripp sstrip streip ctrip 
+list	llist listt liist lisst leist lict lisct 
+each	ach eash eassh easch eech eich euch oach 
+reach	rach reash reassh reasch rreach reech reich reuch 
+peach	pach peash peassh peasch peech peich peuch peoch 
+preach	prach preash preassh preasch prreach preech preich preuch proach 
+bang	beng bing baang baeng baing baong baung beang 
+rang	rrang reng rong raang raeng raing raong raung reang 
+fang	feng fing fung fong faang faeng faing 
+hang	heng hong haang haeng haing haong haung heang heeng 
+dream	drream dreem dreim dreum droam dreom dreaam 
+cream	sream ssream crream creem creim creum croam creom 
+scream	ssream sssream sscream scrream screem screim screum scroam 
+stream	stram strream sttream streem streim streum stroam streom 
+pop	ppop popp poep ponp poup puop paap paep paip paop 
+mop	mmop moop mopp moep nmop mpop mep monp moup muop 
+hop	hhop hopp hoep honp houp huop hup haap haep haip 
+chop	sshop schop cchop chhop choop chopp choep chep chonp choup 
+big	bbig bigg biig beig bidg bing baag baeg baig baog 
+dig	ddig digg diig deig didg daag daeg daig daog daug 
+fig	ffig figg fiig feig veig fidg fing feg faag 
+pig	pigg piig ppig peig pidg pag pog paag paeg 
+sad	sed sid sud saad saed saod saud 
+sap	sep saap saep saip saop saup seap seip seop 
+sand	sind sund sond saand saend saind saond saund 
+sat	satt sut saat saet sait saot saut seet seit 
+wed	wod wedd wwed wid wud waad waed waid 
+wet	wett weet wwet wat wut waat waet waot 
+went	wentt weent wennt wwent wint wunt waant 
+west	westt wost wesst wwest wect wesct wext wezt 
+had	hed hud haad haed haid haod haud heid 
+hand	hend hund hond haand haend haind haond haund 
+ham	hom haam haem haim haom haum heam heem heim heom 
+hag	heg hig haag haeg haig haog haug heag 
+ranch	ransh ranssh ransch rranch rench rinch runch rach 
+branch	bransh branssh bransch brranch brench brinch brach bronch 
+blanch	blansh blanssh blansch bllanch blinch blunch blach blonch 
+lid	llid lidd liid leid lind lod lud laad laed 
+limp	llimp lim liimp limmp limpp leimp linmp 
+blimp	bllimp blim bblimp bliimp blimmp blimpp bleimp blinmp 
+lip	llip liip lipp leip linp lep lup laap 
+run	rrun un ru runn ruun wrun ren 
+drum	drrum dum ddrum drumm druum dwrum drunm drump 
+rut	rrut rutt ut ruut wrut ret rit 
+thrush	thrrush tthrush thush thhrush thrushh thrussh thruush thruch 
+bed	bbed bedd beed baad baed baid baod beid beod 
+red	rred redd wred rud raad raed raod raud reid 
+fed	fod fedd ffed veed fid fud faad faed 
+led	eld lled lod ledd leed lud laad laed 
+romp	rromp rom rommp roomp rompp roemp wromp ronmp 
+frog	frrog ffrog frogg froog froeg fwrog verog frodg freg 
+frond	frrond frod frondd ffrond fronnd froond froend fwrond verond 
+rod	rrod rodd roed wrod rond roud ruod rud raad 
+clan	slan sslan sclan cllan clen clin clun cla 
+clasp	slasp sslasp sclasp cllasp clesp clisp clusp closp 
+clap	sslap sclap cllap clep clup claap claep claip 
+clad	slad sslad sclad cllad cled clid clud 
+bean	bein beun boan bea beon beaan beaen beain 
+dean	dan deen dein deun doan dea deon 
+mean	meen mein meun mea meon meaan meaen 
+cot	ssot scot cott ccot coet cet cout cuot 
+spot	spott spoot sppot sspot spoet cpot scpot zpot 
+slot	sllot slott sloot sslot sloet sclot zlot 
+lot	llot lott loet lont luot lut laat laet 
+pug	pugg ppug puug prug pudg pag pung pog paag 
+tug	ttug tugg tuug tudg tung teg tig taag taeg 
+shrug	shrrug shug shrugg shhrug sshrug shruug chrug schrug 
+rug	rrug ug rugg ruug wrug rudg rog raag 
+old	olld oldd oold oeld eld onld ould uold ald 
+mold	molld moldd mmold moold moeld nmold mpold monld mould 
+sold	solld soldd soold ssold soeld zold seld sonld 
+gold	golld goldd ggold goold goeld dgold gonld gould guold 
+rain	rrain riin rai roin raain raein raiin raoin rauin 
+brain	brrain brein briin brai broin braain braein braiin 
+grain	grrain grein griin gruin grai graain graein 
+train	trrain ttrain trein triin truin trai troin 
+sit	sitt siit ssit seit scit sint sut saat 
+its	itts iits itss eits itc itsc itz ints 
+spit	spitt spiit sppit sspit speit cpit scpit zpit 
+gush	ggush gushh gussh guush guch gusch grush dgush guzh 
+blush	bllush bblush blushh blussh bluush bluch blusch blrush 
+plush	pllush plushh pplush plussh pluush pluch plusch plrush 
+flush	fllush fflush flushh flussh fluush fluch flusch flrush 
+hum	hhum humm huum hunm hrum hom haam haem haim 
+hut	hutt hhut huut hrut het haat haet hait haot 
+hug	hugg hhug huug hrug hudg heg hig haag haeg haig 
+hush	hhush hushh hussh huush huch husch hrush huzh hunsh 
+saint	saintt seint siint suint sait soint saaint 
+stain	sttain stiin stuin stai stoin staain staein staiin 
+strain	strrain sttrain strein striin struin strai stroin 
+at	att et ut ot aat aet ait aot 
+pat	patt paat paet pait paot paut peet peit peot peut 
+rat	rrat ratt ret rit raat raet rait raot 
+tub	ttub tubb tuub trub tunb teb tib tob taab 
+stunt	sttunt stuntt stut stunnt sstunt stuunt ctunt 
+study	sttudy studdy sstudy stuudy studyy ctudy sctudy strudy 
+tug	ttug tugg tuug tudg tung teg tig taag taeg 
+bolt	bollt boltt bbolt boolt boelt bonlt boult buolt 
+molt	mollt moltt mmolt moolt moelt nmolt mpolt monlt 
+hold	holld holdd hhold hoold hoeld honld hould huold hald 
+old	olld oldd oold oeld eld onld ould uold ald 
+ever	everr efr evor eever eveer evver evar evewr 
+never	neverr nefr nover nevor neever neveer nnever nevver nevar 
+sever	severr sefr sover sevor seever seveer ssever sevver sevar 
+every	everry efry overy evory eevery eveery evvery everyy evary 
+oil	oill oiil ooil oeil eil oinl onil ouil 
+boil	boill bboil boiil booil boeil beil boinl bonil 
+foil	foill ffoil foiil fooil foeil veoil feil foinl 
+broil	brroil broill bbroil broiil brooil broeil bwroil 
+tactic	tastic tactis tasstic tactiss tasctic tactisc ttactic tacttic tectic tictic 
+antic	antiss antisc anttic entic intic untic atic ontic 
+frantic	frantis frantiss frantisc frrantic franttic frentic frintic fruntic fratic 
+tactics	tastics tactiss tasstics tactisss tasctics tactiscs ttactics tacttics tectics tictics 
+aunt	auntt eunt iunt uunt aut ount aaunt 
+taunt	ttaunt tauntt teunt tiunt tuunt tount taaunt 
+haunt	hauntt heunt hiunt huunt haut hount haaunt 
+flaunt	fllaunt flauntt fleunt fliunt fluunt flaut flount 
+heat	heatt heet heit heut hoat heot heaat 
+cheat	sheat ssheat scheat cheatt cheet cheit cheut choat 
+pleat	pelat plleat pleatt pleet pleit pleut ploat pleot 
+eat	eatt eet eit eut eot eaat eaet 
+brandy	brrandy brendy brindy brundy brady brondy braandy 
+sandy	sendy sindy sundy sady sondy saandy saendy 
+dandy	dendy dindy dundy dady dondy daandy daendy 
+pod	podd pood ppod poed ped poud puod pid paad 
+pond	pondd ponnd poond ppond poend puond pand pind pund 
+pop	ppop popp poep ponp poup puop paap paep paip paop 
+river	rriver riverr rifr rivor riveer riiver rivver reiver 
+liver	liverr lliver lifr livor liveer liiver livver leiver 
+silver	silverr sillver silfr silvor silveer siilver ssilver silvver 
+shiver	shiverr shifr shivor shiveer shhiver shiiver sshiver shivver sheiver 
+flinch	flinsh flinssh flinsch fllinch flich flincch fflinch flinchh fliinch 
+inch	insh inssh insch ich incch inchh iinch innch einch 
+finch	finsh finssh finsch fich fincch ffinch finchh fiinch finnch feinch 
+thin	tthin thi thhin thiin thinn thein thon thun 
+in	iin ein un aan aen ain aon aun ean een 
+din	di ddin diin dinn dein dan daan daen 
+fin	fi ffin fiin finn fein fon faan faen faon 
+or	orr oor oer owr onr uor ar ir 
+for	forr ffor foor foer fowr veor fonr fuor faar 
+form	forrm fform formm foorm foerm fowrm fornm formp veorm 
+forth	forrth fortth fforth forthh foorth foerth fowrth veorth 
+bud	bbud budd buud brud bund baad baed baid baod beed 
+but	bbut buut brut baat baet baot baut beit beot beut 
+bun	bbun bunn buun brun ben bon baan baen bain 
+bump	bbump bummp bumpp buump bunmp brump bamp 
+born	borrn bborn bornn boorn boern bowrn bern bonrn bourn 
+thorn	thorrn tthorn thhorn thornn thoorn thoern thowrn thern 
+corn	sorn ssorn corrn ccorn cornn coorn coern cowrn cern 
+north	norrth nortth northh nnorth noorth noerth nowrth nerth 
+out	uot ot outt oout ouut oeut orut eut onut 
+pout	puot poutt poout ppout pouut poeut porut poat peut 
+shout	shuot shoutt shhout shoout sshout shouut shoeut chout 
+flout	fluot flot fllout floutt fflout floout flouut floeut 
+with	witth withh wiith wwith weith winth wath weth 
+width	widtth widdth widthh wiidth wwidth weidth windth wadth wedth 
+wind	wid windd wiind winnd wwind weind wond wund waand 
+windy	widy winddy wiindy winndy wwindy windyy weindy wandy wendy 
+sister	sisterr sistter sistor sisteer siister ssister sisster seister 
+master	masterr mastter mester mastor moster maaster maester maister maoster 
+blister	blisterr bllister blistter blistor bblister blisteer bliister blisster 
+bolster	bolsterr bollster bolstter bolstor bbolster bolsteer boolster bolsster 
+intent	inttent intentt intont intet itent inteent iintent inntent intennt 
+intend	inttend intond inted itend intendd inteend iintend inntend intennd 
+inept	ineptt inopt iept ineept iinept innept ineppt einept inipt 
+integrity	integrrity inttegrity integritty intogrity itegrity inteegrity integgrity iintegrity integriity inntegrity 
+tamper	tamperr ttamper timper tumper tampor tomper taamper taemper 
+hamper	hamperr hamer hemper himper humper hampor homper 
+perhaps	perrhaps perheps perhips perhups porhaps perhops perhaaps 
+persist	perrsist persistt porsist peersist persiist ppersist perssist persisst 
+broth	brroth brotth bbroth brothh brooth broeth bwroth breth 
+froth	frroth frotth ffroth frothh frooth froeth fwroth veroth 
+throng	thrrong tthrong throg throngg thhrong thronng throong throeng 
+prong	prrong prog prongg pronng proong pprong proeng pwrong prondg 
+sing	sig singg siing sinng ssing seing cing scing sindg 
+sling	slling slig slingg sliing slinng ssling sleing scling 
+wing	wingg wiing winng wwing weing windg wang weng 
+swing	swingg swiing swinng sswing swwing sweing cwing scwing swindg 
+fort	forrt fortt ffort foort foert fowrt veort fert 
+forty	forrty fortty fforty foorty fortyy foerty fowrty veorty 
+short	shorrt shortt shhort shoort sshort shoert chort 
+under	underr undor uder undder undeer unnder uunder undar 
+thunder	thunderr tthunder thundor thuder thundder thundeer thhunder thunnder 
+blunder	blunderr bllunder blundor bluder bblunder blundder blundeer blunnder 
+nod	nodd nnod nood noed ned nond noud nuod nad 
+god	godd ggod goed dgod ged gond goud guod gid 
+sod	sodd sood ssod soed scod zod sed sond soud 
+cod	ssod scod ccod codd cood ced cond coud cuod 
+toil	toill ttoil toiil tooil toeil teil toinl 
+soil	soill soiil sooil ssoil soeil scoil zoil 
+spoil	spoill spoiil spooil sppoil sspoil spoeil cpoil 
+coil	ssoil scoil coill ccoil coiil cooil coeil ceil 
+lost	llost lostt loost losst loest loct losct 
+frost	frrost frostt ffrost froost frosst froest froct 
+frosty	frrosty frostty ffrosty froosty frossty frostyy froesty frocty 
+grab	grrab greb grib grob graab graeb graib graob 
+grand	grrand grend grund grond graand graend graind graond 
+graft	grraft graftt greft grift gruft groft graaft 
+hid	hidd hhid hiid heid hed hud haad haed haid 
+him	hhim hiim himm heim hinm himp hom haam haem 
+hilt	hillt hiltt hhilt hiilt heilt hinlt helt 
+hit	hitt hhit hiit heit het haat haet hait 
+slab	sllab sleb slib slub slaab slaeb slaib 
+slam	sllam slem slom slaam slaem slaim slaom slaum sleam 
+slant	sllant slantt slent slint slunt slont slaant 
+top	ttop toop topp toep tep tonp toup tuop 
+stop	sttop stopp sstop stoep ctop sctop ztop stonp 
+shop	shhop shoop shopp sshop shoep schop zhop shep shonp 
+flop	fllop fflop floop flopp floep velop flep flonp floup 
+am	im aam aem aom aum eam eem eim eom 
+bad	baad baed baid baod beed beid beod beud biad bied 
+drab	drrab dreb drib drob draab draeb draib draob 
+raft	rraft raftt reft ruft roft raaft raeft raift 
+sort	sorrt sortt soort ssort soert cort scort 
+sport	sporrt sportt spoort spport ssport spoert cport 
+snort	snorrt snortt snnort snoort ssnort snoert cnort 
+beam	bam beem beim beum boam beom beaam 
+team	tteam teim teum toam teom teaam teaem teaim 
+seam	sam seim seum soam seom seaam seaem seaim 
+steam	stam stteam steem steim steum stoam steom 
+roster	rroster rosterr rostter rostor rosteer rosster roester 
+foster	fosterr fostter fostor fosteer ffoster fooster fosster foester 
+monster	monsterr monstter monstor moster monsteer mmonster monnster moonster monsster 
+bluster	blusterr blluster blustter blustor bbluster blusteer blusster 
+cash	ssash scash cesh cish cush caash caesh 
+crash	srash ssrash scrash crrash cresh crish crosh craash 
+clash	sslash sclash cllash clesh clish clush closh 
+horn	horrn hhorn hornn hoorn hoern howrn hern honrn hourn 
+corner	sorner ssorner corrner cornerr cornor ccorner corneer cornner coorner 
+scorn	ssorn sssorn sscorn scorrn sccorn scornn scoorn scoern 
+corn	sorn ssorn corrn ccorn cornn coorn coern cowrn cern 
+after	afterr aftter efter ifter ufter aftor ofter 
+banter	banterr bantter benter binter bunter bantor bater bonter 
+printer	prrinter printerr printter printor priter printeer priinter prinnter pprinter 
+vanity	vanitty venity vinity vunity vaity vonity vaanity 
+gravity	grravity gravitty grevity grivity gruvity grovity graavity 
+beg	bbeg beeg begg bedg beng baag baeg baig baog baug 
+peg	pog peeg pegg ppeg pedg pag peng paag 
+leg	elg lleg leeg legg ledg lig leng laag 
+gasp	gesp gisp gusp gosp gaasp gaesp gaisp 
+grasp	grrasp gresp grisp grusp grosp graasp graesp 
+spin	spi spiin spinn sppin sspin spein cpin scpin zpin 
+spit	spitt spiit sppit sspit speit cpit scpit zpit 
+ample	ampel amplle amle emple imple umple amplo omple 
+sample	sampel samplle samle semple sumple samplo somple saample 
+simple	simpel simplle simle simplo simplee siimple simmple simpple ssimple 
+dimple	dimpel dimplle dimle dimplo ddimple dimplee diimple dimmple dimpple 
+over	overr ofr ovor oveer oover ovver oever ovar 
+clover	slover sslover sclover cloverr cllover clofr clovor cclover cloveer 
+adverb	adverrb adfrb edverb idverb udverb advorb odverb 
+wound	wuond wond woud woundd wounnd woound wouund wwound woeund worund 
+bound	buond boud bbound boundd bounnd boound bouund boeund borund boand 
+round	ruond rond rround roud roundd rounnd roound rouund roeund 
+pound	puond poud poundd pounnd poound ppound pouund poeund porund poand 
+read	rread reid reud reod reaad reaed reaid reaod 
+real	ral rreal reall reil reul roal reol reaal 
+dream	drream dreem dreim dreum droam dreom dreaam 
+reach	rach reash reassh reasch rreach reech reich reuch 
+banana	benana banena banane binana banina banani bunana banuna bananu baana 
+malady	mallady melady maledy malidy mulady maludy molady 
+cavalry	savalry ssavalry scavalry cavalrry cavallry cevalry cavelry civalry cavilry cuvalry 
+capital	sapital ssapital scapital capitall capittal cepital capitel cipital capitil cupital 
+bramble	brambel brramble bramblle bremble brimble brumble bramblo bromble 
+rumble	rumbel rrumble rumblle umble rumblo rumbble rumblee rummble 
+crumble	crumbel srumble ssrumble scrumble crrumble crumblle cumble crumblo crumbble ccrumble 
+tumble	tumbel tumblle ttumble tumblo tumbble tumblee tummble tuumble 
+enter	enterr entter onter entor eter eenter enteer ennter 
+ferment	ferrment fermentt forment fermont fermet feerment fermeent fferment fermment fermennt 
+tender	tenderr ttender tonder tendor teder tendder teender tendeer tennder 
+fender	fenderr fendor feder fendder feender fendeer ffender fennder fendar 
+number	numberr numbor numbber numbeer nummber nnumber nuumber numbar 
+lumber	lumberr llumber lumbor lumbber lumbeer lummber luumber 
+slumber	slumberr sllumber slumbor slumbber slumbeer slummber sslumber sluumber 
+limber	limberr llimber limbor limbber limbeer liimber limmber leimber 
+fanatic	fanatis fanatiss fanatisc fanattic fenatic fanetic finatic fanitic funatic fanutic 
+dramatic	dramatis dramatiss dramatisc drramatic dramattic drematic drametic drimatic dramitic drumatic 
+banana	benana banena banane binana banina banani bunana banuna bananu baana 

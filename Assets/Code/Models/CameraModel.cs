@@ -17,6 +17,11 @@ public class CameraModel
 
     public CameraModel()
     {
+        RestoreScreenDefaults();
+    }
+
+    public void RestoreScreenDefaults()
+    {
         ShouldFollowActivePlayer = false;
         ActivePlayerXOffset = 3f;
         TargetPosition = null;

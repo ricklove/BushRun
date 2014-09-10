@@ -19,10 +19,15 @@ public class PlayerModel
 
     public PlayerModel()
     {
+        TargetX = 0;
+        RestoreScreenDefaults();
+    }
+
+    public void RestoreScreenDefaults()
+    {
         PlayerState = PlayerState.Idle;
         Health = 1;
         HeightRatio = 0;
-        TargetX = 0;
         SpeedRatio = 1;
         MaxSpeed = 4;
         ShouldShowSelectionBox = false;

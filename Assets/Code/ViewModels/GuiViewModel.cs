@@ -25,7 +25,7 @@ public class GuiViewModel : IGuiViewModel
             var items = new List<GuiItem>();
 
             // Choices
-            if (_model.ChoicesModel.ShouldShowChoices)
+            if (_model.ChoicesModel.Choices.Any())
             {
                 var choices = _model.ChoicesModel.Choices;
                 var choicesTop = Screen.height * 0.15f;

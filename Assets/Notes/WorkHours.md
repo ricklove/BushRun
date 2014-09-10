@@ -226,11 +226,19 @@ Create BushRun to be used for Multiple Choice
 
 - Fix disabled active player selection
 
+### 10:40-11:45
+
+- Create Wrong Answers
+
+## Period 8
+
+### 2014-09-10 3:07-3:57
+
+- Fix scene changing
+
 
 
 # TODO
-
-- Improve subject (create wrong answers)
 
 - Fix Background tiling (Missing Tile Bug)
 

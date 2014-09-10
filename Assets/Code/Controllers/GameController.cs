@@ -5,91 +5,77 @@ using System.Collections;
 using Assets.Plugins.SmartLevelsMap.Scripts;
 using System;
 
-partial class GameController : MonoBehaviour
+partial class GameController : ScreenControllerBase
 {
-    private bool _isSetup = false;
-
-    void Start()
+    protected override ScreenState ScreenState
     {
+        get { return ScreenState.Game; }
     }
 
-    void Update()
+    protected override void OpenScreen()
     {
         var model = MainModel.Instance;
 
-        if (model.ScreenState != ScreenState.Game)
+        model.CameraModel.ShouldFollowActivePlayer = true;
+
+        // Display Choices
+        GotoLevelStart(model);
+    }
+
+    protected override void CloseScreen()
+    {
+        var model = MainModel.Instance;
+        //model.ChoicesModel.Choices.Clear();
+    }
+
+    protected override void UpdateScreen()
+    {
+        var model = MainModel.Instance;
+
+        if (model.ActivePlayer.PlayerState != PlayerState.Dead)
         {
-            if (_isSetup)
+            var speed = 10f;
+            var timeToMoveCamera = 0.25f;
+
+            speed *= model.ActivePlayer.Health;
+            //timeToMoveCamera *= model.ActivePlayer.Health;
+
+            var changeX = Time.deltaTime * speed;
+
+            var size = model.CameraModel.GameObject.GetComponent<Camera>().orthographicSize;
+            model.CameraModel.TimeToMove = timeToMoveCamera;
+            model.CameraModel.ActivePlayerXOffset = size * 1.2f - (changeX * timeToMoveCamera);
+
+            // Make max speed higher than actual speed to ensure the player character can keep up with the game
+            model.ActivePlayer.MaxSpeed = speed * 1.5f;
+            model.ActivePlayer.SpeedRatio = 1f;
+            model.ActivePlayer.TargetX += changeX;
+
+            // Change height to choice
+            if (model.ChoicesModel.Choices.Count > 0
+                && model.ChoicesModel.ActiveChoiceIndex.HasValue)
             {
-                _isSetup = false;
-                DisableScreen();
+                var pathCount = model.ChoicesModel.Choices.Count;
+                var pathIndex = model.ChoicesModel.ActiveChoiceIndex.Value;
+
+                if (pathIndex < 0) { pathIndex = 0; }
+                if (pathIndex >= pathCount) { pathIndex = pathCount - 1; }
+
+                var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
+                var targetHeight = 1.0f - pathIndex * pathUnitSize;
+
+                model.ActivePlayer.HeightRatio = targetHeight;
             }
 
-            return;
         }
-
-        if (!_isSetup)
+        else
         {
-            _isSetup = true;
-
-            model.CameraModel.ShouldFollowActivePlayer = true;
-            model.ActivePlayer.ShouldShowSelectionBox = false;
-
-            // Display Choices
-            GotoLevelStart(model);
-            //GotoNextProblem(model);
-
-            // Ensure clicking is disabled on player
-            model.ActivePlayer.SelectCallback = null;
-        }
-
-        if (_isSetup)
-        {
-
-            if (model.ActivePlayer.PlayerState != PlayerState.Dead)
-            {
-                var speed = 10f;
-                var timeToMoveCamera = 0.25f;
-
-                speed *= model.ActivePlayer.Health;
-                //timeToMoveCamera *= model.ActivePlayer.Health;
-
-                var changeX = Time.deltaTime * speed;
-
-                var size = model.CameraModel.GameObject.GetComponent<Camera>().orthographicSize;
-                model.CameraModel.TimeToMove = timeToMoveCamera;
-                model.CameraModel.ActivePlayerXOffset = size * 1.2f - (changeX * timeToMoveCamera);
-
-                // Make max speed higher than actual speed to ensure the player character can keep up with the game
-                model.ActivePlayer.MaxSpeed = speed * 1.5f;
-                model.ActivePlayer.SpeedRatio = 1f;
-                model.ActivePlayer.TargetX += changeX;
-
-                // Change height to choice
-                if (model.ChoicesModel.Choices.Count > 0
-                    && model.ChoicesModel.ActiveChoiceIndex.HasValue)
-                {
-                    var pathCount = model.ChoicesModel.Choices.Count;
-                    var pathIndex = model.ChoicesModel.ActiveChoiceIndex.Value;
-
-                    if (pathIndex < 0) { pathIndex = 0; }
-                    if (pathIndex >= pathCount) { pathIndex = pathCount - 1; }
-
-                    var pathUnitSize = pathCount > 1 ? 1.0f / (pathCount - 1) : 1.0f;
-                    var targetHeight = 1.0f - pathIndex * pathUnitSize;
-
-                    model.ActivePlayer.HeightRatio = targetHeight;
-                }
-
-            }
-            else
-            {
-                // Fall on death
-                model.ActivePlayer.HeightRatio = 0;
-            }
-
+            // Fall on death
+            model.ActivePlayer.HeightRatio = 0;
         }
     }
+
+
 
     void RespondToLevelComplete()
     {
@@ -186,11 +172,7 @@ partial class GameController : MonoBehaviour
 
             Action doMainMenu = () =>
             {
-                ResetPlayer(() =>
-                {
-                    model.ScreenState = ScreenState.LevelSelection;
-                    model.ActivePlayer.MaxSpeed = new PlayerModel().MaxSpeed;
-                });
+                model.ScreenState = ScreenState.LevelSelection;
             };
 
             model.ChoicesModel.Choices.Clear();
@@ -235,9 +217,6 @@ partial class GameController : MonoBehaviour
         }, 2f);
     }
 
-    void DisableScreen()
-    {
-        var model = MainModel.Instance;
-        model.ChoicesModel.Choices.Clear();
-    }
+
+
 }

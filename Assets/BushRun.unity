@@ -28337,9 +28337,9 @@ MonoBehaviour:
       y: 34
       width: 256
       height: 16
-    FillTexture: {fileID: 2800000, guid: 2590e27e3c92b1e4787ddab92f99bb17, type: 3}
-    BackTexture: {fileID: 2800000, guid: d365a59e18ed9044db64c276ade4308f, type: 3}
-    Units: 5
+    FillTexture: {fileID: 2800000, guid: 281f7eebdad29794e857dd0e916b7747, type: 3}
+    BackTexture: {fileID: 2800000, guid: 7ba3183d8f6937b4e8d42a8d64e74c2a, type: 3}
+    Units: 20
 --- !u!114 &1194190414
 MonoBehaviour:
   m_ObjectHideFlags: 0

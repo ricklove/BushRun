@@ -55,8 +55,14 @@ partial class GameController
             // Correct Choice
             choices.Add(new Choice() { Text = entry.Word, IsCorrect = true, ChoiceCallback = null });
 
-            // Wrong Choices
-            foreach (var w in entry.Misspellings)
+            // Wrong Choices (Take the n first misspellings every time)
+            var wrongChoices = 3;
+            var firstChoices = wrongChoices / 2;
+            var afterChoices = wrongChoices - firstChoices;
+
+            var l = entry.Misspellings.ToList();
+            var rMisspellings = l.Take(firstChoices).Union(l.Skip(firstChoices).RandomizeOrder().Take(afterChoices));
+            foreach (var w in rMisspellings)
             {
                 choices.Add(new Choice() { Text = w, IsCorrect = false, ChoiceCallback = null });
             }
@@ -111,7 +117,7 @@ partial class GameController
 
         model.ChoicesModel.Choices.Clear();
         model.ChoicesModel.Choices.AddRange(randomOrder);
-        model.ChoicesModel.ShouldShowChoices = true;
+        //model.ChoicesModel.ShouldShowChoices = true;
         model.ChoicesModel.ActiveChoiceIndex = null;
     }
 
