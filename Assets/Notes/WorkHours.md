@@ -240,18 +240,28 @@ Create BushRun to be used for Multiple Choice
 
 - Add back and forward buttons
 
+### 5:21-5:23
+
+- Update notes
+
 
 # TODO
 
+- Show Game Menu when level finished (or when pausing or dead)
+	
+	- Show fireworks
+	- Show stars
+	- Show Try Again
+	- Show Goto next level
+	- Show Goto Level Menu
+
 - Fix Background tiling (Missing Tile Bug)
 
-- Respond to Choices
-
-	- Right
-		- Show Glitter
-
 - Add Title
+
+- Display Stars
+
 - Add Coins
-- Display Stars and Coins GUI
+- Display Coins
 
 
