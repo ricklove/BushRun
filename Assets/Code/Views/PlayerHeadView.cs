@@ -14,11 +14,11 @@ public class PlayerHeadView
     private float _nextChangeTime = 0;
     private int _iHead = 0;
 
-    public void Initialize(MonoBehaviour owner)
+    public void Initialize(GameObject head)
     {
         if (_headRenderer == null)
         {
-            _headRenderer = owner.GetComponentInChildren<SpriteRenderer>();
+            _headRenderer = head.GetComponentInChildren<SpriteRenderer>();
         }
     }
 

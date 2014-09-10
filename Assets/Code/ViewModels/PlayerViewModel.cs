@@ -12,6 +12,7 @@ public class PlayerViewModel : IPlayerViewModel
     }
 
     public PlayerData PlayerData { get { return _model.PlayerData; } }
+
     public PlayerState PlayerState { get { return _model.PlayerState; } }
     public float HeightRatio { get { return _model.HeightRatio; } }
     public float TargetX { get { return _model.TargetX; } }
@@ -19,4 +20,7 @@ public class PlayerViewModel : IPlayerViewModel
     public float SpeedRatio { get { return _model.SpeedRatio; } }
     public float MaxSpeed { get { return _model.MaxSpeed; } }
     public Action SelectCallback { get { return _model.SelectCallback; } }
+
+
+
 }

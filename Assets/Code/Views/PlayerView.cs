@@ -29,16 +29,10 @@ public class PlayerView : MonoBehaviour
     void Start()
     {
         _headView = new PlayerHeadView();
-        _headView.Initialize(this);
 
         _animator = GetComponentInChildren<Animator>();
 
-        _childAvatarDirection = transform.GetChild(0).GetChild(0).gameObject;
-        _childAvatar = _childAvatarDirection.transform.GetChild(0).gameObject;
-        _headHolder = transform.GetComponentInChildren<SpriteRenderer>().transform.parent.gameObject;
-
-        _initialPosition = _childAvatar.transform.localPosition;
-        _initialRotation = _childAvatar.transform.localRotation;
+        ActivateAvatar();
 
         _selectionBox = transform.FindChild("SelectionBox").gameObject;
         _selectionBox.GetComponent<Clickable>().MouseDownCallback = () =>
@@ -51,6 +45,44 @@ public class PlayerView : MonoBehaviour
         };
 
         _flyEffects = transform.FindChild("FlyEffects").gameObject;
+    }
+
+    private void ActivateAvatar()
+    {
+        _childAvatarDirection = transform.GetChild(0).GetChild(0).gameObject;
+        var rotationAndScale = _childAvatarDirection.transform.GetChild(0).gameObject;
+
+        var avatarName = Enum.GetName(typeof(AvatarType), PlayerViewModel.PlayerData.AvatarType);
+
+        _childAvatar = null;
+
+        for (int i = 0; i < rotationAndScale.transform.childCount; i++)
+        {
+            var aChild = rotationAndScale.transform.GetChild(i);
+
+            if (aChild.name == avatarName)
+            {
+                _childAvatar = aChild.gameObject;
+                aChild.gameObject.SetActive(true);
+            }
+            else
+            {
+                aChild.gameObject.SetActive(false);
+            }
+        }
+
+        if (_childAvatar == null)
+        {
+            _childAvatar = rotationAndScale.transform.GetChild(0).gameObject;
+            _childAvatar.SetActive(true);
+        }
+
+        _headHolder = _childAvatar.transform.GetComponentInChildren<SpriteRenderer>().transform.parent.gameObject;
+        _headView.Initialize(_headHolder);
+
+
+        _initialPosition = _childAvatar.transform.localPosition;
+        _initialRotation = _childAvatar.transform.localRotation;
     }
 
     void Update()
@@ -73,13 +105,11 @@ public class PlayerView : MonoBehaviour
         // Flip for backwards
         if (_actualSpeed < -0.001f)
         {
-            //transform.localScale = new Vector3(-1, 1, 1);
             _childAvatarDirection.transform.localRotation = Quaternion.Euler(0, 120, 0);
             _headHolder.transform.localRotation = Quaternion.Euler(0, 300, 0);
         }
         else if (_actualSpeed > 0.001f)
         {
-            //transform.localScale = new Vector3(1, 1, 1);
             _childAvatarDirection.transform.localRotation = Quaternion.Euler(0, 0, 0);
             _headHolder.transform.localRotation = Quaternion.Euler(0, 240, 0);
         }
@@ -215,3 +245,4 @@ public enum PlayerState
     Hurt,
     Dead
 }
+

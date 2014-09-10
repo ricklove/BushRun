@@ -244,6 +244,10 @@ Create BushRun to be used for Multiple Choice
 
 - Update notes
 
+### 6:05-7:38
+
+- Add Robot Avatar
+
 
 # TODO
 
@@ -255,13 +259,32 @@ Create BushRun to be used for Multiple Choice
 	- Show Goto next level
 	- Show Goto Level Menu
 
+- Add character selection
+	- Allow change head
+	- Allow change body
+	- Allow wear accessory
+
 - Fix Background tiling (Missing Tile Bug)
 
 - Add Title
 
 - Display Stars
 
+- Add Analytics (With Achievement Placeholders?)
+- Add Ads
+	- Unity Ads
+	- ChartBoost
+	- AdColony
+
+- Publish!
+
+
+
+# Version 2
+
+- Add Subject Selection
+
 - Add Coins
 - Display Coins
 
-
+- Add Achievements

@@ -70,11 +70,14 @@ public class PlayerDataModel
 public class PlayerData
 {
     public string ID { get; set; }
+    public AvatarType AvatarType { get; set; }
     public List<SpriteInfo> Sprites { get; private set; }
 
     public PlayerData()
     {
         Sprites = new List<SpriteInfo>();
+
+        AvatarType = AvatarType.Robot;
     }
 }
 
@@ -91,4 +94,11 @@ public enum SpriteType
     HeadHurt,
 }
 
+
+public enum AvatarType
+{
+    Guy,
+    Robot,
+    //HeroBoy
+}
 
