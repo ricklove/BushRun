@@ -30,10 +30,6 @@ public class PlayerView : MonoBehaviour
     {
         _headView = new PlayerHeadView();
 
-        _animator = GetComponentInChildren<Animator>();
-
-        ActivateAvatar();
-
         _selectionBox = transform.FindChild("SelectionBox").gameObject;
         _selectionBox.GetComponent<Clickable>().MouseDownCallback = () =>
         {
@@ -47,8 +43,16 @@ public class PlayerView : MonoBehaviour
         _flyEffects = transform.FindChild("FlyEffects").gameObject;
     }
 
+    private AvatarType _lastAvatarType = (AvatarType)(-1);
     private void ActivateAvatar()
     {
+        if (_lastAvatarType == PlayerViewModel.PlayerData.AvatarType)
+        {
+            return;
+        }
+
+        _lastAvatarType = PlayerViewModel.PlayerData.AvatarType;
+
         _childAvatarDirection = transform.GetChild(0).GetChild(0).gameObject;
         var rotationAndScale = _childAvatarDirection.transform.GetChild(0).gameObject;
 
@@ -80,6 +84,7 @@ public class PlayerView : MonoBehaviour
         _headHolder = _childAvatar.transform.GetComponentInChildren<SpriteRenderer>().transform.parent.gameObject;
         _headView.Initialize(_headHolder);
 
+        _animator = _childAvatar.transform.GetComponentInChildren<Animator>();
 
         _initialPosition = _childAvatar.transform.localPosition;
         _initialRotation = _childAvatar.transform.localRotation;
@@ -91,6 +96,9 @@ public class PlayerView : MonoBehaviour
         {
             return;
         }
+
+        ActivateAvatar();
+
 
         UpdateSelectionBox();
 

@@ -48,7 +48,7 @@ public abstract class ScreenControllerBase : MonoBehaviour
 
     private static List<Action> _coroutines = new List<Action>();
 
-    protected void StartCoroutineWithDelay(Action doAction, float timeToWait)
+    public void StartCoroutineWithDelay(Action doAction, float timeToWait)
     {
         _coroutines.Add(doAction);
         

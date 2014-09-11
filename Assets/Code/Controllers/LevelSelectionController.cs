@@ -115,39 +115,22 @@ class LevelSelectionController : ScreenControllerBase
     {
         MainModel model = MainModel.Instance;
 
+        model.ActivePlayer.PlayerState = PlayerState.Hurt;
         model.ActivePlayer.TargetX -= 10f;
         model.CameraModel.TargetSize = null;
         model.CameraModel.ShouldFollowActivePlayer = true;
         model.CameraModel.ActivePlayerXOffset = 0f;
         model.CameraModel.TimeToMove = 0.5f;
 
-        var i = 0;
-
-        foreach (var p in model.AvailablePlayers)
-        {
-            if (p != model.ActivePlayer)
-            {
-                p.TargetX = model.ActivePlayer.TargetX - 2f - 0.5f * i;
-
-                if (p.GameObject.transform.position.x < p.TargetX - 10f)
-                {
-                    p.GameObject.transform.position = new Vector3(p.TargetX - 10f, p.GameObject.transform.position.y, p.GameObject.transform.position.z);
-                }
-
-                i++;
-            }
-        }
-
-        this.StartCoroutineWithDelay(() =>
-        {
-            //model.ActivePlayer.TargetX = model.ActivePlayer.GameObject.transform.position.x;
-        }, 3f);
+        Sequences.CelebrateActivePlayerDead(model, this);
 
         this.StartCoroutineWithDelay(() =>
         {
             model.ScreenState = ScreenState.PlayerSelection;
-        }, 5f);
+        }, 6f);
     }
+
+    
 
     protected override void CloseScreen()
     {

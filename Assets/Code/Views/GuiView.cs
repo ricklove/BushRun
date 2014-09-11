@@ -6,6 +6,7 @@ using System.Linq;
 
 public class GuiView : MonoBehaviour
 {
+    public GUIStyle questionStyle = GUI.skin.box;
     public GUIStyle choiceStyle = GUI.skin.box;
     public GUIStyle selectedChoiceStyle = GUI.skin.box;
 
@@ -95,6 +96,9 @@ public class GuiView : MonoBehaviour
 
         switch (styleType)
         {
+            case GuiStyleType.Question:
+                style = questionStyle;
+                break;
             case GuiStyleType.Choice:
                 style = choiceStyle;
                 break;
@@ -154,7 +158,8 @@ public struct GuiSizeHash
 public enum GuiStyleType
 {
     Choice,
-    Choice_Highlight
+    Choice_Highlight,
+    Question
 }
 
 [System.Serializable]

@@ -5,6 +5,7 @@ using System.Linq;
 
 public class ChoicesModel
 {
+    public string Question { get; set; }
     public List<Choice> Choices { get; private set; }
     public int? ActiveChoiceIndex { get; set; }
     public Choice ActiveChoice { get { return ActiveChoiceIndex.HasValue && ActiveChoiceIndex >= 0 && ActiveChoiceIndex < Choices.Count ? Choices[ActiveChoiceIndex.Value] : null; } }
@@ -18,10 +19,12 @@ public class ChoicesModel
 
     public void RestoreScreenDefaults()
     {
+        Question = "";
         Choices.Clear();
         NearnessRatio = 0;
         ActiveChoiceIndex = null;
     }
+
 }
 
 public class Choice

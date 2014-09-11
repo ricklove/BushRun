@@ -27,13 +27,41 @@ public class GuiViewModel : IGuiViewModel
             // Choices
             if (_model.ChoicesModel.Choices.Any())
             {
-                var choices = _model.ChoicesModel.Choices;
-                var choicesTop = Screen.height * 0.15f;
-                var choicesHeight = Screen.height * 0.8f;
+                var problemTop = Screen.height * 0.15f;
+                var problemHeight = Screen.height * 0.8f;
+                var problemRight = Screen.width * 0.95f;
+                var problemWidth = Screen.width * 0.3f;
+                var problemLeft = problemRight - problemWidth;
 
-                var choicesRight = Screen.width * 0.95f;
-                var choiceWidth = Screen.width * 0.3f;
-                var choicesLeft = choicesRight - choiceWidth;
+                // Question
+                var questionTop = problemTop;
+                var questionHeight = problemHeight * 0.2f;
+
+                var question = _model.ChoicesModel.Question;
+                if (string.IsNullOrEmpty(question))
+                {
+                    questionHeight = 0;
+                }
+                else
+                {
+                    items.Add(new GuiItem()
+                    {
+                        Text = question,
+                        StyleType = GuiStyleType.Question,
+                        Left = problemLeft,
+                        Top = questionTop,
+                        Width = problemWidth,
+                        Height = questionHeight * 0.8f,
+                    });
+                }
+
+                // Choices
+                var choices = _model.ChoicesModel.Choices;
+                var choicesTop = questionTop + questionHeight;
+                var choicesHeight = problemHeight - questionHeight;
+
+                var choiceWidth = problemWidth;
+                var choicesLeft = problemLeft;
 
                 var selectedHeightBoost = 0.5f;
                 var totalChoiceHeightLength = choices.Count + selectedHeightBoost;

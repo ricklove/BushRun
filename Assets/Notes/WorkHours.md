@@ -248,8 +248,22 @@ Create BushRun to be used for Multiple Choice
 
 - Add Robot Avatar
 
+### 8:25-9:23
+### 9:40-10:15
+
+- Add word part mode
+
+### 2014-09-11 3:42-4:47
+
+- Create sequences
+- Use both avatar types
+- Partial Word Answers (same size)
+
 
 # TODO
+
+- Add Partial Word Questions
+	- Test
 
 - Show Game Menu when level finished (or when pausing or dead)
 	
@@ -262,7 +276,6 @@ Create BushRun to be used for Multiple Choice
 - Add character selection
 	- Allow change head
 	- Allow change body
-	- Allow wear accessory
 
 - Fix Background tiling (Missing Tile Bug)
 

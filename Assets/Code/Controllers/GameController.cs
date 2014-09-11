@@ -94,7 +94,8 @@ partial class GameController : ScreenControllerBase
 
         model.ChoicesModel.Choices.Clear();
 
-        ResetPlayer(() => {
+        ResetPlayer(() =>
+        {
             // TODO: Show report
 
             model.ScreenState = ScreenState.LevelSelection;
@@ -151,6 +152,9 @@ partial class GameController : ScreenControllerBase
         {
             model.ActivePlayer.PlayerState = PlayerState.Dead;
 
+            model.CameraModel.ActivePlayerXOffset = 1f;
+            Sequences.MournActivePlayerDead(model, this);
+
             Action doContinue = () =>
             {
                 ResetPlayer(() =>
@@ -188,6 +192,7 @@ partial class GameController : ScreenControllerBase
     {
         var model = MainModel.Instance;
 
+        model.CameraModel.ActivePlayerXOffset = 3f;
         model.ActivePlayer.PlayerState = PlayerState.Idle;
         model.ActivePlayer.HeightRatio = 0;
 
