@@ -92,7 +92,7 @@ public class WordDiff
         }
     }
 
-    private string CreateBlanks(int Count)
+    public static string CreateBlanks(int Count)
     {
         var blanks = "";
 

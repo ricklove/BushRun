@@ -65,7 +65,7 @@ public class SubjectModel
                 misspellings = misspellings.Union(extraMisspellings).ToArray();
             }
 
-            var entry = new Entry() { Word = word, Misspellings = misspellings };
+            var entry = new Entry(word, misspellings);
 
             return entry;
         }).ToArray();
@@ -104,5 +104,17 @@ public class Entry
     {
         get;
         set;
+    }
+
+    public Entry(string word, string misspellings)
+        : this(word, misspellings.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+    {
+
+    }
+
+    public Entry(string word, string[] misspellings)
+    {
+        Word = word;
+        Misspellings = misspellings.Where(m => m.Trim().Any()).ToArray();
     }
 }

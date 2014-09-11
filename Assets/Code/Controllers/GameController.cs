@@ -120,7 +120,7 @@ partial class GameController : ScreenControllerBase
             SoundPlayer.Instance.PlayCheer();
         }
 
-        model.ActiveLevelProgress = 1.0f * (_nextProblemIndex) / _entries.Length;
+        model.ActiveLevelProgress = 1.0f * (_nextProblemIndex.Index) / _entries.Length;
     }
 
     void RespondToAnswerDelayed(bool isCorrect)

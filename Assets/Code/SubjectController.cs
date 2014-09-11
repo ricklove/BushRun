@@ -58,37 +58,38 @@ public class SubjectController : MonoBehaviour
     public void GoNext()
     {
         var choices = new List<Choice>();
-        
-        var entry = _entries [_nextIndex];
-        
-        Action correctCallback = () => {
+
+        var entry = _entries[_nextIndex];
+
+        Action correctCallback = () =>
+        {
             GoNext();
         };
-        
-        choices.Add(new Choice(){ Text= entry.Word, IsCorrect = true, ChoiceCallback=correctCallback});
-        
+
+        choices.Add(new Choice() { Text = entry.Word, IsCorrect = true, ChoiceCallback = correctCallback });
+
         foreach (var w in entry.Misspellings)
         {
-            choices.Add(new Choice(){ Text= w, IsCorrect = false, ChoiceCallback=null});
+            choices.Add(new Choice() { Text = w, IsCorrect = false, ChoiceCallback = null });
         }
-        
+
         // Randomize order
         var r = choices.ToList();
         choices.Clear();
-        
+
         while (r.Any())
         {
             // Range is maximally exclusive
             var i = UnityEngine.Random.Range(0, r.Count - 1 + 1);
-            choices.Add(r [i]);
+            choices.Add(r[i]);
             r.RemoveAt(i);
         }
-        
+
         ChoiceGUI.Instance.Choices = choices.ToArray();
         HealthBarController.Instance.SetProgress(1.0f * _nextIndex / _entries.Length);
 
         _nextIndex++;
-        
+
         if (_nextIndex >= _entries.Length)
         {
             PlayerController.Instance.FinishLevel();
@@ -96,7 +97,7 @@ public class SubjectController : MonoBehaviour
             //ChangeLevel(_level + 1);
         }
     }
-    
+
 }
 
 public class SubjectEntries
@@ -107,15 +108,16 @@ public class SubjectEntries
     {
         var subjectFile = Resources.Load("Misspellings") as TextAsset;
         var subject = subjectFile.text;
-        
-        var lines = subject.Split(new char[]{'\r', '\n'}, System.StringSplitOptions.RemoveEmptyEntries);
-        _entries = lines.Select(l => {
-            
+
+        var lines = subject.Split(new char[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        _entries = lines.Select(l =>
+        {
+
             var mainParts = l.Split('\t');
-            var word = mainParts [0];
-            var misspellings = mainParts [1].Split(' ');
-            var entry = new Entry(){ Word=word, Misspellings=misspellings };
-            
+            var word = mainParts[0];
+            var misspellings = mainParts[1].Split(' ');
+            var entry = new Entry(word, misspellings);
+
             return entry;
         }).ToArray();
     }
