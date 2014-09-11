@@ -253,11 +253,15 @@ Create BushRun to be used for Multiple Choice
 
 - Add word part mode
 
+## Period 8
+
 ### 2014-09-11 3:42-4:47
 
 - Create sequences
 - Use both avatar types
 - Partial Word Answers (same size)
+
+### 4:48-
 
 
 # TODO
