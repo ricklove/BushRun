@@ -263,7 +263,7 @@ Create BushRun to be used for Multiple Choice
 
 ### 4:48-6:49
 
-- Add EveryLetter Problems
+- Add Every Letter Problems
 
 
 # TODO
