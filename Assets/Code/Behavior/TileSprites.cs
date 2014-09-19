@@ -27,10 +27,10 @@ public class TileSprites : MonoBehaviour
     {
         // Get camera frustum in local coords
         var distance = Mathf.Abs(cam.transform.position.z);
-        
+
         var frustumHeight = 2.0f * distance * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
         var frustumWidth = frustumHeight * cam.aspect;
-        
+
         if (cam.isOrthoGraphic)
         {
             var minSize = cam.orthographicSize * 2;
@@ -45,7 +45,7 @@ public class TileSprites : MonoBehaviour
                 frustumHeight = frustumHeight / cam.aspect;
             }
         }
-        
+
         var fx = cam.transform.position.x - frustumWidth * 0.5f;
         var fy = cam.transform.position.y - frustumHeight * 0.5f;
 
@@ -61,7 +61,7 @@ public class TileSprites : MonoBehaviour
         var localMin = transform.InverseTransformPoint(spriteWorldMin);
         var localMax = transform.InverseTransformPoint(spriteWorldMax);
         var localSize = localMax - localMin;
-        
+
         // Repeat tiles inside camera using local coords
 
         // Horizontal
@@ -83,7 +83,7 @@ public class TileSprites : MonoBehaviour
         if (tiles == null)
         {
             tiles = new List<GameObject>();
-            if (tileSprites == null 
+            if (tileSprites == null
                 || tileSprites.Length == 0)
             {
 
@@ -112,32 +112,17 @@ public class TileSprites : MonoBehaviour
 
                 tiles.Add(prefab);
             }
-                
+
         }
 
-        // Go forward as much as needed
-        var iVal = 0;
-        
-        while (val < min)
+        // Get positions
+        var positions = GetTilePositions(val, change, tileSprites.Length, 0, min, max);
+
+        foreach (var p in positions)
         {
-            val += change;
-            iVal++;
-        }
-        
-        // Go behind as much as needed
-        while (val > min)
-        {
-            val -= change;
-            iVal--;
-        }
-        
-        // Move forward, laying children
-        while (val < max)
-        {
-            var iTile = ((iVal % tiles.Count) + tiles.Count) % tiles.Count;
-            var targetTile = tiles [iTile];
-            var targetPos = vectChange * iVal;
-            
+            var targetTile = tiles[p.TileIndex];
+            var targetPos = new Vector3(p.Position, 0, 0);
+
             // Check for one already displayed here
             var matches = clones.Where(cl => cl.transform.localPosition == targetPos && targetTile.name == cl.name);
             if (matches.Any())
@@ -145,15 +130,12 @@ public class TileSprites : MonoBehaviour
                 var m = matches.First();
                 m.SetActive(true);
                 remaining.Remove(m);
-                
-                val += change;
-                iVal++;
                 continue;
             }
-            
-            
+
+
             var c = remaining.LastOrDefault(cl => cl.name == targetTile.name);
-            
+
             if (c == null)
             {
                 // Generate a child prefab of the sprite renderer
@@ -167,149 +149,256 @@ public class TileSprites : MonoBehaviour
             {
                 remaining.RemoveAt(remaining.Count - 1);
             }
-            
+
             c.transform.localPosition = targetPos;
             c.SetActive(true);
-            
-            val += change;
-            iVal++;
         }
-        
+
+
         foreach (var r in remaining)
         {
             r.SetActive(false);
         }
-        
+
+
+        //// Go forward as much as needed
+        //var iVal = 0;
+
+        //while (val < min)
+        //{
+        //    val += change;
+        //    iVal++;
+        //}
+
+        //// Go behind as much as needed
+        //while (val > min)
+        //{
+        //    val -= change;
+        //    iVal--;
+        //}
+
+        //// Move forward, laying children
+        //while (val < max)
+        //{
+        //    var iTile = ((iVal % tiles.Count) + tiles.Count) % tiles.Count;
+        //    var targetTile = tiles[iTile];
+        //    var targetPos = vectChange * iVal;
+
+        //    // Check for one already displayed here
+        //    var matches = clones.Where(cl => cl.transform.localPosition == targetPos && targetTile.name == cl.name);
+        //    if (matches.Any())
+        //    {
+        //        var m = matches.First();
+        //        m.SetActive(true);
+        //        remaining.Remove(m);
+
+        //        val += change;
+        //        iVal++;
+        //        continue;
+        //    }
+
+
+        //    var c = remaining.LastOrDefault(cl => cl.name == targetTile.name);
+
+        //    if (c == null)
+        //    {
+        //        // Generate a child prefab of the sprite renderer
+        //        c = ((Transform)Instantiate(targetTile.transform)).gameObject;
+        //        c.name = targetTile.name;
+        //        clones.Add(c);
+        //        c.transform.parent = transform;
+        //        c.transform.localScale = new Vector3(1, 1, 1);
+        //    }
+        //    else
+        //    {
+        //        remaining.RemoveAt(remaining.Count - 1);
+        //    }
+
+        //    c.transform.localPosition = targetPos;
+        //    c.SetActive(true);
+
+        //    val += change;
+        //    iVal++;
+        //}
+
+        //foreach (var r in remaining)
+        //{
+        //    r.SetActive(false);
+        //}
+
     }
 
-//    void TileForPreCull(Camera cam)
-//    {
-//        Debug.DrawLine(new Vector3(fx, fy, 0), new Vector3(fx + frustumWidth, fy + frustumHeight, 0));
-//
-//
-//        // TODO: Implement logic for both
-////        if (TileDirection == TileDirection.Both)
-////        {
-////            throw new UnityException("Both Not Implemented");
-////        }
-////        
-//
-//        var sprite = GetComponent<SpriteRenderer>();
-//        var worldSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
-//        var worldPos = sprite.bounds.min;
-//
-//        var localSize = new Vector2(worldSize.x / transform.localScale.x, worldSize.y / transform.localScale.y);
-//        var unscaledLocalPos = worldPos - transform.position;
-//        var localPos = new Vector2(unscaledLocalPos.x / transform.localScale.x, unscaledLocalPos.y / transform.localScale.y);
-//
-//        // Horizontal
-//        if (TileDirection == TileDirection.Horizontal)
-//        {
-//            // Fill frustum with children clones
-//            var width = worldSize.x;
-//            var x = worldPos.x;
-//
-//            var min = fx;
-//            var max = fx + frustumWidth;
-//
-//            PositionTiles(x, width, new Vector3(width, 0, 0), min, max, remaining);
-//            sprite.enabled = false;
-//        }
-//
-////        // Vertical
-////        if (TileDirection == TileDirection.Vertical)
-////        {
-////            // Fill frustum with children clones
-////            var height = renderer.bounds.size.y;
-////            var y = renderer.bounds.center.y - height * 0.5f;
-////            
-////            PositionTiles(y, height, new Vector3(0, height, 0), fy, fy + frustumHeight, remaining);
-////        }
-       
-//    }
+    public static IList<TilePosition> GetTilePositions(float tileOrigin, float tileSize, int tileCount, float overlap, float min, float max)
+    {
+        // Go back enough 
+        var d = tileSize - overlap;
 
-//    void PositionTiles(float val, float change, Vector3 vectChange, float min, float max, List<GameObject> remaining)
-//    {
-//        // Go forward as much as needed
-//        var iVal = 0;
-//
-//        while (val < min)
-//        {
-//            val += change;
-//            iVal++;
-//        }
-//
-//        // Go behind as much as needed
-//        while (val > min)
-//        {
-//            val -= change;
-//            iVal--;
-//        }
-//        
-//        // Move forward, laying children
-//        while (val < max)
-//        {
-//            // Check for one already displayed here
-//            var target = transform.localPosition + vectChange * iVal;
-//            var matches = clones.Where(cl => cl.transform.localPosition == target && cl.activeSelf);
-//            if (matches.Any())
-//            {
-//                var m = matches.First();
-//                m.SetActive(true);
-//                remaining.Remove(m);
-//
-//                val += change;
-//                iVal++;
-//                continue;
-//            }
-//
-//
-//            var c = remaining.LastOrDefault();
-//            
-//            if (c == null)
-//            {
-//                // Generate a child prefab of the sprite renderer
-//                c = new GameObject();
-//                SpriteRenderer childSprite = c.AddComponent<SpriteRenderer>();
-//                c.transform.position = transform.position;
-//
-//                var sprite = GetComponent<SpriteRenderer>();
-//                childSprite.sprite = sprite.sprite;
-//                childSprite.sortingOrder = sprite.sortingOrder;
-//                c.layer = transform.gameObject.layer;
-//                c.name = name + "(" + clones.Count + ")";
-//
-//                clones.Add(c);
-//                //c.transform.parent = transform;
-//            } else
-//            {
-//                remaining.RemoveAt(remaining.Count - 1);
-//            }
-//
-//            c.SetActive(true);
-//
-//            //c.transform.localScale = new Vector3(1, 1, 1);
-//            //c.transform.localPosition = vectChange * iVal;
-//            c.transform.localPosition = transform.localPosition + vectChange * iVal;
-//            c.transform.localScale = transform.localScale;
-//            
-//            val += change;
-//            iVal++;
-//        }
-//
-//        foreach (var r in remaining)
-//        {
-//            r.SetActive(false);
-//        }
-//
-//    }
+        var p = tileOrigin;
+        var i = 0;
+
+        while (p >= (min - tileSize))
+        {
+            p -= d;
+            i--;
+            i += tileCount;
+            i %= tileCount;
+        }
+
+        var positions = new List<TilePosition>();
+
+        while (p <= (max + tileSize))
+        {
+            // Add position
+            positions.Add(new TilePosition() { Position = p, Size = tileSize, TileIndex = i });
+
+            p += d;
+            i++;
+            i %= tileCount;
+        }
+
+        return positions;
+    }
+
+    public class TilePosition
+    {
+        public float Position;
+        public float Size;
+        public int TileIndex;
+
+        public override string ToString()
+        {
+            return string.Format("{0} @ {1}", TileIndex, Position);
+        }
+    }
+
+    //    void TileForPreCull(Camera cam)
+    //    {
+    //        Debug.DrawLine(new Vector3(fx, fy, 0), new Vector3(fx + frustumWidth, fy + frustumHeight, 0));
+    //
+    //
+    //        // TODO: Implement logic for both
+    ////        if (TileDirection == TileDirection.Both)
+    ////        {
+    ////            throw new UnityException("Both Not Implemented");
+    ////        }
+    ////        
+    //
+    //        var sprite = GetComponent<SpriteRenderer>();
+    //        var worldSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
+    //        var worldPos = sprite.bounds.min;
+    //
+    //        var localSize = new Vector2(worldSize.x / transform.localScale.x, worldSize.y / transform.localScale.y);
+    //        var unscaledLocalPos = worldPos - transform.position;
+    //        var localPos = new Vector2(unscaledLocalPos.x / transform.localScale.x, unscaledLocalPos.y / transform.localScale.y);
+    //
+    //        // Horizontal
+    //        if (TileDirection == TileDirection.Horizontal)
+    //        {
+    //            // Fill frustum with children clones
+    //            var width = worldSize.x;
+    //            var x = worldPos.x;
+    //
+    //            var min = fx;
+    //            var max = fx + frustumWidth;
+    //
+    //            PositionTiles(x, width, new Vector3(width, 0, 0), min, max, remaining);
+    //            sprite.enabled = false;
+    //        }
+    //
+    ////        // Vertical
+    ////        if (TileDirection == TileDirection.Vertical)
+    ////        {
+    ////            // Fill frustum with children clones
+    ////            var height = renderer.bounds.size.y;
+    ////            var y = renderer.bounds.center.y - height * 0.5f;
+    ////            
+    ////            PositionTiles(y, height, new Vector3(0, height, 0), fy, fy + frustumHeight, remaining);
+    ////        }
+
+    //    }
+
+    //    void PositionTiles(float val, float change, Vector3 vectChange, float min, float max, List<GameObject> remaining)
+    //    {
+    //        // Go forward as much as needed
+    //        var iVal = 0;
+    //
+    //        while (val < min)
+    //        {
+    //            val += change;
+    //            iVal++;
+    //        }
+    //
+    //        // Go behind as much as needed
+    //        while (val > min)
+    //        {
+    //            val -= change;
+    //            iVal--;
+    //        }
+    //        
+    //        // Move forward, laying children
+    //        while (val < max)
+    //        {
+    //            // Check for one already displayed here
+    //            var target = transform.localPosition + vectChange * iVal;
+    //            var matches = clones.Where(cl => cl.transform.localPosition == target && cl.activeSelf);
+    //            if (matches.Any())
+    //            {
+    //                var m = matches.First();
+    //                m.SetActive(true);
+    //                remaining.Remove(m);
+    //
+    //                val += change;
+    //                iVal++;
+    //                continue;
+    //            }
+    //
+    //
+    //            var c = remaining.LastOrDefault();
+    //            
+    //            if (c == null)
+    //            {
+    //                // Generate a child prefab of the sprite renderer
+    //                c = new GameObject();
+    //                SpriteRenderer childSprite = c.AddComponent<SpriteRenderer>();
+    //                c.transform.position = transform.position;
+    //
+    //                var sprite = GetComponent<SpriteRenderer>();
+    //                childSprite.sprite = sprite.sprite;
+    //                childSprite.sortingOrder = sprite.sortingOrder;
+    //                c.layer = transform.gameObject.layer;
+    //                c.name = name + "(" + clones.Count + ")";
+    //
+    //                clones.Add(c);
+    //                //c.transform.parent = transform;
+    //            } else
+    //            {
+    //                remaining.RemoveAt(remaining.Count - 1);
+    //            }
+    //
+    //            c.SetActive(true);
+    //
+    //            //c.transform.localScale = new Vector3(1, 1, 1);
+    //            //c.transform.localPosition = vectChange * iVal;
+    //            c.transform.localPosition = transform.localPosition + vectChange * iVal;
+    //            c.transform.localScale = transform.localScale;
+    //            
+    //            val += change;
+    //            iVal++;
+    //        }
+    //
+    //        foreach (var r in remaining)
+    //        {
+    //            r.SetActive(false);
+    //        }
+    //
+    //    }
 
 }
 
 public enum TileDirection
 {
-    None=0,
-    Horizontal=1,
-    Vertical=2,
+    None = 0,
+    Horizontal = 1,
+    Vertical = 2,
     //Both=3, 
 }
