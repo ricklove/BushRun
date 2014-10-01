@@ -7,7 +7,7 @@ using System;
 partial class GameController
 {
     const int LEVELCOUNT = 25;
-    private ProblemMode ProblemMode = ProblemMode.WholeWord;
+    private ProblemMode ProblemMode = ProblemMode.EachLetter;
 
     private int _loadedLevel = -1;
 
