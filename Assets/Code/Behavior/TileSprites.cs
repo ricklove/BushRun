@@ -31,7 +31,7 @@ public class TileSprites : MonoBehaviour
         var frustumHeight = 2.0f * distance * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
         var frustumWidth = frustumHeight * cam.aspect;
 
-        if (cam.isOrthoGraphic)
+        if (cam.orthographic)
         {
             var minSize = cam.orthographicSize * 2;
             if (cam.aspect > 1)

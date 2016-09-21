@@ -6,9 +6,9 @@ using System.Linq;
 
 public class GuiView : MonoBehaviour
 {
-    public GUIStyle questionStyle = GUI.skin.box;
-    public GUIStyle choiceStyle = GUI.skin.box;
-    public GUIStyle selectedChoiceStyle = GUI.skin.box;
+    public GUIStyle questionStyle;
+    public GUIStyle choiceStyle;
+    public GUIStyle selectedChoiceStyle;
 
     public IGuiViewModel GuiViewModel { get; set; }
 
@@ -24,6 +24,20 @@ public class GuiView : MonoBehaviour
 
     void OnGUI()
     {
+        if( questionStyle == null)
+        {
+            questionStyle = GUI.skin.box;
+        }
+
+        if (choiceStyle == null)
+        {
+            choiceStyle = GUI.skin.box;
+        }
+
+        if (selectedChoiceStyle == null)
+        {
+            selectedChoiceStyle = GUI.skin.box;
+        }
 
         if (GuiViewModel.ShouldShowProgressBars)
         {
